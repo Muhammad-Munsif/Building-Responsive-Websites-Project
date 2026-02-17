@@ -1,4 +1,4 @@
-<script>
+
     (function() {
       // theme management
       const body = document.body;
@@ -82,4 +82,4 @@
         lastScroll = current;
       });
     })();
-  </script>
+  
