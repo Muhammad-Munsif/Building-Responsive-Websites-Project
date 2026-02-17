@@ -17,6 +17,74 @@
     />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Tablet Devices (768px and up) */
+@media (min-width: 768px) {
+  .hero-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-content {
+    text-align: left;
+    flex: 1;
+    padding-right: 2rem;
+  }
+
+  .hero-image {
+    flex: 1;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Small Desktop (992px and up) */
+@media (min-width: 992px) {
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+}
+
+/* Mobile Devices (768px and below) */
+@media (max-width: 768px) {
+  .main-nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 80%;
+    height: calc(100vh - 70px);
+    background-color: var(--header-bg);
+    box-shadow: var(--box-shadow);
+    transition: left 0.3s ease;
+    padding: 2rem;
+  }
+
+  .main-nav.active {
+    left: 0;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+  }
+
+  .main-nav li {
+    margin: 1rem 0;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+  }
+}
+
+    </style>
   </head>
   <body>
     <header class="main-header">
