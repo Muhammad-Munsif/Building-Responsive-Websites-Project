@@ -1,4 +1,4 @@
-  <style>
+
     /* ----- GLOBAL DESIGN SYSTEM (light/dark) + animations ----- */
     * {
       margin: 0;
@@ -571,4 +571,3 @@
       }
       .hero-content p { margin-left: auto; margin-right: auto; }
     }
-  </style>
