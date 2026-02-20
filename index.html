@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -138,7 +139,8 @@
       align-items: center;
     }
 
-    .theme-toggle, .mobile-menu-toggle {
+    .theme-toggle,
+    .mobile-menu-toggle {
       width: 48px;
       height: 48px;
       border-radius: 30px;
@@ -215,7 +217,7 @@
     .hero-section {
       padding: 160px 0 100px;
       background: radial-gradient(circle at 80% 30%, var(--primary-light) 0%, transparent 40%),
-                  radial-gradient(circle at 20% 70%, var(--secondary) 0%, transparent 40%);
+        radial-gradient(circle at 20% 70%, var(--secondary) 0%, transparent 40%);
       position: relative;
     }
 
@@ -308,7 +310,10 @@
     }
 
     /* feature / service cards */
-    .features-section, .services-section, .testimonials-section, .contact-section {
+    .features-section,
+    .services-section,
+    .testimonials-section,
+    .contact-section {
       padding: 100px 0;
     }
 
@@ -322,7 +327,9 @@
       gap: 32px;
     }
 
-    .feature-card, .service-card, .testimonial-card {
+    .feature-card,
+    .service-card,
+    .testimonial-card {
       background: var(--bg-card);
       border: 1px solid var(--border-light);
       border-radius: 40px;
@@ -333,12 +340,16 @@
       transform: translateY(30px);
     }
 
-    .feature-card.visible, .service-card.visible, .testimonial-card.visible {
+    .feature-card.visible,
+    .service-card.visible,
+    .testimonial-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .feature-card:hover, .service-card:hover, .testimonial-card:hover {
+    .feature-card:hover,
+    .service-card:hover,
+    .testimonial-card:hover {
       transform: translateY(-12px) scale(1.01);
       border-color: var(--primary);
       box-shadow: var(--shadow-lg);
@@ -512,7 +523,7 @@
     .social-icons a {
       width: 48px;
       height: 48px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -529,7 +540,7 @@
     .copyright {
       text-align: center;
       padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     /* back to top button */
@@ -566,12 +577,27 @@
 
     /* animations */
     @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes fadeRight {
-      0% { opacity: 0; transform: translateX(30px); }
-      100% { opacity: 1; transform: translateX(0); }
+      0% {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     /* responsive fine-tuning */
@@ -580,25 +606,44 @@
         flex-direction: column-reverse;
         text-align: center;
       }
+
       .hero-content p {
         margin-left: auto;
         margin-right: auto;
       }
-      .stats-grid { gap: 30px; }
-      .stat-item { min-width: 140px; }
-      .contact-item { flex-direction: column; text-align: center; }
+
+      .stats-grid {
+        gap: 30px;
+      }
+
+      .stat-item {
+        min-width: 140px;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+      }
     }
+
     @media (max-width: 480px) {
-      .cta-button { padding: 14px 28px; }
-      .stat-number { font-size: 3rem; }
+      .cta-button {
+        padding: 14px 28px;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- header -->
   <header class="main-header">
     <div class="container">
-      <a href="/" class="logo">Nexus<span style="background:var(--gradient-cool); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">.</span></a>
+      <a href="/" class="logo">Nexus<span
+          style="background:var(--gradient-cool); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">.</span></a>
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -609,7 +654,8 @@
         </ul>
       </nav>
       <div class="header-controls">
-        <button class="theme-toggle" id="themeToggle" aria-label="dark/light mode"><i id="themeIcon" class="fas fa-moon"></i></button>
+        <button class="theme-toggle" id="themeToggle" aria-label="dark/light mode"><i id="themeIcon"
+            class="fas fa-moon"></i></button>
         <button class="mobile-menu-toggle" id="mobileToggle" aria-label="menu"><i class="fas fa-bars"></i></button>
       </div>
     </div>
@@ -626,7 +672,9 @@
             <a href="#features" class="cta-button"><i class="fas fa-sparkles"></i> explore now</a>
           </div>
           <div class="col-lg-6 hero-image">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%234361ee'/%3E%3Cstop offset='100%25' stop-color='%23f72585'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='400' fill='url(%23g)' opacity='0.2'/%3E%3Ccircle cx='300' cy='200' r='90' fill='%234361ee' /%3E%3Ctext x='300' y='220' font-size='30' fill='white' text-anchor='middle' font-family='Inter' dy='.3em'%3Enexus%3C/text%3E%3C/svg%3E" alt="hero visual">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%234361ee'/%3E%3Cstop offset='100%25' stop-color='%23f72585'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='400' fill='url(%23g)' opacity='0.2'/%3E%3Ccircle cx='300' cy='200' r='90' fill='%234361ee' /%3E%3Ctext x='300' y='220' font-size='30' fill='white' text-anchor='middle' font-family='Inter' dy='.3em'%3Enexus%3C/text%3E%3C/svg%3E"
+              alt="hero visual">
           </div>
         </div>
       </div>
@@ -638,10 +686,26 @@
         <h2 class="section-title">Core features</h2>
         <p class="section-subtitle">everything you need to scale and shine</p>
         <div class="features-grid">
-          <div class="feature-card fade-up-on-scroll"><div class="feature-icon"><i class="fas fa-rocket"></i></div><h3>lightning speed</h3><p>optimized stack, instant loads, zero waiting.</p></div>
-          <div class="feature-card fade-up-on-scroll"><div class="feature-icon"><i class="fas fa-mobile-alt"></i></div><h3>fluid responsive</h3><p>pixel perfect on any screen – from watch to imax.</p></div>
-          <div class="feature-card fade-up-on-scroll"><div class="feature-icon"><i class="fas fa-palette"></i></div><h3>themable</h3><p>dark/light, custom colors, your brand identity.</p></div>
-          <div class="feature-card fade-up-on-scroll"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>secure core</h3><p>built-in best practices & protection.</p></div>
+          <div class="feature-card fade-up-on-scroll">
+            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+            <h3>lightning speed</h3>
+            <p>optimized stack, instant loads, zero waiting.</p>
+          </div>
+          <div class="feature-card fade-up-on-scroll">
+            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>fluid responsive</h3>
+            <p>pixel perfect on any screen – from watch to imax.</p>
+          </div>
+          <div class="feature-card fade-up-on-scroll">
+            <div class="feature-icon"><i class="fas fa-palette"></i></div>
+            <h3>themable</h3>
+            <p>dark/light, custom colors, your brand identity.</p>
+          </div>
+          <div class="feature-card fade-up-on-scroll">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>secure core</h3>
+            <p>built-in best practices & protection.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -650,10 +714,22 @@
     <section class="stats-section">
       <div class="container">
         <div class="stats-grid">
-          <div class="stat-item"><div class="stat-number">17k+</div><div class="stat-label">happy clients</div></div>
-          <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">uptime</div></div>
-          <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">priority support</div></div>
-          <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">experts</div></div>
+          <div class="stat-item">
+            <div class="stat-number">17k+</div>
+            <div class="stat-label">happy clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">uptime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">priority support</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">experts</div>
+          </div>
         </div>
       </div>
     </section>
@@ -664,10 +740,22 @@
         <h2 class="section-title">our services</h2>
         <p class="section-subtitle">we deliver across domains, with precision</p>
         <div class="services-grid">
-          <div class="service-card fade-up-on-scroll"><i class="fas fa-code"></i><h3>web dev</h3><p>react, vue, laravel – clean code, fast delivery.</p></div>
-          <div class="service-card fade-up-on-scroll"><i class="fas fa-mobile-alt"></i><h3>mobile apps</h3><p>native & cross‑platform, buttery ux.</p></div>
-          <div class="service-card fade-up-on-scroll"><i class="fas fa-cloud"></i><h3>cloud infra</h3><p>aws, azure, auto‑scaling, secure.</p></div>
-          <div class="service-card fade-up-on-scroll"><i class="fas fa-chart-line"></i><h3>growth marketing</h3><p>seo, content, convert – data driven.</p></div>
+          <div class="service-card fade-up-on-scroll"><i class="fas fa-code"></i>
+            <h3>web dev</h3>
+            <p>react, vue, laravel – clean code, fast delivery.</p>
+          </div>
+          <div class="service-card fade-up-on-scroll"><i class="fas fa-mobile-alt"></i>
+            <h3>mobile apps</h3>
+            <p>native & cross‑platform, buttery ux.</p>
+          </div>
+          <div class="service-card fade-up-on-scroll"><i class="fas fa-cloud"></i>
+            <h3>cloud infra</h3>
+            <p>aws, azure, auto‑scaling, secure.</p>
+          </div>
+          <div class="service-card fade-up-on-scroll"><i class="fas fa-chart-line"></i>
+            <h3>growth marketing</h3>
+            <p>seo, content, convert – data driven.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -678,16 +766,29 @@
         <h2 class="section-title">trusted by teams</h2>
         <div class="testimonials-grid">
           <div class="testimonial-card fade-up-on-scroll">
-            <div class="testimonial-text">“Nexus brought our vision to life. The attention to detail is unmatched.”</div>
-            <div class="testimonial-author"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234361ee'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EA%3C/text%3E%3C/svg%3E" alt="avatar"><div><strong>Alex Rivera</strong><br>CEO, TechFlow</div></div>
+            <div class="testimonial-text">“Nexus brought our vision to life. The attention to detail is unmatched.”
+            </div>
+            <div class="testimonial-author"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234361ee'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EA%3C/text%3E%3C/svg%3E"
+                alt="avatar">
+              <div><strong>Alex Rivera</strong><br>CEO, TechFlow</div>
+            </div>
           </div>
           <div class="testimonial-card fade-up-on-scroll">
             <div class="testimonial-text">“Our revenue increased 45% after the redesign. Simply brilliant.”</div>
-            <div class="testimonial-author"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23f72585'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EM%3C/text%3E%3C/svg%3E" alt="avatar"><div><strong>Maya Chen</strong><br>Founder, Bloom</div></div>
+            <div class="testimonial-author"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23f72585'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EM%3C/text%3E%3C/svg%3E"
+                alt="avatar">
+              <div><strong>Maya Chen</strong><br>Founder, Bloom</div>
+            </div>
           </div>
           <div class="testimonial-card fade-up-on-scroll">
             <div class="testimonial-text">“Support is phenomenal – they really care about our success.”</div>
-            <div class="testimonial-author"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234cc9f0'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EJ%3C/text%3E%3C/svg%3E" alt="avatar"><div><strong>James Wright</strong><br>CTO, Solstice</div></div>
+            <div class="testimonial-author"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234cc9f0'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EJ%3C/text%3E%3C/svg%3E"
+                alt="avatar">
+              <div><strong>James Wright</strong><br>CTO, Solstice</div>
+            </div>
           </div>
         </div>
       </div>
@@ -699,16 +800,20 @@
         <h2 class="section-title">get in touch</h2>
         <div class="contact-grid">
           <div>
-            <div class="contact-item"><span class="contact-icon"><i class="fas fa-map-pin"></i></span><span>226 Market St, San Francisco, CA</span></div>
-            <div class="contact-item"><span class="contact-icon"><i class="fas fa-phone-alt"></i></span><span>+1 (888) 867‑5309</span></div>
-            <div class="contact-item"><span class="contact-icon"><i class="fas fa-envelope"></i></span><span>hello@nexus.digital</span></div>
+            <div class="contact-item"><span class="contact-icon"><i class="fas fa-map-pin"></i></span><span>226 Market
+                St, San Francisco, CA</span></div>
+            <div class="contact-item"><span class="contact-icon"><i class="fas fa-phone-alt"></i></span><span>+1 (888)
+                867‑5309</span></div>
+            <div class="contact-item"><span class="contact-icon"><i
+                  class="fas fa-envelope"></i></span><span>hello@nexus.digital</span></div>
           </div>
           <div>
             <form id="quickContact">
               <input type="text" placeholder="your name" class="form-control-custom mb-4">
               <input type="email" placeholder="email address" class="form-control-custom mb-4">
               <textarea rows="4" placeholder="how can we help?" class="form-control-custom mb-4"></textarea>
-              <button class="cta-button" style="border:none; width:100%; justify-content:center;">send message <i class="fas fa-paper-plane"></i></button>
+              <button class="cta-button" style="border:none; width:100%; justify-content:center;">send message <i
+                  class="fas fa-paper-plane"></i></button>
             </form>
           </div>
         </div>
@@ -720,11 +825,33 @@
   <footer class="main-footer">
     <div class="container">
       <div class="footer-content">
-        <div class="footer-section"><h3>Nexus</h3><p>modern digital solutions</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
-        <div class="footer-section"><h3>product</h3><ul><li><a href="#features">features</a></li><li><a href="#pricing">pricing</a></li><li><a href="#faq">faq</a></li></ul></div>
-        <div class="footer-section"><h3>company</h3><ul><li><a href="#">about</a></li><li><a href="#contact">contact</a></li><li><a href="#">careers</a></li></ul></div>
+        <div class="footer-section">
+          <h3>Nexus</h3>
+          <p>modern digital solutions</p>
+          <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
+                class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                class="fab fa-linkedin-in"></i></a></div>
+        </div>
+        <div class="footer-section">
+          <h3>product</h3>
+          <ul>
+            <li><a href="#features">features</a></li>
+            <li><a href="#pricing">pricing</a></li>
+            <li><a href="#faq">faq</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>company</h3>
+          <ul>
+            <li><a href="#">about</a></li>
+            <li><a href="#contact">contact</a></li>
+            <li><a href="#">careers</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="copyright"><p>© 2025 Nexus — elegance in every pixel</p></div>
+      <div class="copyright">
+        <p>© 2025 Nexus — elegance in every pixel</p>
+      </div>
     </div>
   </footer>
 
@@ -734,4 +861,5 @@
   <!-- scripts -->
 
 </body>
+
 </html>
