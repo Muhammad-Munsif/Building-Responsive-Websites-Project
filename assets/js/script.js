@@ -1,4 +1,4 @@
-  <script>
+
     (function() {
       // theme
       const body = document.body;
@@ -75,4 +75,3 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     })();
-  </script>
