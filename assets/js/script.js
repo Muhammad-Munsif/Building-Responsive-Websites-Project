@@ -1,4 +1,4 @@
-<script>
+
     (function() {
       // theme, mobile, smooth scroll, observer, header hide, back to top (as before)
       const body = document.body;
@@ -106,4 +106,4 @@
         setTimeout(() => feedback.innerText = '', 3000);
       });
     })();
-  </script>
+  
