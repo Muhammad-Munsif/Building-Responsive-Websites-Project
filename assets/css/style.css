@@ -1,4 +1,4 @@
-<style>
+
     /* ----- design tokens (light/dark) – same as before, extended ----- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -136,4 +136,3 @@
       .cta-button { padding:14px 28px; }
       .stat-number { font-size:3rem; }
     }
-  </s
