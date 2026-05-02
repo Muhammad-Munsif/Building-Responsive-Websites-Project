@@ -1,4 +1,4 @@
-<script>
+
     (function() {
       // theme
       const body = document.body;
@@ -129,4 +129,4 @@
         });
       }
     })();
-  </script>
+  
