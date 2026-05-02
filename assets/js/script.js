@@ -38,8 +38,17 @@
   // smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      // Ignore placeholder hash links like href="#"
+      if (!href || href === '#') return;
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      let target = null;
+      try {
+        target = document.querySelector(href);
+      } catch {
+        // invalid selector (e.g. malformed hash) — do nothing
+        return;
+      }
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
