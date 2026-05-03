@@ -1,4 +1,4 @@
- <script>
+
     (function () {
       // Theme toggle
       const body = document.body;
@@ -141,4 +141,4 @@
         });
       }
     })();
-  </script>
+  
