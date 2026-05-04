@@ -12,14 +12,14 @@ app.use(express.json());
 
 // Database connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
 
 // Routes
 app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
-  res.send('Nexus API is running');
+    res.send('Nexus API is running');
 });
 
 const PORT = process.env.PORT || 5000;
