@@ -147,16 +147,13 @@ let currentUser = null;
 
 // Helper to update UI based on login status
 function updateAuthUI() {
-  const loginBtn = document.getElementById('loginBtn');
-  if (authToken) {
-    loginBtn.innerHTML = `<i class="fas fa-user-check"></i> Dashboard`;
-    loginBtn.classList.remove('btn-outline-primary');
-    loginBtn.classList.add('btn-success');
-  } else {
-    loginBtn.innerHTML = `Login`;
-    loginBtn.classList.add('btn-outline-primary');
-    loginBtn.classList.remove('btn-success');
-  }
+const userSpan = document.getElementById('userNameDisplay');
+if (authToken && currentUser) {
+  userSpan.innerText = `👋 ${currentUser.name}`;
+} else {
+  userSpan.innerText = '';
+}
+  
 }
 
 // Show modals
