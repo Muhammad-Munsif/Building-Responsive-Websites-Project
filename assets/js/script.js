@@ -140,4 +140,126 @@
       setTimeout(() => { if (feedback) feedback.innerHTML = ''; }, 3000);
     });
   }
+
+  // Auth state
+let authToken = localStorage.getItem('token');
+let currentUser = null;
+
+// Helper to update UI based on login status
+function updateAuthUI() {
+  const loginBtn = document.getElementById('loginBtn');
+  if (authToken) {
+    loginBtn.innerHTML = `<i class="fas fa-user-check"></i> Dashboard`;
+    loginBtn.classList.remove('btn-outline-primary');
+    loginBtn.classList.add('btn-success');
+  } else {
+    loginBtn.innerHTML = `Login`;
+    loginBtn.classList.add('btn-outline-primary');
+    loginBtn.classList.remove('btn-success');
+  }
+}
+
+// Show modals
+const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+const signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+
+document.getElementById('loginBtn').addEventListener('click', () => {
+  if (authToken) {
+    // Already logged in – could redirect to profile page (optional)
+    alert(`Welcome back, ${currentUser?.name || 'User'}!`);
+  } else {
+    loginModal.show();
+  }
+});
+
+document.getElementById('showSignupFromLogin').addEventListener('click', (e) => {
+  e.preventDefault();
+  loginModal.hide();
+  signupModal.show();
+});
+
+document.getElementById('showLoginFromSignup').addEventListener('click', (e) => {
+  e.preventDefault();
+  signupModal.hide();
+  loginModal.show();
+});
+
+// LOGIN submit
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  const messageDiv = document.getElementById('loginMessage');
+
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      authToken = data.token;
+      currentUser = data.user;
+      localStorage.setItem('token', authToken);
+      localStorage.setItem('user', JSON.stringify(currentUser));
+      messageDiv.innerHTML = '<span style="color: #06d6a0;">Login successful! Redirecting...</span>';
+      updateAuthUI();
+      setTimeout(() => {
+        loginModal.hide();
+        location.reload(); // or update page dynamically
+      }, 1000);
+    } else {
+      messageDiv.innerHTML = `<span style="color: #ef476f;">${data.message}</span>`;
+    }
+  } catch (error) {
+    messageDiv.innerHTML = '<span style="color: #ef476f;">Server error. Is backend running?</span>';
+  }
+});
+
+// SIGNUP submit
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('signupName').value;
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+  const messageDiv = document.getElementById('signupMessage');
+
+  if (password.length < 6) {
+    messageDiv.innerHTML = '<span style="color: #ef476f;">Password must be at least 6 characters.</span>';
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      authToken = data.token;
+      currentUser = data.user;
+      localStorage.setItem('token', authToken);
+      localStorage.setItem('user', JSON.stringify(currentUser));
+      messageDiv.innerHTML = '<span style="color: #06d6a0;">Account created! Logging in...</span>';
+      updateAuthUI();
+      setTimeout(() => {
+        signupModal.hide();
+        location.reload();
+      }, 1000);
+    } else {
+      messageDiv.innerHTML = `<span style="color: #ef476f;">${data.message}</span>`;
+    }
+  } catch (error) {
+    messageDiv.innerHTML = '<span style="color: #ef476f;">Server error. Please try again.</span>';
+  }
+});
+
+// Restore session on page load
+if (localStorage.getItem('token')) {
+  authToken = localStorage.getItem('token');
+  currentUser = JSON.parse(localStorage.getItem('user'));
+  updateAuthUI();
+}
 })();
