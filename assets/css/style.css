@@ -54,7 +54,9 @@ body {
   background: var(--bg-body);
   color: var(--text-primary);
   line-height: 1.5;
-  transition: background-color 0.25s, color 0.2s;
+  transition:
+    background-color 0.25s,
+    color 0.2s;
   overflow-x: hidden;
   padding-top: var(--header-height);
 }
@@ -263,7 +265,12 @@ body {
 /* ----- Hero Section ----- */
 .hero-section {
   padding: 80px 0 90px;
-  background: radial-gradient(circle at 80% 30%, var(--primary-light) 0%, transparent 45%),
+  background:
+    radial-gradient(
+      circle at 80% 30%,
+      var(--primary-light) 0%,
+      transparent 45%
+    ),
     radial-gradient(circle at 20% 70%, var(--secondary) 0%, transparent 45%);
   min-height: 90vh;
   display: flex;
