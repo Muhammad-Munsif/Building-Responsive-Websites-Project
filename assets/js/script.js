@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const user = JSON.parse(savedUser);
       loginBtn.innerHTML = `<i class="fas fa-user-check"></i> ${user.name || "Dashboard"}`;
-    } catch (e) {}
+    } catch (e) { }
   }
 
   // ---- Theme Toggle ----
