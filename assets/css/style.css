@@ -1,4 +1,4 @@
-  <style>
+
     /* ----- premium design tokens ----- */
     * {
       margin: 0;
@@ -709,4 +709,4 @@
     }
     .hero-content { animation: fadeUp 0.8s ease forwards; }
     .hero-image { animation: fadeRight 0.8s 0.1s ease forwards; }
-  </style>
+  

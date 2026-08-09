@@ -1,4 +1,4 @@
- <script>
+
     (function() {
       document.addEventListener("DOMContentLoaded", function() {
         // --- Theme ---
@@ -138,4 +138,3 @@
         document.querySelectorAll('.feature-card, .service-card, .testimonial-card, .team-card, .pricing-card').forEach(el => observer.observe(el));
       });
     })();
-  </script>
