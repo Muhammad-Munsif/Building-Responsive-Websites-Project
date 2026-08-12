@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
@@ -16,6 +17,7 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     :root {
       --primary: #4361ee;
       --primary-dark: #3451d1;
@@ -38,10 +40,10 @@
       --text-secondary: #334155;
       --text-muted: #64748b;
       --border-light: #e9edf4;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.04);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
-      --shadow-xl: 0 20px 60px rgba(0,0,0,0.10), 0 8px 24px rgba(0,0,0,0.06);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.10), 0 8px 24px rgba(0, 0, 0, 0.06);
       --glow: 0 0 0 3px rgba(67, 97, 238, 0.15);
       --header-height: 72px;
       --radius-sm: 8px;
@@ -49,6 +51,7 @@
       --radius-lg: 24px;
       --radius-xl: 32px;
     }
+
     [data-theme="dark"] {
       --bg-body: #080c18;
       --bg-surface: #111927;
@@ -59,12 +62,13 @@
       --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
       --border-light: #283244;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
-      --shadow-xl: 0 20px 60px rgba(0,0,0,0.7);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
+      --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.7);
       --glow: 0 0 0 3px rgba(108, 140, 255, 0.2);
     }
+
     body {
       font-family: "Inter", -apple-system, system-ui, sans-serif;
       background: var(--bg-body);
@@ -75,6 +79,7 @@
       padding-top: var(--header-height);
       -webkit-font-smoothing: antialiased;
     }
+
     /* ----- premium header ----- */
     .main-header {
       position: fixed;
@@ -90,6 +95,7 @@
       align-items: center;
       transition: background 0.3s, border-color 0.3s;
     }
+
     .main-header .container {
       display: flex;
       align-items: center;
@@ -99,6 +105,7 @@
       margin: 0 auto;
       padding: 0 32px;
     }
+
     .logo {
       font-size: 1.6rem;
       font-weight: 800;
@@ -113,7 +120,12 @@
       gap: 4px;
       flex-shrink: 0;
     }
-    .logo span { background: none; -webkit-text-fill-color: var(--text-secondary); }
+
+    .logo span {
+      background: none;
+      -webkit-text-fill-color: var(--text-secondary);
+    }
+
     .main-nav ul {
       display: flex;
       gap: 4px;
@@ -121,6 +133,7 @@
       margin: 0;
       padding: 0;
     }
+
     .main-nav a {
       color: var(--text-secondary);
       font-weight: 500;
@@ -131,18 +144,21 @@
       font-size: 0.9rem;
       white-space: nowrap;
     }
+
     .main-nav a:hover {
       background: var(--gradient-prime);
       color: #fff;
       box-shadow: var(--shadow-sm);
       transform: translateY(-1px);
     }
+
     .header-controls {
       display: flex;
       gap: 10px;
       align-items: center;
       flex-shrink: 0;
     }
+
     .theme-toggle,
     .mobile-menu-toggle {
       width: 42px;
@@ -159,13 +175,17 @@
       transition: all 0.2s ease;
       box-shadow: var(--shadow-sm);
     }
+
     .theme-toggle:hover {
       background: var(--gradient-prime);
       color: white;
       border-color: transparent;
       transform: scale(1.04);
     }
-    .mobile-menu-toggle { display: none; }
+
+    .mobile-menu-toggle {
+      display: none;
+    }
 
     /* premium login btn */
     .btn-login {
@@ -183,17 +203,20 @@
       gap: 8px;
       box-shadow: 0 2px 8px rgba(67, 97, 238, 0.25);
     }
+
     .btn-login:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(67, 97, 238, 0.3);
       color: #fff;
     }
+
     .btn-login.logged-in {
       background: var(--bg-surface);
       color: var(--text-primary);
       border: 1px solid var(--border-light);
       box-shadow: var(--shadow-sm);
     }
+
     .btn-login.logged-in:hover {
       background: var(--danger);
       color: #fff;
@@ -203,15 +226,32 @@
 
     /* responsive nav */
     @media (max-width: 1024px) {
-      .main-nav a { padding: 6px 14px; font-size: 0.85rem; }
-      .main-header .container { padding: 0 20px; }
+      .main-nav a {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+      }
+
+      .main-header .container {
+        padding: 0 20px;
+      }
     }
+
     @media (max-width: 992px) {
-      .main-nav a { padding: 6px 12px; font-size: 0.8rem; }
+      .main-nav a {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
     }
+
     @media (max-width: 768px) {
-      :root { --header-height: 64px; }
-      .mobile-menu-toggle { display: flex; }
+      :root {
+        --header-height: 64px;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
       .main-nav {
         position: fixed;
         top: var(--header-height);
@@ -229,16 +269,19 @@
         pointer-events: none;
         z-index: 999;
       }
+
       .main-nav.active {
         transform: translateY(0);
         opacity: 1;
         pointer-events: all;
       }
+
       .main-nav ul {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
       }
+
       .main-nav a {
         display: block;
         text-align: center;
@@ -248,16 +291,50 @@
         border-radius: 40px;
         white-space: normal;
       }
-      .logo { font-size: 1.4rem; }
-      .theme-toggle, .mobile-menu-toggle { width: 38px; height: 38px; font-size: 1rem; }
-      .btn-login { padding: 6px 16px; font-size: 0.85rem; }
+
+      .logo {
+        font-size: 1.4rem;
+      }
+
+      .theme-toggle,
+      .mobile-menu-toggle {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+
+      .btn-login {
+        padding: 6px 16px;
+        font-size: 0.85rem;
+      }
     }
+
     @media (max-width: 480px) {
-      .main-header .container { padding: 0 12px; }
-      .logo { font-size: 1.2rem; }
-      .main-nav { left: 8px; right: 8px; padding: 16px; }
-      .btn-login { padding: 4px 12px; font-size: 0.8rem; }
-      .theme-toggle, .mobile-menu-toggle { width: 34px; height: 34px; font-size: 0.9rem; }
+      .main-header .container {
+        padding: 0 12px;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+      }
+
+      .main-nav {
+        left: 8px;
+        right: 8px;
+        padding: 16px;
+      }
+
+      .btn-login {
+        padding: 4px 12px;
+        font-size: 0.8rem;
+      }
+
+      .theme-toggle,
+      .mobile-menu-toggle {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+      }
     }
 
     /* ----- hero - premium ----- */
@@ -270,6 +347,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .hero-section::before {
       content: '';
       position: absolute;
@@ -277,14 +355,16 @@
       right: -15%;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(67,97,238,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(67, 97, 238, 0.06) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
     }
+
     .hero-content h1 {
       font-size: clamp(2.6rem, 7vw, 4.2rem);
       font-weight: 800;
@@ -292,12 +372,14 @@
       letter-spacing: -0.03em;
       margin-bottom: 20px;
     }
+
     .hero-content h1 .highlight {
       background: var(--gradient-prime);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .hero-content p {
       font-size: 1.2rem;
       color: var(--text-secondary);
@@ -305,10 +387,12 @@
       margin-bottom: 32px;
       line-height: 1.7;
     }
+
     .hero-image {
       position: relative;
       z-index: 2;
     }
+
     .hero-image img {
       width: 100%;
       max-width: 520px;
@@ -318,12 +402,29 @@
       padding: 6px;
       transition: transform 0.4s ease;
     }
-    .hero-image img:hover { transform: scale(1.01); }
+
+    .hero-image img:hover {
+      transform: scale(1.01);
+    }
+
     @media (max-width: 992px) {
-      .hero-section .row { flex-direction: column-reverse; text-align: center; }
-      .hero-content p { margin-left: auto; margin-right: auto; }
-      .hero-content { text-align: center; }
-      .hero-section::before { display: none; }
+      .hero-section .row {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-section::before {
+        display: none;
+      }
     }
 
     /* ----- premium sections ----- */
@@ -339,18 +440,21 @@
       border-radius: 40px;
       margin-bottom: 12px;
     }
+
     .section-title {
       font-size: clamp(2rem, 4.5vw, 2.8rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 12px;
     }
+
     .section-title .highlight {
       background: var(--gradient-prime);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .section-subtitle {
       color: var(--text-secondary);
       max-width: 640px;
@@ -358,6 +462,7 @@
       font-size: 1.05rem;
       line-height: 1.7;
     }
+
     .features-section,
     .services-section,
     .testimonials-section,
@@ -367,20 +472,35 @@
     .contact-section {
       padding: 72px 0;
     }
+
     @media (max-width: 768px) {
-      .features-section, .services-section, .testimonials-section,
-      .team-section, .pricing-section, .faq-section, .contact-section {
+
+      .features-section,
+      .services-section,
+      .testimonials-section,
+      .team-section,
+      .pricing-section,
+      .faq-section,
+      .contact-section {
         padding: 48px 0;
       }
     }
 
     /* ----- cards premium ----- */
-    .features-grid, .services-grid, .testimonials-grid, .team-grid {
+    .features-grid,
+    .services-grid,
+    .testimonials-grid,
+    .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 28px;
     }
-    .feature-card, .service-card, .testimonial-card, .team-card, .pricing-card {
+
+    .feature-card,
+    .service-card,
+    .testimonial-card,
+    .team-card,
+    .pricing-card {
       background: var(--bg-card);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
@@ -390,17 +510,26 @@
       opacity: 0;
       transform: translateY(24px);
     }
-    .feature-card.visible, .service-card.visible, .testimonial-card.visible,
-    .team-card.visible, .pricing-card.visible {
+
+    .feature-card.visible,
+    .service-card.visible,
+    .testimonial-card.visible,
+    .team-card.visible,
+    .pricing-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .feature-card:hover, .service-card:hover, .testimonial-card:hover,
-    .team-card:hover, .pricing-card:hover {
+
+    .feature-card:hover,
+    .service-card:hover,
+    .testimonial-card:hover,
+    .team-card:hover,
+    .pricing-card:hover {
       transform: translateY(-6px);
       border-color: var(--primary);
       box-shadow: var(--shadow-lg);
     }
+
     .feature-icon {
       font-size: 2.4rem;
       background: var(--gradient-prime);
@@ -410,12 +539,17 @@
       margin-bottom: 14px;
       display: inline-block;
     }
-    .feature-card h3, .service-card h3, .team-card h3 {
+
+    .feature-card h3,
+    .service-card h3,
+    .team-card h3 {
       font-size: 1.15rem;
       font-weight: 700;
       margin-bottom: 6px;
     }
-    .feature-card p, .service-card p {
+
+    .feature-card p,
+    .service-card p {
       color: var(--text-secondary);
       font-size: 0.95rem;
       line-height: 1.6;
@@ -429,15 +563,18 @@
       border-top: 1px solid var(--border-light);
       border-bottom: 1px solid var(--border-light);
     }
+
     .stats-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 24px 48px;
     }
+
     .stat-item {
       text-align: center;
     }
+
     .stat-number {
       font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 800;
@@ -447,6 +584,7 @@
       -webkit-text-fill-color: transparent;
       line-height: 1.2;
     }
+
     .stat-label {
       color: var(--text-muted);
       font-size: 0.9rem;
@@ -462,11 +600,13 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
     .pricing-card.popular {
       border: 2px solid var(--primary);
       position: relative;
       background: var(--bg-card);
     }
+
     .popular-badge {
       position: absolute;
       top: -12px;
@@ -481,6 +621,7 @@
       letter-spacing: 0.03em;
       text-transform: uppercase;
     }
+
     .pricing-price {
       font-size: clamp(2.4rem, 4vw, 3rem);
       font-weight: 800;
@@ -490,11 +631,13 @@
       -webkit-text-fill-color: transparent;
       margin: 16px 0;
     }
+
     .pricing-price small {
       font-size: 0.9rem;
       font-weight: 500;
       -webkit-text-fill-color: var(--text-muted);
     }
+
     .pricing-features li {
       margin-bottom: 8px;
       color: var(--text-secondary);
@@ -503,7 +646,10 @@
       align-items: center;
       gap: 8px;
     }
-    .pricing-features li i { color: var(--success); }
+
+    .pricing-features li i {
+      color: var(--success);
+    }
 
     /* ----- FAQ - fixed & enhanced with animations ----- */
     .faq-grid {
@@ -511,6 +657,7 @@
       margin: 0 auto;
       perspective: 1000px;
     }
+
     .faq-item {
       background: var(--bg-card);
       border: 1px solid var(--border-light);
@@ -523,10 +670,12 @@
       position: relative;
       overflow: hidden;
     }
+
     .faq-item:hover {
       border-color: var(--primary-light);
       box-shadow: var(--shadow-md);
     }
+
     .faq-item::after {
       content: '';
       position: absolute;
@@ -538,13 +687,16 @@
       transform: scaleX(0);
       transition: transform 0.4s ease;
     }
+
     .faq-item.active::after {
       transform: scaleX(1);
     }
+
     .faq-item.active {
       border-color: var(--primary);
       box-shadow: var(--shadow-md);
     }
+
     .faq-question {
       display: flex;
       justify-content: space-between;
@@ -558,6 +710,7 @@
       position: relative;
       z-index: 2;
     }
+
     .faq-question i {
       transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       color: var(--primary);
@@ -572,49 +725,88 @@
       background: var(--bg-body);
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .faq-item.active .faq-question i {
       transform: rotate(180deg) scale(1.1);
       background: var(--gradient-prime);
       color: #fff;
     }
+
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), 
-                  opacity 0.4s ease,
-                  transform 0.4s ease;
+      transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.4s ease,
+        transform 0.4s ease;
       color: var(--text-secondary);
       font-size: 0.95rem;
       line-height: 1.7;
       opacity: 0;
       transform: translateY(-8px);
     }
+
     .faq-item.active .faq-answer {
       max-height: 300px;
       padding-bottom: 20px;
       opacity: 1;
       transform: translateY(0);
     }
+
     /* stagger animation for faq items */
     .faq-item {
       opacity: 0;
       transform: translateY(20px) scale(0.98);
       animation: faqFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
-    .faq-item:nth-child(1) { animation-delay: 0.05s; }
-    .faq-item:nth-child(2) { animation-delay: 0.10s; }
-    .faq-item:nth-child(3) { animation-delay: 0.15s; }
-    .faq-item:nth-child(4) { animation-delay: 0.20s; }
-    @keyframes faqFadeIn {
-      0% { opacity: 0; transform: translateY(20px) scale(0.98); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+
+    .faq-item:nth-child(1) {
+      animation-delay: 0.05s;
     }
+
+    .faq-item:nth-child(2) {
+      animation-delay: 0.10s;
+    }
+
+    .faq-item:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+
+    .faq-item:nth-child(4) {
+      animation-delay: 0.20s;
+    }
+
+    @keyframes faqFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     /* responsive faq */
     @media (max-width: 480px) {
-      .faq-item { padding: 0 16px; }
-      .faq-question { font-size: 0.95rem; padding: 16px 0; }
-      .faq-item.active .faq-answer { padding-bottom: 16px; }
-      .faq-question i { width: 20px; height: 20px; font-size: 0.75rem; }
+      .faq-item {
+        padding: 0 16px;
+      }
+
+      .faq-question {
+        font-size: 0.95rem;
+        padding: 16px 0;
+      }
+
+      .faq-item.active .faq-answer {
+        padding-bottom: 16px;
+      }
+
+      .faq-question i {
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+      }
     }
 
     /* contact premium */
@@ -623,12 +815,14 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 48px;
     }
+
     .contact-item {
       display: flex;
       align-items: center;
       gap: 16px;
       margin-bottom: 24px;
     }
+
     .contact-icon {
       width: 48px;
       height: 48px;
@@ -641,6 +835,7 @@
       color: #fff;
       flex-shrink: 0;
     }
+
     .form-control-custom {
       background: var(--bg-card);
       border: 1px solid var(--border-light);
@@ -651,6 +846,7 @@
       transition: border 0.2s, box-shadow 0.2s;
       font-size: 0.95rem;
     }
+
     .form-control-custom:focus {
       outline: none;
       border-color: var(--primary);
@@ -674,6 +870,7 @@
       border: none;
       cursor: pointer;
     }
+
     .cta-button:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 28px rgba(67, 97, 238, 0.3);
@@ -686,31 +883,41 @@
       color: #94a3b8;
       padding: 56px 0 24px;
       margin-top: 48px;
-      border-top: 1px solid rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
     }
+
     .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 40px;
       margin-bottom: 32px;
     }
+
     .footer-content h3 {
       color: #e2e8f0;
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 12px;
     }
-    .footer-content ul li { margin-bottom: 6px; }
+
+    .footer-content ul li {
+      margin-bottom: 6px;
+    }
+
     .footer-content a {
       color: #94a3b8;
       text-decoration: none;
       transition: color 0.2s;
       font-size: 0.9rem;
     }
-    .footer-content a:hover { color: #fff; }
+
+    .footer-content a:hover {
+      color: #fff;
+    }
+
     .social-icons a {
       color: #94a3b8;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       width: 38px;
       height: 38px;
       display: inline-flex;
@@ -720,7 +927,11 @@
       margin-right: 4px;
       transition: all 0.2s;
     }
-    .social-icons a:hover { background: var(--primary); color: #fff; }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      color: #fff;
+    }
 
     /* back to top */
     .back-to-top {
@@ -744,8 +955,15 @@
       z-index: 99;
       border: none;
     }
-    .back-to-top.visible { opacity: 1; visibility: visible; }
-    .back-to-top:hover { transform: translateY(-4px) scale(1.04); }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
 
     /* modals */
     .modal-content {
@@ -753,7 +971,10 @@
       border-radius: var(--radius-md);
       border: 1px solid var(--border-light);
     }
-    .modal-header { border-bottom-color: var(--border-light); }
+
+    .modal-header {
+      border-bottom-color: var(--border-light);
+    }
 
     /* utility */
     .testimonial-author {
@@ -762,32 +983,71 @@
       gap: 14px;
       margin-top: 18px;
     }
-    .testimonial-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
-    .team-avatar img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
+
+    .testimonial-author img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .team-avatar img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+
     .team-social a {
       color: var(--text-muted);
       margin: 0 4px;
       font-size: 1rem;
       transition: color 0.2s;
     }
-    .team-social a:hover { color: var(--primary); }
+
+    .team-social a:hover {
+      color: var(--primary);
+    }
 
     /* animations */
     @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(24px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes fadeRight {
-      0% { opacity: 0; transform: translateX(24px); }
-      100% { opacity: 1; transform: translateX(0); }
+      0% {
+        opacity: 0;
+        transform: translateX(24px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .hero-content { animation: fadeUp 0.8s ease forwards; }
-    .hero-image { animation: fadeRight 0.8s 0.1s ease forwards; }
+
+    .hero-content {
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .hero-image {
+      animation: fadeRight 0.8s 0.1s ease forwards;
+    }
 
     /* fix for mobile nav toggle */
     .mobile-menu-toggle {
       display: none;
     }
+
     @media (max-width: 768px) {
       .mobile-menu-toggle {
         display: flex;
@@ -795,6 +1055,7 @@
     }
   </style>
 </head>
+
 <body>
   <header class="main-header" id="mainHeader">
     <div class="container">
@@ -831,13 +1092,16 @@
       <div class="container">
         <div class="row align-items-center g-5">
           <div class="col-lg-6 hero-content">
-            <div class="section-badge" style="background:var(--gradient-prime);color:#fff;display:inline-block;">v2.0</div>
+            <div class="section-badge" style="background:var(--gradient-prime);color:#fff;display:inline-block;">v2.0
+            </div>
             <h1>Build something <br /><span class="highlight">extraordinary</span></h1>
             <p>Digital experiences that inspire, perform, and adapt — your brand deserves the edge.</p>
             <a href="#features" class="cta-button"><i class="fas fa-sparkles"></i> Explore now</a>
           </div>
           <div class="col-lg-6 hero-image">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%234361ee'/%3E%3Cstop offset='100%25' stop-color='%23f72585'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='400' fill='url(%23g)' opacity='0.12'/%3E%3Ccircle cx='300' cy='200' r='80' fill='%234361ee' opacity='0.8'/%3E%3Ctext x='300' y='215' font-size='34' fill='white' text-anchor='middle' font-family='Inter' font-weight='700' dy='.3em'%3ENexus%3C/text%3E%3C/svg%3E" alt="Nexus hero visual" />
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%234361ee'/%3E%3Cstop offset='100%25' stop-color='%23f72585'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='400' fill='url(%23g)' opacity='0.12'/%3E%3Ccircle cx='300' cy='200' r='80' fill='%234361ee' opacity='0.8'/%3E%3Ctext x='300' y='215' font-size='34' fill='white' text-anchor='middle' font-family='Inter' font-weight='700' dy='.3em'%3ENexus%3C/text%3E%3C/svg%3E"
+              alt="Nexus hero visual" />
           </div>
         </div>
       </div>
@@ -852,10 +1116,26 @@
           <p class="section-subtitle">Everything you need to scale and shine.</p>
         </div>
         <div class="features-grid">
-          <div class="feature-card"><div class="feature-icon"><i class="fas fa-rocket"></i></div><h3>Lightning speed</h3><p>Optimized stack, instant loads, zero waiting.</p></div>
-          <div class="feature-card"><div class="feature-icon"><i class="fas fa-mobile-alt"></i></div><h3>Fluid responsive</h3><p>Pixel perfect on any screen – from watch to IMAX.</p></div>
-          <div class="feature-card"><div class="feature-icon"><i class="fas fa-palette"></i></div><h3>Themable</h3><p>Dark/light, custom colors, your brand identity.</p></div>
-          <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Secure core</h3><p>Built-in best practices & protection.</p></div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Lightning speed</h3>
+            <p>Optimized stack, instant loads, zero waiting.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Fluid responsive</h3>
+            <p>Pixel perfect on any screen – from watch to IMAX.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-palette"></i></div>
+            <h3>Themable</h3>
+            <p>Dark/light, custom colors, your brand identity.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Secure core</h3>
+            <p>Built-in best practices & protection.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -864,10 +1144,22 @@
     <section class="stats-section">
       <div class="container">
         <div class="stats-grid">
-          <div class="stat-item"><div class="stat-number">17k+</div><div class="stat-label">Happy clients</div></div>
-          <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">Uptime</div></div>
-          <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Priority support</div></div>
-          <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">Experts</div></div>
+          <div class="stat-item">
+            <div class="stat-number">17k+</div>
+            <div class="stat-label">Happy clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Uptime</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Priority support</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Experts</div>
+          </div>
         </div>
       </div>
     </section>
@@ -881,10 +1173,24 @@
           <p class="section-subtitle">We deliver across domains with precision and care.</p>
         </div>
         <div class="services-grid">
-          <div class="service-card"><i class="fas fa-code fa-3x" style="color:var(--primary);margin-bottom:12px;"></i><h3>Web dev</h3><p>React, Vue, Laravel – clean code, fast delivery.</p></div>
-          <div class="service-card"><i class="fas fa-mobile-alt fa-3x" style="color:var(--primary);margin-bottom:12px;"></i><h3>Mobile apps</h3><p>Native & cross‑platform, buttery UX.</p></div>
-          <div class="service-card"><i class="fas fa-cloud fa-3x" style="color:var(--primary);margin-bottom:12px;"></i><h3>Cloud infra</h3><p>AWS, Azure, auto‑scaling, secure.</p></div>
-          <div class="service-card"><i class="fas fa-chart-line fa-3x" style="color:var(--primary);margin-bottom:12px;"></i><h3>Growth marketing</h3><p>SEO, content, convert – data driven.</p></div>
+          <div class="service-card"><i class="fas fa-code fa-3x" style="color:var(--primary);margin-bottom:12px;"></i>
+            <h3>Web dev</h3>
+            <p>React, Vue, Laravel – clean code, fast delivery.</p>
+          </div>
+          <div class="service-card"><i class="fas fa-mobile-alt fa-3x"
+              style="color:var(--primary);margin-bottom:12px;"></i>
+            <h3>Mobile apps</h3>
+            <p>Native & cross‑platform, buttery UX.</p>
+          </div>
+          <div class="service-card"><i class="fas fa-cloud fa-3x" style="color:var(--primary);margin-bottom:12px;"></i>
+            <h3>Cloud infra</h3>
+            <p>AWS, Azure, auto‑scaling, secure.</p>
+          </div>
+          <div class="service-card"><i class="fas fa-chart-line fa-3x"
+              style="color:var(--primary);margin-bottom:12px;"></i>
+            <h3>Growth marketing</h3>
+            <p>SEO, content, convert – data driven.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -897,9 +1203,35 @@
           <h2 class="section-title">Trusted by <span class="highlight">teams</span></h2>
         </div>
         <div class="testimonials-grid" style="margin-top:32px;">
-          <div class="testimonial-card"><p style="font-size:1rem;line-height:1.7;">"Nexus brought our vision to life. The attention to detail is unmatched."</p><div class="testimonial-author"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234361ee'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EA%3C/text%3E%3C/svg%3E" alt="Alex" /><div><strong>Alex Rivera</strong><br /><span style="color:var(--text-muted);font-size:0.85rem;">CEO, TechFlow</span></div></div></div>
-          <div class="testimonial-card"><p style="font-size:1rem;line-height:1.7;">"Our revenue increased 45% after the redesign. Simply brilliant."</p><div class="testimonial-author"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23f72585'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EM%3C/text%3E%3C/svg%3E" alt="Maya" /><div><strong>Maya Chen</strong><br /><span style="color:var(--text-muted);font-size:0.85rem;">Founder, Bloom</span></div></div></div>
-          <div class="testimonial-card"><p style="font-size:1rem;line-height:1.7;">"Support is phenomenal – they really care about our success."</p><div class="testimonial-author"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234cc9f0'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EJ%3C/text%3E%3C/svg%3E" alt="James" /><div><strong>James Wright</strong><br /><span style="color:var(--text-muted);font-size:0.85rem;">CTO, Solstice</span></div></div></div>
+          <div class="testimonial-card">
+            <p style="font-size:1rem;line-height:1.7;">"Nexus brought our vision to life. The attention to detail is
+              unmatched."</p>
+            <div class="testimonial-author"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234361ee'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EA%3C/text%3E%3C/svg%3E"
+                alt="Alex" />
+              <div><strong>Alex Rivera</strong><br /><span style="color:var(--text-muted);font-size:0.85rem;">CEO,
+                  TechFlow</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p style="font-size:1rem;line-height:1.7;">"Our revenue increased 45% after the redesign. Simply brilliant."
+            </p>
+            <div class="testimonial-author"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23f72585'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EM%3C/text%3E%3C/svg%3E"
+                alt="Maya" />
+              <div><strong>Maya Chen</strong><br /><span style="color:var(--text-muted);font-size:0.85rem;">Founder,
+                  Bloom</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p style="font-size:1rem;line-height:1.7;">"Support is phenomenal – they really care about our success."</p>
+            <div class="testimonial-author"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234cc9f0'/%3E%3Ctext x='30' y='40' fill='white' text-anchor='middle' font-size='22' dy='.3em'%3EJ%3C/text%3E%3C/svg%3E"
+                alt="James" />
+              <div><strong>James Wright</strong><br /><span style="color:var(--text-muted);font-size:0.85rem;">CTO,
+                  Solstice</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -913,10 +1245,42 @@
           <p class="section-subtitle">Passionate people behind the scenes.</p>
         </div>
         <div class="team-grid">
-          <div class="team-card"><div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%234361ee'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3EJD%3C/text%3E%3C/svg%3E" alt="JD" /></div><h3>John Doe</h3><p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Founder &amp; CEO</p><div class="team-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
-          <div class="team-card"><div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%23f72585'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3ESM%3C/text%3E%3C/svg%3E" alt="SM" /></div><h3>Sarah Miles</h3><p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Creative Director</p><div class="team-social"><a href="#"><i class="fab fa-behance"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
-          <div class="team-card"><div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%234cc9f0'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3EAK%3C/text%3E%3C/svg%3E" alt="AK" /></div><h3>Alex Kim</h3><p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Lead Engineer</p><div class="team-social"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
-          <div class="team-card"><div class="team-avatar"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%2306d6a0'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3EER%3C/text%3E%3C/svg%3E" alt="ER" /></div><h3>Elena Rios</h3><p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Customer Success</p><div class="team-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
+          <div class="team-card">
+            <div class="team-avatar"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%234361ee'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3EJD%3C/text%3E%3C/svg%3E"
+                alt="JD" /></div>
+            <h3>John Doe</h3>
+            <p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Founder &amp; CEO</p>
+            <div class="team-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i
+                  class="fab fa-twitter"></i></a></div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%23f72585'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3ESM%3C/text%3E%3C/svg%3E"
+                alt="SM" /></div>
+            <h3>Sarah Miles</h3>
+            <p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Creative Director</p>
+            <div class="team-social"><a href="#"><i class="fab fa-behance"></i></a><a href="#"><i
+                  class="fab fa-instagram"></i></a></div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%234cc9f0'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3EAK%3C/text%3E%3C/svg%3E"
+                alt="AK" /></div>
+            <h3>Alex Kim</h3>
+            <p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Lead Engineer</p>
+            <div class="team-social"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i
+                  class="fab fa-linkedin-in"></i></a></div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%2306d6a0'/%3E%3Ctext x='60' y='80' fill='white' text-anchor='middle' font-size='48' dy='.3em'%3EER%3C/text%3E%3C/svg%3E"
+                alt="ER" /></div>
+            <h3>Elena Rios</h3>
+            <p style="color:var(--primary);font-weight:600;font-size:0.9rem;">Customer Success</p>
+            <div class="team-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i
+                  class="fab fa-twitter"></i></a></div>
+          </div>
         </div>
       </div>
     </section>
@@ -930,9 +1294,37 @@
           <p class="section-subtitle">Flexible options for every stage.</p>
         </div>
         <div class="pricing-grid">
-          <div class="pricing-card"><h3 style="font-weight:700;">Starter</h3><div class="pricing-price">$29 <small>/mo</small></div><ul class="pricing-features list-unstyled"><li><i class="fas fa-check-circle"></i>5 projects</li><li><i class="fas fa-check-circle"></i>10 GB storage</li><li><i class="fas fa-check-circle"></i>Basic support</li></ul><a href="#" class="cta-button" style="width:100%;justify-content:center;padding:10px 20px;">Get started</a></div>
-          <div class="pricing-card popular"><div class="popular-badge">Most popular</div><h3 style="font-weight:700;">Professional</h3><div class="pricing-price">$79 <small>/mo</small></div><ul class="pricing-features list-unstyled"><li><i class="fas fa-check-circle"></i>Unlimited projects</li><li><i class="fas fa-check-circle"></i>100 GB storage</li><li><i class="fas fa-check-circle"></i>Priority support 24/7</li></ul><a href="#" class="cta-button" style="width:100%;justify-content:center;padding:10px 20px;">Start free trial</a></div>
-          <div class="pricing-card"><h3 style="font-weight:700;">Enterprise</h3><div class="pricing-price">$199 <small>/mo</small></div><ul class="pricing-features list-unstyled"><li><i class="fas fa-check-circle"></i>Unlimited everything</li><li><i class="fas fa-check-circle"></i>Custom SLA</li><li><i class="fas fa-check-circle"></i>Dedicated manager</li></ul><a href="#" class="cta-button" style="width:100%;justify-content:center;padding:10px 20px;">Contact sales</a></div>
+          <div class="pricing-card">
+            <h3 style="font-weight:700;">Starter</h3>
+            <div class="pricing-price">$29 <small>/mo</small></div>
+            <ul class="pricing-features list-unstyled">
+              <li><i class="fas fa-check-circle"></i>5 projects</li>
+              <li><i class="fas fa-check-circle"></i>10 GB storage</li>
+              <li><i class="fas fa-check-circle"></i>Basic support</li>
+            </ul><a href="#" class="cta-button" style="width:100%;justify-content:center;padding:10px 20px;">Get
+              started</a>
+          </div>
+          <div class="pricing-card popular">
+            <div class="popular-badge">Most popular</div>
+            <h3 style="font-weight:700;">Professional</h3>
+            <div class="pricing-price">$79 <small>/mo</small></div>
+            <ul class="pricing-features list-unstyled">
+              <li><i class="fas fa-check-circle"></i>Unlimited projects</li>
+              <li><i class="fas fa-check-circle"></i>100 GB storage</li>
+              <li><i class="fas fa-check-circle"></i>Priority support 24/7</li>
+            </ul><a href="#" class="cta-button" style="width:100%;justify-content:center;padding:10px 20px;">Start free
+              trial</a>
+          </div>
+          <div class="pricing-card">
+            <h3 style="font-weight:700;">Enterprise</h3>
+            <div class="pricing-price">$199 <small>/mo</small></div>
+            <ul class="pricing-features list-unstyled">
+              <li><i class="fas fa-check-circle"></i>Unlimited everything</li>
+              <li><i class="fas fa-check-circle"></i>Custom SLA</li>
+              <li><i class="fas fa-check-circle"></i>Dedicated manager</li>
+            </ul><a href="#" class="cta-button" style="width:100%;justify-content:center;padding:10px 20px;">Contact
+              sales</a>
+          </div>
         </div>
       </div>
     </section>
@@ -951,28 +1343,32 @@
               <span>What makes Nexus different?</span>
               <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="faq-answer">We combine cutting‑edge design with enterprise‑grade performance, all while keeping it intuitive and fully customizable.</div>
+            <div class="faq-answer">We combine cutting‑edge design with enterprise‑grade performance, all while keeping
+              it intuitive and fully customizable.</div>
           </div>
           <div class="faq-item" data-index="1">
             <div class="faq-question">
               <span>Can I switch plans later?</span>
               <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="faq-answer">Absolutely. You can upgrade or downgrade anytime from your dashboard – changes apply immediately.</div>
+            <div class="faq-answer">Absolutely. You can upgrade or downgrade anytime from your dashboard – changes apply
+              immediately.</div>
           </div>
           <div class="faq-item" data-index="2">
             <div class="faq-question">
               <span>Do you offer custom development?</span>
               <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="faq-answer">Yes, our enterprise plan includes tailored development. Reach out to discuss your needs.</div>
+            <div class="faq-answer">Yes, our enterprise plan includes tailored development. Reach out to discuss your
+              needs.</div>
           </div>
           <div class="faq-item" data-index="3">
             <div class="faq-question">
               <span>Is there a free trial?</span>
               <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="faq-answer">We offer a 14‑day free trial on the Professional plan – no credit card required.</div>
+            <div class="faq-answer">We offer a 14‑day free trial on the Professional plan – no credit card required.
+            </div>
           </div>
         </div>
       </div>
@@ -987,16 +1383,22 @@
         </div>
         <div class="contact-grid" style="margin-top:32px;">
           <div>
-            <div class="contact-item"><span class="contact-icon"><i class="fas fa-map-pin"></i></span><span>226 Market St, San Francisco, CA</span></div>
-            <div class="contact-item"><span class="contact-icon"><i class="fas fa-phone-alt"></i></span><span>+1 (888) 867‑5309</span></div>
-            <div class="contact-item"><span class="contact-icon"><i class="fas fa-envelope"></i></span><span>hello@nexus.digital</span></div>
+            <div class="contact-item"><span class="contact-icon"><i class="fas fa-map-pin"></i></span><span>226 Market
+                St, San Francisco, CA</span></div>
+            <div class="contact-item"><span class="contact-icon"><i class="fas fa-phone-alt"></i></span><span>+1 (888)
+                867‑5309</span></div>
+            <div class="contact-item"><span class="contact-icon"><i
+                  class="fas fa-envelope"></i></span><span>hello@nexus.digital</span></div>
           </div>
           <div>
             <form id="quickContact">
               <input type="text" placeholder="Your name" id="contactName" class="form-control-custom mb-3" required />
-              <input type="email" placeholder="Email address" id="contactEmail" class="form-control-custom mb-3" required />
-              <textarea rows="4" placeholder="How can we help?" id="contactMsg" class="form-control-custom mb-3" required></textarea>
-              <button type="submit" class="cta-button" style="width:100%;justify-content:center;">Send message <i class="fas fa-paper-plane"></i></button>
+              <input type="email" placeholder="Email address" id="contactEmail" class="form-control-custom mb-3"
+                required />
+              <textarea rows="4" placeholder="How can we help?" id="contactMsg" class="form-control-custom mb-3"
+                required></textarea>
+              <button type="submit" class="cta-button" style="width:100%;justify-content:center;">Send message <i
+                  class="fas fa-paper-plane"></i></button>
               <div id="formFeedback" class="mt-3 text-center" style="color:var(--success);font-weight:500;"></div>
             </form>
           </div>
@@ -1008,11 +1410,32 @@
   <footer class="main-footer">
     <div class="container">
       <div class="footer-content">
-        <div><h3>Nexus</h3><p style="font-size:0.9rem;color:#64748b;">Modern digital solutions</p><div class="social-icons" style="margin-top:12px;"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
-        <div><h3>Product</h3><ul class="list-unstyled"><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-        <div><h3>Company</h3><ul class="list-unstyled"><li><a href="#team">Team</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Careers</a></li></ul></div>
+        <div>
+          <h3>Nexus</h3>
+          <p style="font-size:0.9rem;color:#64748b;">Modern digital solutions</p>
+          <div class="social-icons" style="margin-top:12px;"><a href="#"><i class="fab fa-facebook-f"></i></a><a
+              href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                class="fab fa-linkedin-in"></i></a></div>
+        </div>
+        <div>
+          <h3>Product</h3>
+          <ul class="list-unstyled">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="list-unstyled">
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="copyright text-center pt-4" style="border-top:1px solid rgba(255,255,255,0.04);padding-top:20px;font-size:0.85rem;color:#64748b;">
+      <div class="copyright text-center pt-4"
+        style="border-top:1px solid rgba(255,255,255,0.04);padding-top:20px;font-size:0.85rem;color:#64748b;">
         <p>© 2025 Nexus — built for tomorrow</p>
       </div>
     </div>
@@ -1024,15 +1447,21 @@
   <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header border-0 pb-0"><h3 class="modal-title" style="font-weight:700;">Welcome back</h3><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-header border-0 pb-0">
+          <h3 class="modal-title" style="font-weight:700;">Welcome back</h3><button type="button" class="btn-close"
+            data-bs-dismiss="modal"></button>
+        </div>
         <div class="modal-body">
           <form id="loginForm">
             <input type="email" id="loginEmail" class="form-control-custom mb-3" placeholder="Email address" required />
-            <input type="password" id="loginPassword" class="form-control-custom mb-3" placeholder="Password" required />
+            <input type="password" id="loginPassword" class="form-control-custom mb-3" placeholder="Password"
+              required />
             <div id="loginMessage" class="mb-3" style="font-size:0.9rem;min-height:24px;"></div>
-            <button type="submit" class="cta-button w-100 justify-content-center">Login <i class="fas fa-sign-in-alt"></i></button>
+            <button type="submit" class="cta-button w-100 justify-content-center">Login <i
+                class="fas fa-sign-in-alt"></i></button>
           </form>
-          <p class="text-center mt-3" style="font-size:0.9rem;color:var(--text-muted);">Don't have an account? <a href="#" id="showSignupLink" style="color:var(--primary);font-weight:600;">Sign up</a></p>
+          <p class="text-center mt-3" style="font-size:0.9rem;color:var(--text-muted);">Don't have an account? <a
+              href="#" id="showSignupLink" style="color:var(--primary);font-weight:600;">Sign up</a></p>
         </div>
       </div>
     </div>
@@ -1042,16 +1471,23 @@
   <div class="modal fade" id="signupModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header border-0 pb-0"><h3 class="modal-title" style="font-weight:700;">Create account</h3><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-header border-0 pb-0">
+          <h3 class="modal-title" style="font-weight:700;">Create account</h3><button type="button" class="btn-close"
+            data-bs-dismiss="modal"></button>
+        </div>
         <div class="modal-body">
           <form id="signupForm">
             <input type="text" id="signupName" class="form-control-custom mb-3" placeholder="Full name" required />
-            <input type="email" id="signupEmail" class="form-control-custom mb-3" placeholder="Email address" required />
-            <input type="password" id="signupPassword" class="form-control-custom mb-3" placeholder="Password (min 6)" required />
+            <input type="email" id="signupEmail" class="form-control-custom mb-3" placeholder="Email address"
+              required />
+            <input type="password" id="signupPassword" class="form-control-custom mb-3" placeholder="Password (min 6)"
+              required />
             <div id="signupMessage" class="mb-3" style="font-size:0.9rem;min-height:24px;"></div>
-            <button type="submit" class="cta-button w-100 justify-content-center">Sign up <i class="fas fa-user-plus"></i></button>
+            <button type="submit" class="cta-button w-100 justify-content-center">Sign up <i
+                class="fas fa-user-plus"></i></button>
           </form>
-          <p class="text-center mt-3" style="font-size:0.9rem;color:var(--text-muted);">Already have an account? <a href="#" id="showLoginLink" style="color:var(--primary);font-weight:600;">Login</a></p>
+          <p class="text-center mt-3" style="font-size:0.9rem;color:var(--text-muted);">Already have an account? <a
+              href="#" id="showLoginLink" style="color:var(--primary);font-weight:600;">Login</a></p>
         </div>
       </div>
     </div>
@@ -1059,8 +1495,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    (function() {
-      document.addEventListener("DOMContentLoaded", function() {
+    (function () {
+      document.addEventListener("DOMContentLoaded", function () {
         // --- Theme Toggle ---
         const themeToggle = document.getElementById("themeToggle");
         const body = document.body;
@@ -1070,7 +1506,7 @@
         } else {
           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         }
-        themeToggle.addEventListener("click", function() {
+        themeToggle.addEventListener("click", function () {
           if (body.getAttribute("data-theme") === "dark") {
             body.removeAttribute("data-theme");
             localStorage.setItem("nexus-theme", "light");
@@ -1096,10 +1532,10 @@
             const u = JSON.parse(user);
             loginBtn.innerHTML = `<i class="fas fa-user-check"></i> ${u.name}`;
             loginBtn.classList.add("logged-in");
-          } catch(e) {}
+          } catch (e) { }
         }
 
-        loginBtn.addEventListener("click", function() {
+        loginBtn.addEventListener("click", function () {
           if (localStorage.getItem("token")) {
             if (confirm("Logout?")) {
               localStorage.removeItem("token");
@@ -1115,12 +1551,12 @@
 
         const showSignupLink = document.getElementById("showSignupLink");
         const showLoginLink = document.getElementById("showLoginLink");
-        if (showSignupLink) showSignupLink.addEventListener("click", function(e) {
+        if (showSignupLink) showSignupLink.addEventListener("click", function (e) {
           e.preventDefault();
           loginModal?.hide();
           signupModal?.show();
         });
-        if (showLoginLink) showLoginLink.addEventListener("click", function(e) {
+        if (showLoginLink) showLoginLink.addEventListener("click", function (e) {
           e.preventDefault();
           signupModal?.hide();
           loginModal?.show();
@@ -1130,7 +1566,7 @@
         const loginForm = document.getElementById("loginForm");
         const loginMessage = document.getElementById("loginMessage");
         if (loginForm) {
-          loginForm.addEventListener("submit", async function(e) {
+          loginForm.addEventListener("submit", async function (e) {
             e.preventDefault();
             const email = document.getElementById("loginEmail").value.trim();
             const password = document.getElementById("loginPassword").value.trim();
@@ -1174,7 +1610,7 @@
         const signupForm = document.getElementById("signupForm");
         const signupMessage = document.getElementById("signupMessage");
         if (signupForm) {
-          signupForm.addEventListener("submit", async function(e) {
+          signupForm.addEventListener("submit", async function (e) {
             e.preventDefault();
             const name = document.getElementById("signupName").value.trim();
             const email = document.getElementById("signupEmail").value.trim();
@@ -1223,7 +1659,7 @@
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
           const question = item.querySelector('.faq-question');
-          question.addEventListener('click', function(e) {
+          question.addEventListener('click', function (e) {
             e.stopPropagation();
             const isActive = item.classList.contains('active');
             // Close all other items
@@ -1243,13 +1679,13 @@
 
         // --- Back to Top ---
         const backTop = document.getElementById("backToTop");
-        window.addEventListener("scroll", function() {
+        window.addEventListener("scroll", function () {
           if (backTop) {
             backTop.classList.toggle("visible", window.scrollY > 500);
           }
         });
         if (backTop) {
-          backTop.addEventListener("click", function() {
+          backTop.addEventListener("click", function () {
             window.scrollTo({ top: 0, behavior: "smooth" });
           });
         }
@@ -1258,16 +1694,16 @@
         const mobileToggle = document.getElementById("mobileToggle");
         const mainNav = document.getElementById("mainNav");
         if (mobileToggle && mainNav) {
-          mobileToggle.addEventListener("click", function(e) {
+          mobileToggle.addEventListener("click", function (e) {
             e.stopPropagation();
             mainNav.classList.toggle("active");
           });
-          document.querySelectorAll(".main-nav a").forEach(function(a) {
-            a.addEventListener("click", function() {
+          document.querySelectorAll(".main-nav a").forEach(function (a) {
+            a.addEventListener("click", function () {
               mainNav.classList.remove("active");
             });
           });
-          document.addEventListener("click", function(e) {
+          document.addEventListener("click", function (e) {
             if (window.innerWidth <= 768) {
               if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
                 mainNav.classList.remove("active");
@@ -1290,7 +1726,7 @@
         const contactForm = document.getElementById("quickContact");
         const formFeedback = document.getElementById("formFeedback");
         if (contactForm) {
-          contactForm.addEventListener("submit", function(e) {
+          contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
             formFeedback.innerHTML = '<span style="color:var(--success);">✓ Message sent! We\'ll get back to you soon.</span>';
             contactForm.reset();
@@ -1301,4 +1737,5 @@
     })();
   </script>
 </body>
+
 </html>
