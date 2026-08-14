@@ -1,4 +1,4 @@
-<script>
+
         (function () {
             document.addEventListener("DOMContentLoaded", function () {
                 // --- Theme toggle ---
@@ -55,4 +55,4 @@
                 }, 400);
             });
         })();
-    </script>
+    
