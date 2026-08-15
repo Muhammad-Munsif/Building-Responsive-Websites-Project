@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Nexus • Dashboard</title>
+  <!-- Bootstrap 5 + Icons + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- design tokens (matches main theme) ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #4361ee;
+      --primary-light: #6c8cff;
+      --secondary: #f72585;
+      --success: #06d6a0;
+      --danger: #ef476f;
+      --warning: #ffbe0b;
+      --gradient-prime: linear-gradient(135deg, #4361ee, #f72585);
+      --bg-body: #f6f9fc;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --bg-sidebar: #0b1120;
+      --bg-header: rgba(255,255,255,0.92);
+      --text-primary: #0b1120;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --text-sidebar: #94a3b8;
+      --border-light: #e9edf4;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --header-height: 72px;
+      --sidebar-width: 260px;
+    }
+    [data-theme="dark"] {
+      --bg-body: #080c18;
+      --bg-surface: #111927;
+      --bg-card: #162032;
+      --bg-sidebar: #05080f;
+      --bg-header: rgba(8,12,24,0.94);
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-sidebar: #64748b;
+      --border-light: #283244;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+    }
+    body {
+      font-family: "Inter", -apple-system, system-ui, sans-serif;
+      background: var(--bg-body);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* ----- fixed header ----- */
+    .main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: var(--bg-header);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .main-header .brand {
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;
+      background: var(--gradient-prime);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      display: flex; align-items: center;
+      gap: 8px;
+      margin-left: 8px;
+    }
+    .main-header .brand span { background: none; -webkit-text-fill-color: var(--text-secondary); }
+    .header-controls { display: flex; gap: 12px; align-items: center; margin-left: auto; }
+    .theme-toggle {
+      width: 40px; height: 40px; border-radius: 40px;
+      background: var(--bg-surface); border: 1px solid var(--border-light);
+      color: var(--text-primary); font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .theme-toggle:hover { background: var(--gradient-prime); color: #fff; border-color: transparent; transform: scale(1.04); }
+    .btn-logout {
+      background: var(--gradient-prime); color: #fff; border: none;
+      padding: 6px 20px; border-radius: 40px; font-weight: 600;
+      font-size: 0.85rem; transition: all 0.25s ease; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 2px 8px rgba(67,97,238,0.25);
+    }
+    .btn-logout:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(67,97,238,0.3); color: #fff; }
+    .mobile-toggle {
+      display: none; background: none; border: none;
+      color: var(--text-primary); font-size: 1.2rem;
+      cursor: pointer; padding: 4px 8px;
+    }
+
+    /* ----- sidebar (fixed) ----- */
+    .sidebar {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-width);
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-light);
+      padding: 24px 16px;
+      overflow-y: auto;
+      z-index: 1040;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .sidebar .user-card {
+      padding: 16px 12px;
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sidebar .user-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gradient-prime);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .sidebar .user-info { flex: 1; min-width: 0; }
+    .sidebar .user-info .name {
+      color: #fff; font-weight: 600; font-size: 0.9rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .sidebar .user-info .role {
+      color: var(--text-sidebar); font-size: 0.75rem;
+    }
+    .sidebar .nav-label {
+      color: var(--text-sidebar);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 12px 12px 6px;
+    }
+    .sidebar .nav-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-sidebar);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      margin-bottom: 2px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+    .sidebar .nav-item i { width: 20px; text-align: center; font-size: 1rem; }
+    .sidebar .nav-item:hover {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+    .sidebar .nav-item.active {
+      background: var(--gradient-prime);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(67,97,238,0.3);
+    }
+    .sidebar .nav-item .badge-dot {
+      margin-left: auto;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--danger);
+      display: inline-block;
+    }
+    .sidebar .nav-item .badge-count {
+      margin-left: auto;
+      background: rgba(255,255,255,0.1);
+      color: var(--text-sidebar);
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 40px;
+    }
+    .sidebar .nav-item.active .badge-count {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    /* ----- main content (pushed right) ----- */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding-top: var(--header-height);
+      min-height: 100vh;
+      transition: margin-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .dashboard-wrapper { padding: 32px 32px 60px; }
+
+    /* page header */
+    .page-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .page-subtitle { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* page content panels */
+    .page-panel {
+      display: none;
+      animation: fadeUp 0.4s ease forwards;
+    }
+    .page-panel.active { display: block; }
+    @keyframes fadeUp { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    /* stat cards */
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      height: 100%;
+    }
+    .stat-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: var(--shadow-lg); }
+    .stat-card .stat-icon {
+      width: 44px; height: 44px; border-radius: 40px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #fff; margin-bottom: 12px;
+    }
+    .stat-card .stat-number {
+      font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
+    }
+    .stat-card .stat-label { color: var(--text-muted); font-size: 0.9rem; margin-top: 2px; }
+    .stat-card .stat-change {
+      font-size: 0.75rem; font-weight: 600; padding: 2px 10px;
+      border-radius: 40px; display: inline-block; margin-top: 8px;
+    }
+    .stat-change.up { background: rgba(6,214,160,0.12); color: var(--success); }
+    .stat-change.down { background: rgba(239,71,111,0.12); color: var(--danger); }
+
+    /* chart card */
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .chart-card:hover { border-color: var(--primary); box-shadow: var(--shadow-lg); }
+    .chart-placeholder {
+      width: 100%; height: 200px;
+      background: var(--bg-body);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: flex-end; justify-content: center;
+      padding: 16px 8px 0;
+      border: 1px dashed var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .chart-placeholder .bars {
+      display: flex; align-items: flex-end; gap: 12px;
+      height: 100%; width: 90%;
+    }
+    .chart-placeholder .bar {
+      flex: 1; border-radius: 6px 6px 0 0;
+      background: var(--gradient-prime);
+      opacity: 0.8;
+      transition: height 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      min-height: 12px;
+    }
+
+    /* activity list */
+    .activity-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 12px 0; border-bottom: 1px solid var(--border-light);
+    }
+    .activity-item:last-child { border-bottom: 0; }
+    .activity-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 6px;
+    }
+    .activity-dot.primary { background: var(--primary); }
+    .activity-dot.success { background: var(--success); }
+    .activity-dot.danger { background: var(--danger); }
+    .activity-dot.warning { background: var(--warning); }
+    .activity-content { flex: 1; }
+    .activity-content .text { font-size: 0.9rem; }
+    .activity-content .time { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* users table */
+    .table-dashboard {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+    .table-dashboard thead th {
+      background: var(--bg-body);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .table-dashboard tbody td {
+      padding: 12px 16px;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .table-dashboard tbody tr:last-child td { border-bottom: 0; }
+    .table-dashboard tbody tr:hover { background: var(--bg-body); }
+    .user-avatar-sm {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600; font-size: 0.75rem; color: #fff;
+      flex-shrink: 0;
+    }
+    .badge-status {
+      font-size: 0.7rem; font-weight: 600; padding: 3px 12px;
+      border-radius: 40px; text-transform: capitalize;
+    }
+    .badge-status.active { background: rgba(6,214,160,0.12); color: var(--success); }
+    .badge-status.pending { background: rgba(255,190,11,0.12); color: var(--warning); }
+    .badge-status.inactive { background: rgba(239,71,111,0.12); color: var(--danger); }
+
+    /* responsive */
+    @media (max-width: 992px) {
+      .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .main-header { padding: 0 20px; }
+      .dashboard-wrapper { padding: 24px 20px 40px; }
+    }
+    @media (max-width: 768px) {
+      :root { --header-height: 64px; }
+      .main-header { padding: 0 16px; }
+      .brand { font-size: 1.2rem; }
+      .btn-logout { padding: 4px 14px; font-size: 0.75rem; }
+      .theme-toggle { width: 34px; height: 34px; font-size: 0.85rem; }
+      .stat-card { padding: 20px; }
+      .stat-card .stat-number { font-size: 1.4rem; }
+      .dashboard-wrapper { padding: 16px 12px 32px; }
+    }
+    @media (max-width: 480px) {
+      .main-header .brand { font-size: 1rem; }
+      .header-controls { gap: 6px; }
+      .stat-card .stat-number { font-size: 1.2rem; }
+      .stat-card .stat-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .chart-placeholder { height: 150px; }
+      .chart-placeholder .bars { gap: 6px; }
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-body); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* overlay for mobile */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1039;
+    }
+    .sidebar-overlay.active { display: block; }
+    @media (min-width: 993px) {
+      .sidebar-overlay { display: none !important; }
+    }
+
+    .fade-in { opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+    .fade-in:nth-child(1) { animation-delay: 0.05s; }
+    .fade-in:nth-child(2) { animation-delay: 0.10s; }
+    .fade-in:nth-child(3) { animation-delay: 0.15s; }
+    .fade-in:nth-child(4) { animation-delay: 0.20s; }
+  </style>
+</head>
+<body>
+  <!-- overlay for mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- header -->
+  <header class="main-header">
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    <a href="/" class="brand">Nexus<span>.</span></a>
+    <div class="header-controls">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="btn-logout" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="user-card">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <div class="user-info">
+        <div class="name" id="userNameDisplay">Guest</div>
+        <div class="role">Administrator</div>
+      </div>
+    </div>
+
+    <div class="nav-label">Main</div>
+    <button class="nav-item active" data-panel="dashboard"><i class="fas fa-th-large"></i> Dashboard</button>
+    <button class="nav-item" data-panel="users"><i class="fas fa-users"></i> Users <span class="badge-count">128</span></button>
+    <button class="nav-item" data-panel="orders"><i class="fas fa-shopping-cart"></i> Orders <span class="badge-count">24</span></button>
+    <button class="nav-item" data-panel="analytics"><i class="fas fa-chart-line"></i> Analytics</button>
+
+    <div class="nav-label" style="margin-top:16px;">Management</div>
+    <button class="nav-item" data-panel="reports"><i class="fas fa-file-alt"></i> Reports</button>
+    <button class="nav-item" data-panel="settings"><i class="fas fa-cog"></i> Settings</button>
+    <button class="nav-item" data-panel="support"><i class="fas fa-life-ring"></i> Support <span class="badge-dot"></span></button>
+  </aside>
+
+  <!-- main content -->
+  <main class="main-content" id="mainContent">
+    <div class="dashboard-wrapper">
+      <!-- page header -->
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <div>
+          <h1 class="page-title" id="pageTitle">Dashboard</h1>
+          <p class="page-subtitle" id="pageSubtitle">Welcome back, <strong id="userNameDisplay2">Guest</strong> — here's your overview.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary rounded-pill px-4" style="border-color:var(--primary);color:var(--primary);font-weight:500;font-size:0.85rem;" id="exportBtn">
+            <i class="fas fa-download"></i> Export
+          </button>
+          <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;font-weight:500;font-size:0.85rem;" id="actionBtn">
+            <i class="fas fa-plus"></i> New
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== PANEL: Dashboard ===== -->
+      <div class="page-panel active" id="panel-dashboard">
+        <div class="row g-4 mb-4">
+          <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
+            <div class="stat-card">
+              <div class="stat-icon" style="background:var(--gradient-prime);"><i class="fas fa-users"></i></div>
+              <div class="stat-number">8,542</div>
+              <div class="stat-label">Total Users</div>
+              <span class="stat-change up"><i class="fas fa-arrow-up"></i> 12.5%</span>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
+            <div class="stat-card">
+              <div class="stat-icon" style="background:linear-gradient(135deg,#06d6a0,#4cc9f0);"><i class="fas fa-shopping-cart"></i></div>
+              <div class="stat-number">1,284</div>
+              <div class="stat-label">Total Orders</div>
+              <span class="stat-change up"><i class="fas fa-arrow-up"></i> 8.2%</span>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
+            <div class="stat-card">
+              <div class="stat-icon" style="background:linear-gradient(135deg,#f72585,#ffbe0b);"><i class="fas fa-dollar-sign"></i></div>
+              <div class="stat-number">$48.2k</div>
+              <div class="stat-label">Revenue</div>
+              <span class="stat-change up"><i class="fas fa-arrow-up"></i> 18.7%</span>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
+            <div class="stat-card">
+              <div class="stat-icon" style="background:linear-gradient(135deg,#6c8cff,#4361ee);"><i class="fas fa-bolt"></i></div>
+              <div class="stat-number">93%</div>
+              <div class="stat-label">Engagement</div>
+              <span class="stat-change down"><i class="fas fa-arrow-down"></i> 2.1%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-8 fade-in" style="animation-delay:0.25s;">
+            <div class="chart-card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0" style="font-size:1.05rem;">Weekly Overview</h5>
+                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1" style="font-weight:500;">Last 7 days</span>
+              </div>
+              <div class="chart-placeholder">
+                <div class="bars">
+                  <div class="bar" style="height:55%;"></div>
+                  <div class="bar" style="height:75%;"></div>
+                  <div class="bar" style="height:45%;"></div>
+                  <div class="bar" style="height:85%;"></div>
+                  <div class="bar" style="height:65%;"></div>
+                  <div class="bar" style="height:50%;"></div>
+                  <div class="bar" style="height:90%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 fade-in" style="animation-delay:0.30s;">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3" style="font-size:1.05rem;">Recent Activity</h5>
+              <div class="activity-list">
+                <div class="activity-item"><span class="activity-dot primary"></span><div class="activity-content"><div class="text">New user <strong>Sarah</strong> registered</div><div class="time">2 min ago</div></div></div>
+                <div class="activity-item"><span class="activity-dot success"></span><div class="activity-content"><div class="text">Order <strong>#1284</strong> completed</div><div class="time">18 min ago</div></div></div>
+                <div class="activity-item"><span class="activity-dot warning"></span><div class="activity-content"><div class="text">Payment <strong>$3,200</strong> processed</div><div class="time">1 hour ago</div></div></div>
+                <div class="activity-item"><span class="activity-dot danger"></span><div class="activity-content"><div class="text">Server alert <strong>CPU</strong> usage high</div><div class="time">3 hours ago</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANEL: Users ===== -->
+      <div class="page-panel" id="panel-users">
+        <div class="row g-4 mb-4">
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">128</div><div class="stat-label">Total Users</div></div></div>
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">42</div><div class="stat-label">Active Now</div></div></div>
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">8</div><div class="stat-label">New Today</div></div></div>
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Pending Approval</div></div></div>
+        </div>
+        <div class="chart-card p-0 overflow-hidden">
+          <div class="p-3 pb-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <h5 class="fw-bold mb-0" style="font-size:1.05rem;">All Users</h5>
+            <div class="d-flex gap-2">
+              <input type="text" class="form-control form-control-sm" placeholder="Search users..." style="border-radius:40px;border-color:var(--border-light);background:var(--bg-body);width:200px;font-size:0.85rem;">
+              <button class="btn btn-sm btn-primary rounded-pill" style="background:var(--gradient-prime);border:none;">Add User</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-dashboard mb-0">
+              <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Joined</th><th class="text-end">Action</th></tr></thead>
+              <tbody>
+                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:var(--gradient-prime);">JD</span> John Doe</div></td><td>john@nexus.digital</td><td>Admin</td><td><span class="badge-status active">Active</span></td><td>Jan 15, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:linear-gradient(135deg,#f72585,#ffbe0b);">SM</span> Sarah Miles</div></td><td>sarah@nexus.digital</td><td>Editor</td><td><span class="badge-status active">Active</span></td><td>Feb 3, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:linear-gradient(135deg,#4cc9f0,#06d6a0);">AK</span> Alex Kim</div></td><td>alex@nexus.digital</td><td>Viewer</td><td><span class="badge-status pending">Pending</span></td><td>Mar 10, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:linear-gradient(135deg,#ffbe0b,#f72585);">ER</span> Elena Rios</div></td><td>elena@nexus.digital</td><td>Editor</td><td><span class="badge-status inactive">Inactive</span></td><td>Apr 22, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANEL: Orders ===== -->
+      <div class="page-panel" id="panel-orders">
+        <div class="row g-4 mb-4">
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">1,284</div><div class="stat-label">Total Orders</div></div></div>
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">342</div><div class="stat-label">Pending</div></div></div>
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">892</div><div class="stat-label">Completed</div></div></div>
+          <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number">50</div><div class="stat-label">Cancelled</div></div></div>
+        </div>
+        <div class="chart-card p-4 text-center">
+          <i class="fas fa-shopping-bag fa-3x mb-3" style="color:var(--primary);opacity:0.5;"></i>
+          <h5>Order Management</h5>
+          <p class="text-muted" style="font-size:0.9rem;">View and manage all orders from this panel.</p>
+          <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;">View All Orders</button>
+        </div>
+      </div>
+
+      <!-- ===== PANEL: Analytics ===== -->
+      <div class="page-panel" id="panel-analytics">
+        <div class="row g-4 mb-4">
+          <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">45.2k</div><div class="stat-label">Page Views</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 15.3%</span></div></div>
+          <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">3.2%</div><div class="stat-label">Conversion Rate</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 2.1%</span></div></div>
+          <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">4.8</div><div class="stat-label">Avg. Session (min)</div><span class="stat-change down"><i class="fas fa-arrow-down"></i> 0.8%</span></div></div>
+        </div>
+        <div class="chart-card p-4 text-center">
+          <i class="fas fa-chart-pie fa-3x mb-3" style="color:var(--primary);opacity:0.5;"></i>
+          <h5>Analytics Dashboard</h5>
+          <p class="text-muted" style="font-size:0.9rem;">Detailed analytics and insights will be displayed here.</p>
+          <button class="btn btn-outline-primary rounded-pill px-4" style="border-color:var(--primary);color:var(--primary);">View Full Report</button>
+        </div>
+      </div>
+
+      <!-- ===== PANEL: Reports ===== -->
+      <div class="page-panel" id="panel-reports">
+        <div class="chart-card p-4 text-center">
+          <i class="fas fa-file-pdf fa-3x mb-3" style="color:var(--danger);opacity:0.5;"></i>
+          <h5>Reports Center</h5>
+          <p class="text-muted" style="font-size:0.9rem;">Generate and download reports.</p>
+          <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+            <button class="btn btn-outline-primary rounded-pill"><i class="fas fa-file-pdf"></i> Sales Report</button>
+            <button class="btn btn-outline-primary rounded-pill"><i class="fas fa-file-pdf"></i> User Report</button>
+            <button class="btn btn-outline-primary rounded-pill"><i class="fas fa-file-pdf"></i> Revenue Report</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANEL: Settings ===== -->
+      <div class="page-panel" id="panel-settings">
+        <div class="row g-4">
+          <div class="col-md-6 fade-in">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">Profile Settings</h5>
+              <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Display Name</label><input type="text" class="form-control form-control-custom" value="John Doe" style="background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:10px 16px;width:100%;"></div>
+              <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Email</label><input type="email" class="form-control form-control-custom" value="john@nexus.digital" style="background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:10px 16px;width:100%;"></div>
+              <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;">Save Changes</button>
+            </div>
+          </div>
+          <div class="col-md-6 fade-in">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">Preferences</h5>
+              <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Email Notifications</label></div>
+              <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Push Notifications</label></div>
+              <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Dark Mode (sync with system)</label></div>
+              <hr class="my-3" style="border-color:var(--border-light);">
+              <button class="btn btn-outline-danger rounded-pill px-4" style="border-color:var(--danger);color:var(--danger);">Reset All Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANEL: Support ===== -->
+      <div class="page-panel" id="panel-support">
+        <div class="row g-4">
+          <div class="col-md-6 fade-in">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3"><i class="fas fa-life-ring me-2" style="color:var(--primary);"></i> Support Center</h5>
+              <p class="text-muted" style="font-size:0.9rem;">Submit a ticket or browse our knowledge base.</p>
+              <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Subject</label><input type="text" class="form-control form-control-custom" placeholder="Brief description..." style="background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:10px 16px;width:100%;"></div>
+              <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Message</label><textarea class="form-control form-control-custom" rows="3" placeholder="Describe your issue..." style="background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:10px 16px;width:100%;"></textarea></div>
+              <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;">Submit Ticket</button>
+            </div>
+          </div>
+          <div class="col-md-6 fade-in">
+            <div class="chart-card">
+              <h5 class="fw-bold mb-3">Quick Help</h5>
+              <div class="activity-item"><i class="fas fa-book" style="color:var(--primary);width:24px;"></i><div><div class="text">Getting Started Guide</div><div class="time">5 min read</div></div></div>
+              <div class="activity-item"><i class="fas fa-video" style="color:var(--success);width:24px;"></i><div><div class="text">Video Tutorials</div><div class="time">12 videos</div></div></div>
+              <div class="activity-item"><i class="fas fa-comments" style="color:var(--warning);width:24px;"></i><div><div class="text">Live Chat <span class="badge bg-success rounded-pill ms-2" style="font-size:0.6rem;">Online</span></div><div class="time">Available 24/7</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function() {
+      document.addEventListener("DOMContentLoaded", function() {
+        // --- Theme toggle ---
+        const themeToggle = document.getElementById("themeToggle");
+        const body = document.body;
+        if (localStorage.getItem("nexus-theme") === "dark") {
+          body.setAttribute("data-theme", "dark");
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        themeToggle.addEventListener("click", function() {
+          if (body.getAttribute("data-theme") === "dark") {
+            body.removeAttribute("data-theme");
+            localStorage.setItem("nexus-theme", "light");
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          } else {
+            body.setAttribute("data-theme", "dark");
+            localStorage.setItem("nexus-theme", "dark");
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          }
+        });
+
+        // --- User name ---
+        const savedUser = localStorage.getItem("user");
+        let userName = "Guest";
+        let userInitial = "G";
+        if (savedUser) {
+          try {
+            const user = JSON.parse(savedUser);
+            userName = user.name || "Guest";
+            userInitial = userName.charAt(0).toUpperCase();
+          } catch (e) {}
+        }
+        document.querySelectorAll("#userNameDisplay, #userNameDisplay2").forEach(el => el.textContent = userName);
+        document.getElementById("userAvatar").textContent = userInitial;
+
+        // --- Logout ---
+        document.getElementById("logoutBtn").addEventListener("click", function() {
+          if (confirm("Are you sure you want to logout?")) {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            window.location.href = "index.html";
+          }
+        });
+
+        // --- Sidebar navigation (panel switching) ---
+        const navItems = document.querySelectorAll('.sidebar .nav-item');
+        const panels = {
+          dashboard: document.getElementById('panel-dashboard'),
+          users: document.getElementById('panel-users'),
+          orders: document.getElementById('panel-orders'),
+          analytics: document.getElementById('panel-analytics'),
+          reports: document.getElementById('panel-reports'),
+          settings: document.getElementById('panel-settings'),
+          support: document.getElementById('panel-support')
+        };
+        const pageTitle = document.getElementById('pageTitle');
+        const pageSubtitle = document.getElementById('pageSubtitle');
+        const exportBtn = document.getElementById('exportBtn');
+        const actionBtn = document.getElementById('actionBtn');
+
+        const panelTitles = {
+          dashboard: { title: 'Dashboard', subtitle: 'Overview of your business metrics.', action: 'New' },
+          users: { title: 'Users', subtitle: 'Manage all users and their permissions.', action: 'Add User' },
+          orders: { title: 'Orders', subtitle: 'Track and manage all orders.', action: 'New Order' },
+          analytics: { title: 'Analytics', subtitle: 'Detailed insights and performance metrics.', action: 'Export Data' },
+          reports: { title: 'Reports', subtitle: 'Generate and export detailed reports.', action: 'Generate' },
+          settings: { title: 'Settings', subtitle: 'Configure your account and preferences.', action: 'Save' },
+          support: { title: 'Support', subtitle: 'Get help and submit support tickets.', action: 'New Ticket' }
+        };
+
+        function switchPanel(panelId) {
+          // hide all panels
+          Object.values(panels).forEach(p => { if (p) p.classList.remove('active'); });
+          // show selected
+          if (panels[panelId]) panels[panelId].classList.add('active');
+          // update nav active state
+          navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.dataset.panel === panelId) item.classList.add('active');
+          });
+          // update page header
+          const info = panelTitles[panelId] || panelTitles.dashboard;
+          pageTitle.textContent = info.title;
+          pageSubtitle.innerHTML = `Welcome back, <strong>${userName}</strong> — ${info.subtitle}`;
+          if (exportBtn) exportBtn.innerHTML = `<i class="fas fa-download"></i> Export`;
+          if (actionBtn) actionBtn.innerHTML = `<i class="fas fa-plus"></i> ${info.action}`;
+          // close mobile sidebar
+          closeSidebar();
+        }
+
+        navItems.forEach(item => {
+          item.addEventListener('click', function() {
+            const panel = this.dataset.panel;
+            if (panel) switchPanel(panel);
+          });
+        });
+
+        // --- Sidebar toggle (mobile) ---
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+        const mobileToggle = document.getElementById("mobileToggle");
+
+        function closeSidebar() {
+          sidebar.classList.remove("open");
+          overlay.classList.remove("active");
+        }
+
+        mobileToggle.addEventListener("click", function() {
+          sidebar.classList.toggle("open");
+          overlay.classList.toggle("active");
+        });
+
+        overlay.addEventListener("click", closeSidebar);
+
+        window.addEventListener("resize", function() {
+          if (window.innerWidth >= 993) closeSidebar();
+        });
+
+        // --- animate bars ---
+        setTimeout(() => {
+          document.querySelectorAll('.bar').forEach((bar, i) => {
+            const heights = [55, 75, 45, 85, 65, 50, 90];
+            bar.style.height = heights[i] + '%';
+          });
+        }, 300);
+      });
+    })();
+  </script>
+</body>
+</html>
