@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>Nexus • Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+        rel="stylesheet" />
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
             --primary: #4361ee;
             --primary-light: #6c8cff;
@@ -39,6 +42,7 @@
             --header-height: 72px;
             --sidebar-width: 260px;
         }
+
         [data-theme="dark"] {
             --bg-body: #080c18;
             --bg-surface: #111927;
@@ -54,6 +58,7 @@
             --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
+
         body {
             font-family: "Inter", -apple-system, system-ui, sans-serif;
             background: var(--bg-body);
@@ -79,6 +84,7 @@
             padding: 0 32px;
             transition: background 0.3s, border-color 0.3s;
         }
+
         .main-header .brand {
             font-size: 1.5rem;
             font-weight: 800;
@@ -92,16 +98,19 @@
             align-items: center;
             gap: 8px;
         }
+
         .main-header .brand span {
             background: none;
             -webkit-text-fill-color: var(--text-secondary);
         }
+
         .header-controls {
             display: flex;
             gap: 12px;
             align-items: center;
             margin-left: auto;
         }
+
         .theme-toggle {
             width: 40px;
             height: 40px;
@@ -116,12 +125,14 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .theme-toggle:hover {
             background: var(--gradient-prime);
             color: #fff;
             border-color: transparent;
             transform: scale(1.04);
         }
+
         .btn-logout {
             background: var(--gradient-prime);
             color: #fff;
@@ -137,11 +148,13 @@
             gap: 6px;
             box-shadow: 0 2px 8px rgba(67, 97, 238, 0.25);
         }
+
         .btn-logout:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(67, 97, 238, 0.3);
             color: #fff;
         }
+
         .mobile-toggle {
             display: none;
             background: none;
@@ -166,6 +179,7 @@
             z-index: 1040;
             transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .sidebar .user-card {
             padding: 16px 12px;
             background: rgba(255, 255, 255, 0.04);
@@ -175,6 +189,7 @@
             align-items: center;
             gap: 12px;
         }
+
         .sidebar .user-avatar {
             width: 44px;
             height: 44px;
@@ -188,15 +203,18 @@
             font-size: 1rem;
             flex-shrink: 0;
         }
+
         .sidebar .user-info .name {
             color: #fff;
             font-weight: 600;
             font-size: 0.9rem;
         }
+
         .sidebar .user-info .role {
             color: var(--text-sidebar);
             font-size: 0.75rem;
         }
+
         .sidebar .nav-label {
             color: var(--text-sidebar);
             font-size: 0.65rem;
@@ -205,6 +223,7 @@
             letter-spacing: 0.06em;
             padding: 12px 12px 6px;
         }
+
         .sidebar .nav-item {
             display: flex;
             align-items: center;
@@ -222,20 +241,24 @@
             width: 100%;
             text-align: left;
         }
+
         .sidebar .nav-item i {
             width: 20px;
             text-align: center;
             font-size: 1rem;
         }
+
         .sidebar .nav-item:hover {
             background: rgba(255, 255, 255, 0.06);
             color: #fff;
         }
+
         .sidebar .nav-item.active {
             background: var(--gradient-prime);
             color: #fff;
             box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
         }
+
         .sidebar .nav-item .badge-count {
             margin-left: auto;
             background: rgba(255, 255, 255, 0.1);
@@ -244,6 +267,7 @@
             padding: 2px 8px;
             border-radius: 40px;
         }
+
         .sidebar .nav-item.active .badge-count {
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
@@ -256,15 +280,18 @@
             min-height: 100vh;
             transition: margin-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .dashboard-wrapper {
             padding: 32px 32px 60px;
         }
+
         .page-title {
             font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 4px;
         }
+
         .page-subtitle {
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -275,14 +302,17 @@
             display: none;
             animation: fadeUp 0.4s ease forwards;
         }
+
         .page-panel.active {
             display: block;
         }
+
         @keyframes fadeUp {
             0% {
                 opacity: 0;
                 transform: translateY(12px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -299,11 +329,13 @@
             box-shadow: var(--shadow-sm);
             height: 100%;
         }
+
         .stat-card:hover {
             transform: translateY(-4px);
             border-color: var(--primary);
             box-shadow: var(--shadow-lg);
         }
+
         .stat-card .stat-icon {
             width: 44px;
             height: 44px;
@@ -315,17 +347,20 @@
             color: #fff;
             margin-bottom: 12px;
         }
+
         .stat-card .stat-number {
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.2;
         }
+
         .stat-card .stat-label {
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 2px;
         }
+
         .stat-card .stat-change {
             font-size: 0.75rem;
             font-weight: 600;
@@ -334,10 +369,12 @@
             display: inline-block;
             margin-top: 8px;
         }
+
         .stat-change.up {
             background: rgba(6, 214, 160, 0.12);
             color: var(--success);
         }
+
         .stat-change.down {
             background: rgba(239, 71, 111, 0.12);
             color: var(--danger);
@@ -353,10 +390,12 @@
             transition: all 0.3s ease;
             height: 100%;
         }
+
         .chart-card:hover {
             border-color: var(--primary);
             box-shadow: var(--shadow-lg);
         }
+
         .chart-placeholder {
             width: 100%;
             height: 200px;
@@ -369,6 +408,7 @@
             border: 1px dashed var(--border-light);
             overflow: hidden;
         }
+
         .chart-placeholder .bars {
             display: flex;
             align-items: flex-end;
@@ -376,6 +416,7 @@
             height: 100%;
             width: 90%;
         }
+
         .chart-placeholder .bar {
             flex: 1;
             border-radius: 6px 6px 0 0;
@@ -393,9 +434,11 @@
             padding: 12px 0;
             border-bottom: 1px solid var(--border-light);
         }
+
         .activity-item:last-child {
             border-bottom: 0;
         }
+
         .activity-dot {
             width: 10px;
             height: 10px;
@@ -403,21 +446,27 @@
             flex-shrink: 0;
             margin-top: 6px;
         }
+
         .activity-dot.primary {
             background: var(--primary);
         }
+
         .activity-dot.success {
             background: var(--success);
         }
+
         .activity-dot.danger {
             background: var(--danger);
         }
+
         .activity-dot.warning {
             background: var(--warning);
         }
+
         .activity-content .text {
             font-size: 0.9rem;
         }
+
         .activity-content .time {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -430,6 +479,7 @@
             overflow: hidden;
             border: 1px solid var(--border-light);
         }
+
         .table-dashboard thead th {
             background: var(--bg-body);
             color: var(--text-secondary);
@@ -440,6 +490,7 @@
             padding: 12px 16px;
             border-bottom: 1px solid var(--border-light);
         }
+
         .table-dashboard tbody td {
             padding: 12px 16px;
             vertical-align: middle;
@@ -447,12 +498,15 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
+
         .table-dashboard tbody tr:last-child td {
             border-bottom: 0;
         }
+
         .table-dashboard tbody tr:hover {
             background: var(--bg-body);
         }
+
         .user-avatar-sm {
             width: 32px;
             height: 32px;
@@ -465,6 +519,7 @@
             color: #fff;
             flex-shrink: 0;
         }
+
         .badge-status {
             font-size: 0.7rem;
             font-weight: 600;
@@ -472,14 +527,17 @@
             border-radius: 40px;
             text-transform: capitalize;
         }
+
         .badge-status.active {
             background: rgba(6, 214, 160, 0.12);
             color: var(--success);
         }
+
         .badge-status.pending {
             background: rgba(255, 190, 11, 0.12);
             color: var(--warning);
         }
+
         .badge-status.inactive {
             background: rgba(239, 71, 111, 0.12);
             color: var(--danger);
@@ -491,9 +549,11 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border-light);
         }
+
         .modal-header {
             border-bottom-color: var(--border-light);
         }
+
         .form-control-custom {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
@@ -504,6 +564,7 @@
             transition: border 0.2s, box-shadow 0.2s;
             font-size: 0.95rem;
         }
+
         .form-control-custom:focus {
             outline: none;
             border-color: var(--primary);
@@ -516,69 +577,88 @@
                 transform: translateX(-100%);
                 width: 280px;
             }
+
             .sidebar.open {
                 transform: translateX(0);
             }
+
             .main-content {
                 margin-left: 0;
             }
+
             .mobile-toggle {
                 display: block;
             }
+
             .main-header {
                 padding: 0 20px;
             }
+
             .dashboard-wrapper {
                 padding: 24px 20px 40px;
             }
         }
+
         @media (max-width: 768px) {
             :root {
                 --header-height: 64px;
             }
+
             .main-header {
                 padding: 0 16px;
             }
+
             .brand {
                 font-size: 1.2rem;
             }
+
             .btn-logout {
                 padding: 4px 14px;
                 font-size: 0.75rem;
             }
+
             .theme-toggle {
                 width: 34px;
                 height: 34px;
                 font-size: 0.85rem;
             }
+
             .stat-card {
                 padding: 20px;
             }
+
             .stat-card .stat-number {
                 font-size: 1.4rem;
             }
+
             .dashboard-wrapper {
                 padding: 16px 12px 32px;
             }
         }
+
         @media (max-width: 480px) {
             .main-header .brand {
                 font-size: 1rem;
             }
+
             .header-controls {
                 gap: 6px;
             }
+
             .stat-card .stat-number {
                 font-size: 1.2rem;
             }
+
             .stat-card .stat-icon {
                 width: 36px;
                 height: 36px;
                 font-size: 1rem;
             }
+
             .chart-placeholder {
                 height: 150px;
             }
+
             .chart-placeholder .bars {
                 gap: 6px;
             }
@@ -588,9 +668,11 @@
         ::-webkit-scrollbar {
             width: 4px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-body);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 10px;
@@ -606,33 +688,41 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: 1039;
         }
+
         .sidebar-overlay.active {
             display: block;
         }
+
         @media (min-width: 993px) {
             .sidebar-overlay {
                 display: none !important;
             }
         }
+
         .fade-in {
             opacity: 0;
             transform: translateY(16px);
             animation: fadeUp 0.5s ease forwards;
         }
+
         .fade-in:nth-child(1) {
             animation-delay: 0.05s;
         }
+
         .fade-in:nth-child(2) {
             animation-delay: 0.10s;
         }
+
         .fade-in:nth-child(3) {
             animation-delay: 0.15s;
         }
+
         .fade-in:nth-child(4) {
             animation-delay: 0.20s;
         }
     </style>
 </head>
+
 <body>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -657,11 +747,14 @@
         </div>
         <div class="nav-label">Main</div>
         <button class="nav-item active" data-panel="dashboard"><i class="fas fa-th-large"></i> Dashboard</button>
-        <button class="nav-item" data-panel="users"><i class="fas fa-users"></i> Users <span class="badge-count" id="userCount">4</span></button>
-        <button class="nav-item" data-panel="orders"><i class="fas fa-shopping-cart"></i> Orders <span class="badge-count" id="orderCount">4</span></button>
+        <button class="nav-item" data-panel="users"><i class="fas fa-users"></i> Users <span class="badge-count"
+                id="userCount">4</span></button>
+        <button class="nav-item" data-panel="orders"><i class="fas fa-shopping-cart"></i> Orders <span
+                class="badge-count" id="orderCount">4</span></button>
         <button class="nav-item" data-panel="analytics"><i class="fas fa-chart-line"></i> Analytics</button>
         <div class="nav-label" style="margin-top:16px;">Management</div>
-        <button class="nav-item" data-panel="reports"><i class="fas fa-file-alt"></i> Reports <span class="badge-count" id="reportCount">5</span></button>
+        <button class="nav-item" data-panel="reports"><i class="fas fa-file-alt"></i> Reports <span class="badge-count"
+                id="reportCount">5</span></button>
         <button class="nav-item" data-panel="settings"><i class="fas fa-cog"></i> Settings</button>
         <button class="nav-item" data-panel="support"><i class="fas fa-life-ring"></i> Support</button>
     </aside>
@@ -673,13 +766,18 @@
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
                 <div>
                     <h1 class="page-title" id="pageTitle">Dashboard</h1>
-                    <p class="page-subtitle" id="pageSubtitle">Welcome back, <strong id="userNameDisplay2">Guest</strong> — here's your overview.</p>
+                    <p class="page-subtitle" id="pageSubtitle">Welcome back, <strong
+                            id="userNameDisplay2">Guest</strong> — here's your overview.</p>
                 </div>
                 <div class="d-flex gap-2">
-                    <button class="btn btn-outline-primary rounded-pill px-4" style="border-color:var(--primary);color:var(--primary);font-weight:500;font-size:0.85rem;" id="exportBtn">
+                    <button class="btn btn-outline-primary rounded-pill px-4"
+                        style="border-color:var(--primary);color:var(--primary);font-weight:500;font-size:0.85rem;"
+                        id="exportBtn">
                         <i class="fas fa-download"></i> Export
                     </button>
-                    <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;font-weight:500;font-size:0.85rem;" id="actionBtn">
+                    <button class="btn btn-primary rounded-pill px-4"
+                        style="background:var(--gradient-prime);border:none;font-weight:500;font-size:0.85rem;"
+                        id="actionBtn">
                         <i class="fas fa-plus"></i> <span id="actionLabel">Add New</span>
                     </button>
                 </div>
@@ -689,16 +787,40 @@
             <div class="page-panel active" id="panel-dashboard">
                 <div class="row g-4 mb-4">
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:var(--gradient-prime);"><i class="fas fa-users"></i></div><div class="stat-number" id="dashUsers">4</div><div class="stat-label">Total Users</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 12.5%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:var(--gradient-prime);"><i
+                                    class="fas fa-users"></i></div>
+                            <div class="stat-number" id="dashUsers">4</div>
+                            <div class="stat-label">Total Users</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 12.5%</span>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:linear-gradient(135deg,#06d6a0,#4cc9f0);"><i class="fas fa-shopping-cart"></i></div><div class="stat-number" id="dashOrders">4</div><div class="stat-label">Total Orders</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 8.2%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:linear-gradient(135deg,#06d6a0,#4cc9f0);"><i
+                                    class="fas fa-shopping-cart"></i></div>
+                            <div class="stat-number" id="dashOrders">4</div>
+                            <div class="stat-label">Total Orders</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 8.2%</span>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:linear-gradient(135deg,#f72585,#ffbe0b);"><i class="fas fa-dollar-sign"></i></div><div class="stat-number">$48.2k</div><div class="stat-label">Revenue</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 18.7%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:linear-gradient(135deg,#f72585,#ffbe0b);"><i
+                                    class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-number">$48.2k</div>
+                            <div class="stat-label">Revenue</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 18.7%</span>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:linear-gradient(135deg,#6c8cff,#4361ee);"><i class="fas fa-bolt"></i></div><div class="stat-number">93%</div><div class="stat-label">Engagement</div><span class="stat-change down"><i class="fas fa-arrow-down"></i> 2.1%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:linear-gradient(135deg,#6c8cff,#4361ee);"><i
+                                    class="fas fa-bolt"></i></div>
+                            <div class="stat-number">93%</div>
+                            <div class="stat-label">Engagement</div><span class="stat-change down"><i
+                                    class="fas fa-arrow-down"></i> 2.1%</span>
+                        </div>
                     </div>
                 </div>
                 <div class="row g-4">
@@ -706,7 +828,8 @@
                         <div class="chart-card">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h5 class="fw-bold mb-0" style="font-size:1.05rem;">Weekly Overview</h5>
-                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1" style="font-weight:500;">Last 7 days</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1"
+                                    style="font-weight:500;">Last 7 days</span>
                             </div>
                             <div class="chart-placeholder">
                                 <div class="bars">
@@ -725,10 +848,30 @@
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3" style="font-size:1.05rem;">Recent Activity</h5>
                             <div class="activity-list" id="activityFeed">
-                                <div class="activity-item"><span class="activity-dot primary"></span><div class="activity-content"><div class="text">New user <strong>Sarah</strong> registered</div><div class="time">2 min ago</div></div></div>
-                                <div class="activity-item"><span class="activity-dot success"></span><div class="activity-content"><div class="text">Order <strong>#1284</strong> completed</div><div class="time">18 min ago</div></div></div>
-                                <div class="activity-item"><span class="activity-dot warning"></span><div class="activity-content"><div class="text">Payment <strong>$3,200</strong> processed</div><div class="time">1 hour ago</div></div></div>
-                                <div class="activity-item"><span class="activity-dot danger"></span><div class="activity-content"><div class="text">Server alert <strong>CPU</strong> usage high</div><div class="time">3 hours ago</div></div></div>
+                                <div class="activity-item"><span class="activity-dot primary"></span>
+                                    <div class="activity-content">
+                                        <div class="text">New user <strong>Sarah</strong> registered</div>
+                                        <div class="time">2 min ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item"><span class="activity-dot success"></span>
+                                    <div class="activity-content">
+                                        <div class="text">Order <strong>#1284</strong> completed</div>
+                                        <div class="time">18 min ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item"><span class="activity-dot warning"></span>
+                                    <div class="activity-content">
+                                        <div class="text">Payment <strong>$3,200</strong> processed</div>
+                                        <div class="time">1 hour ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item"><span class="activity-dot danger"></span>
+                                    <div class="activity-content">
+                                        <div class="text">Server alert <strong>CPU</strong> usage high</div>
+                                        <div class="time">3 hours ago</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -738,24 +881,102 @@
             <!-- USERS PANEL -->
             <div class="page-panel" id="panel-users">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statTotalUsers">4</div><div class="stat-label">Total Users</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statActiveUsers">3</div><div class="stat-label">Active</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statNewUsers">1</div><div class="stat-label">New Today</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statPendingUsers">1</div><div class="stat-label">Pending</div></div></div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statTotalUsers">4</div>
+                            <div class="stat-label">Total Users</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statActiveUsers">3</div>
+                            <div class="stat-label">Active</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statNewUsers">1</div>
+                            <div class="stat-label">New Today</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statPendingUsers">1</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-card p-0 overflow-hidden">
                     <div class="p-3 pb-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <h5 class="fw-bold mb-0" style="font-size:1.05rem;">All Users</h5>
-                        <button class="btn btn-sm btn-primary rounded-pill" style="background:var(--gradient-prime);border:none;" onclick="openAddModal('user')"><i class="fas fa-plus"></i> Add User</button>
+                        <button class="btn btn-sm btn-primary rounded-pill"
+                            style="background:var(--gradient-prime);border:none;" onclick="openAddModal('user')"><i
+                                class="fas fa-plus"></i> Add User</button>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-dashboard mb-0">
-                            <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Joined</th><th class="text-end">Action</th></tr></thead>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th class="text-end">Action</th>
+                                </tr>
+                            </thead>
                             <tbody id="userTableBody">
-                                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:var(--gradient-prime);">JD</span> John Doe</div></td><td>john@nexus.digital</td><td>Admin</td><td><span class="badge-status active">Active</span></td><td>Jan 15, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
-                                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:linear-gradient(135deg,#f72585,#ffbe0b);">SM</span> Sarah Miles</div></td><td>sarah@nexus.digital</td><td>Editor</td><td><span class="badge-status active">Active</span></td><td>Feb 3, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
-                                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:linear-gradient(135deg,#4cc9f0,#06d6a0);">AK</span> Alex Kim</div></td><td>alex@nexus.digital</td><td>Viewer</td><td><span class="badge-status pending">Pending</span></td><td>Mar 10, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
-                                <tr><td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:linear-gradient(135deg,#ffbe0b,#f72585);">ER</span> Elena Rios</div></td><td>elena@nexus.digital</td><td>Editor</td><td><span class="badge-status inactive">Inactive</span></td><td>Apr 22, 2025</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">Edit</a></td></tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2"><span class="user-avatar-sm"
+                                                style="background:var(--gradient-prime);">JD</span> John Doe</div>
+                                    </td>
+                                    <td>john@nexus.digital</td>
+                                    <td>Admin</td>
+                                    <td><span class="badge-status active">Active</span></td>
+                                    <td>Jan 15, 2025</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2"><span class="user-avatar-sm"
+                                                style="background:linear-gradient(135deg,#f72585,#ffbe0b);">SM</span>
+                                            Sarah Miles</div>
+                                    </td>
+                                    <td>sarah@nexus.digital</td>
+                                    <td>Editor</td>
+                                    <td><span class="badge-status active">Active</span></td>
+                                    <td>Feb 3, 2025</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2"><span class="user-avatar-sm"
+                                                style="background:linear-gradient(135deg,#4cc9f0,#06d6a0);">AK</span>
+                                            Alex Kim</div>
+                                    </td>
+                                    <td>alex@nexus.digital</td>
+                                    <td>Viewer</td>
+                                    <td><span class="badge-status pending">Pending</span></td>
+                                    <td>Mar 10, 2025</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2"><span class="user-avatar-sm"
+                                                style="background:linear-gradient(135deg,#ffbe0b,#f72585);">ER</span>
+                                            Elena Rios</div>
+                                    </td>
+                                    <td>elena@nexus.digital</td>
+                                    <td>Editor</td>
+                                    <td><span class="badge-status inactive">Inactive</span></td>
+                                    <td>Apr 22, 2025</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">Edit</a></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -765,24 +986,87 @@
             <!-- ORDERS PANEL -->
             <div class="page-panel" id="panel-orders">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statTotalOrders">4</div><div class="stat-label">Total Orders</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statPendingOrders">1</div><div class="stat-label">Pending</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statCompletedOrders">2</div><div class="stat-label">Completed</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statCancelledOrders">1</div><div class="stat-label">Cancelled</div></div></div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statTotalOrders">4</div>
+                            <div class="stat-label">Total Orders</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statPendingOrders">1</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statCompletedOrders">2</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statCancelledOrders">1</div>
+                            <div class="stat-label">Cancelled</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-card p-0 overflow-hidden">
                     <div class="p-3 pb-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <h5 class="fw-bold mb-0" style="font-size:1.05rem;">All Orders</h5>
-                        <button class="btn btn-sm btn-primary rounded-pill" style="background:var(--gradient-prime);border:none;" onclick="openAddModal('order')"><i class="fas fa-plus"></i> Add Order</button>
+                        <button class="btn btn-sm btn-primary rounded-pill"
+                            style="background:var(--gradient-prime);border:none;" onclick="openAddModal('order')"><i
+                                class="fas fa-plus"></i> Add Order</button>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-dashboard mb-0">
-                            <thead><tr><th>Order #</th><th>Customer</th><th>Amount</th><th>Status</th><th>Date</th><th class="text-end">Action</th></tr></thead>
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th class="text-end">Action</th>
+                                </tr>
+                            </thead>
                             <tbody id="orderTableBody">
-                                <tr><td><strong>#1284</strong></td><td>John Doe</td><td>$245.00</td><td><span class="badge-status active">Completed</span></td><td>Today, 2:30 PM</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">View</a></td></tr>
-                                <tr><td><strong>#1283</strong></td><td>Sarah Miles</td><td>$89.50</td><td><span class="badge-status pending">Pending</span></td><td>Today, 11:15 AM</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">View</a></td></tr>
-                                <tr><td><strong>#1282</strong></td><td>Alex Kim</td><td>$1,250.00</td><td><span class="badge-status active">Completed</span></td><td>Yesterday, 4:45 PM</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">View</a></td></tr>
-                                <tr><td><strong>#1281</strong></td><td>Elena Rios</td><td>$430.00</td><td><span class="badge-status inactive">Cancelled</span></td><td>Yesterday, 9:20 AM</td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;">View</a></td></tr>
+                                <tr>
+                                    <td><strong>#1284</strong></td>
+                                    <td>John Doe</td>
+                                    <td>$245.00</td>
+                                    <td><span class="badge-status active">Completed</span></td>
+                                    <td>Today, 2:30 PM</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1283</strong></td>
+                                    <td>Sarah Miles</td>
+                                    <td>$89.50</td>
+                                    <td><span class="badge-status pending">Pending</span></td>
+                                    <td>Today, 11:15 AM</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1282</strong></td>
+                                    <td>Alex Kim</td>
+                                    <td>$1,250.00</td>
+                                    <td><span class="badge-status active">Completed</span></td>
+                                    <td>Yesterday, 4:45 PM</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1281</strong></td>
+                                    <td>Elena Rios</td>
+                                    <td>$430.00</td>
+                                    <td><span class="badge-status inactive">Cancelled</span></td>
+                                    <td>Yesterday, 9:20 AM</td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;">View</a></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -792,39 +1076,122 @@
             <!-- ANALYTICS PANEL -->
             <div class="page-panel" id="panel-analytics">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">45.2k</div><div class="stat-label">Page Views</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 15.3%</span></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">3.2%</div><div class="stat-label">Conversion Rate</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 2.1%</span></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">4.8</div><div class="stat-label">Avg. Session (min)</div><span class="stat-change down"><i class="fas fa-arrow-down"></i> 0.8%</span></div></div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">45.2k</div>
+                            <div class="stat-label">Page Views</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 15.3%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">3.2%</div>
+                            <div class="stat-label">Conversion Rate</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 2.1%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">4.8</div>
+                            <div class="stat-label">Avg. Session (min)</div><span class="stat-change down"><i
+                                    class="fas fa-arrow-down"></i> 0.8%</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-card p-4 text-center">
                     <i class="fas fa-chart-pie fa-3x mb-3" style="color:var(--primary);opacity:0.5;"></i>
                     <h5>Analytics Dashboard</h5>
-                    <p class="text-muted" style="font-size:0.9rem;">Detailed analytics and insights will be displayed here.</p>
-                    <button class="btn btn-outline-primary rounded-pill px-4" style="border-color:var(--primary);color:var(--primary);">View Full Report</button>
+                    <p class="text-muted" style="font-size:0.9rem;">Detailed analytics and insights will be displayed
+                        here.</p>
+                    <button class="btn btn-outline-primary rounded-pill px-4"
+                        style="border-color:var(--primary);color:var(--primary);">View Full Report</button>
                 </div>
             </div>
 
             <!-- REPORTS PANEL -->
             <div class="page-panel" id="panel-reports">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number" id="statTotalReports">5</div><div class="stat-label">Total Reports</div></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Generated Today</div></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">2</div><div class="stat-label">Pending</div></div></div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statTotalReports">5</div>
+                            <div class="stat-label">Total Reports</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Generated Today</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-card p-0 overflow-hidden">
                     <div class="p-3 pb-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <h5 class="fw-bold mb-0" style="font-size:1.05rem;">Reports Library</h5>
-                        <button class="btn btn-sm btn-primary rounded-pill" style="background:var(--gradient-prime);border:none;" onclick="openAddModal('report')"><i class="fas fa-plus"></i> New Report</button>
+                        <button class="btn btn-sm btn-primary rounded-pill"
+                            style="background:var(--gradient-prime);border:none;" onclick="openAddModal('report')"><i
+                                class="fas fa-plus"></i> New Report</button>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-dashboard mb-0">
-                            <thead><tr><th>Report Name</th><th>Type</th><th>Generated</th><th>Status</th><th class="text-end">Action</th></tr></thead>
+                            <thead>
+                                <tr>
+                                    <th>Report Name</th>
+                                    <th>Type</th>
+                                    <th>Generated</th>
+                                    <th>Status</th>
+                                    <th class="text-end">Action</th>
+                                </tr>
+                            </thead>
                             <tbody id="reportTableBody">
-                                <tr><td>Q1 Sales Summary</td><td>Sales</td><td>Apr 1, 2025</td><td><span class="badge-status active">Ready</span></td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;"><i class="fas fa-download"></i></a></td></tr>
-                                <tr><td>User Growth Report</td><td>Analytics</td><td>Mar 28, 2025</td><td><span class="badge-status active">Ready</span></td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;"><i class="fas fa-download"></i></a></td></tr>
-                                <tr><td>Revenue Breakdown</td><td>Financial</td><td>—</td><td><span class="badge-status pending">Generating</span></td><td class="text-end"><span class="text-muted" style="font-size:0.8rem;">Processing...</span></td></tr>
-                                <tr><td>Customer Feedback</td><td>Survey</td><td>Mar 25, 2025</td><td><span class="badge-status active">Ready</span></td><td class="text-end"><a href="#" class="text-primary" style="text-decoration:none;font-weight:500;"><i class="fas fa-download"></i></a></td></tr>
-                                <tr><td>Inventory Status</td><td>Operations</td><td>—</td><td><span class="badge-status inactive">Failed</span></td><td class="text-end"><a href="#" class="text-danger" style="text-decoration:none;font-weight:500;">Retry</a></td></tr>
+                                <tr>
+                                    <td>Q1 Sales Summary</td>
+                                    <td>Sales</td>
+                                    <td>Apr 1, 2025</td>
+                                    <td><span class="badge-status active">Ready</span></td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;"><i
+                                                class="fas fa-download"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>User Growth Report</td>
+                                    <td>Analytics</td>
+                                    <td>Mar 28, 2025</td>
+                                    <td><span class="badge-status active">Ready</span></td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;"><i
+                                                class="fas fa-download"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Revenue Breakdown</td>
+                                    <td>Financial</td>
+                                    <td>—</td>
+                                    <td><span class="badge-status pending">Generating</span></td>
+                                    <td class="text-end"><span class="text-muted"
+                                            style="font-size:0.8rem;">Processing...</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Customer Feedback</td>
+                                    <td>Survey</td>
+                                    <td>Mar 25, 2025</td>
+                                    <td><span class="badge-status active">Ready</span></td>
+                                    <td class="text-end"><a href="#" class="text-primary"
+                                            style="text-decoration:none;font-weight:500;"><i
+                                                class="fas fa-download"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Inventory Status</td>
+                                    <td>Operations</td>
+                                    <td>—</td>
+                                    <td><span class="badge-status inactive">Failed</span></td>
+                                    <td class="text-end"><a href="#" class="text-danger"
+                                            style="text-decoration:none;font-weight:500;">Retry</a></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -837,19 +1204,28 @@
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Profile Settings</h5>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Display Name</label><input type="text" class="form-control form-control-custom" value="John Doe"></div>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Email</label><input type="email" class="form-control form-control-custom" value="john@nexus.digital"></div>
-                            <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;">Save Changes</button>
+                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Display
+                                    Name</label><input type="text" class="form-control form-control-custom"
+                                    value="John Doe"></div>
+                            <div class="mb-3"><label class="form-label fw-semibold"
+                                    style="font-size:0.85rem;">Email</label><input type="email"
+                                    class="form-control form-control-custom" value="john@nexus.digital"></div>
+                            <button class="btn btn-primary rounded-pill px-4"
+                                style="background:var(--gradient-prime);border:none;">Save Changes</button>
                         </div>
                     </div>
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Preferences</h5>
-                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Email Notifications</label></div>
-                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Push Notifications</label></div>
-                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Dark Mode (sync with system)</label></div>
+                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox"
+                                    checked><label class="form-check-label">Email Notifications</label></div>
+                            <div class="form-check form-switch mb-2"><input class="form-check-input"
+                                    type="checkbox"><label class="form-check-label">Push Notifications</label></div>
+                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox"
+                                    checked><label class="form-check-label">Dark Mode (sync with system)</label></div>
                             <hr class="my-3" style="border-color:var(--border-light);">
-                            <button class="btn btn-outline-danger rounded-pill px-4" style="border-color:var(--danger);color:var(--danger);">Reset All Settings</button>
+                            <button class="btn btn-outline-danger rounded-pill px-4"
+                                style="border-color:var(--danger);color:var(--danger);">Reset All Settings</button>
                         </div>
                     </div>
                 </div>
@@ -860,19 +1236,46 @@
                 <div class="row g-4">
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
-                            <h5 class="fw-bold mb-3"><i class="fas fa-life-ring me-2" style="color:var(--primary);"></i> Support Center</h5>
-                            <p class="text-muted" style="font-size:0.9rem;">Submit a ticket or browse our knowledge base.</p>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Subject</label><input type="text" class="form-control form-control-custom" placeholder="Brief description..."></div>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Message</label><textarea class="form-control form-control-custom" rows="3" placeholder="Describe your issue..."></textarea></div>
-                            <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;">Submit Ticket</button>
+                            <h5 class="fw-bold mb-3"><i class="fas fa-life-ring me-2" style="color:var(--primary);"></i>
+                                Support Center</h5>
+                            <p class="text-muted" style="font-size:0.9rem;">Submit a ticket or browse our knowledge
+                                base.</p>
+                            <div class="mb-3"><label class="form-label fw-semibold"
+                                    style="font-size:0.85rem;">Subject</label><input type="text"
+                                    class="form-control form-control-custom" placeholder="Brief description..."></div>
+                            <div class="mb-3"><label class="form-label fw-semibold"
+                                    style="font-size:0.85rem;">Message</label><textarea
+                                    class="form-control form-control-custom" rows="3"
+                                    placeholder="Describe your issue..."></textarea></div>
+                            <button class="btn btn-primary rounded-pill px-4"
+                                style="background:var(--gradient-prime);border:none;">Submit Ticket</button>
                         </div>
                     </div>
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Quick Help</h5>
-                            <div class="activity-item"><i class="fas fa-book" style="color:var(--primary);width:24px;"></i><div><div class="text">Getting Started Guide</div><div class="time">5 min read</div></div></div>
-                            <div class="activity-item"><i class="fas fa-video" style="color:var(--success);width:24px;"></i><div><div class="text">Video Tutorials</div><div class="time">12 videos</div></div></div>
-                            <div class="activity-item"><i class="fas fa-comments" style="color:var(--warning);width:24px;"></i><div><div class="text">Live Chat <span class="badge bg-success rounded-pill ms-2" style="font-size:0.6rem;">Online</span></div><div class="time">Available 24/7</div></div></div>
+                            <div class="activity-item"><i class="fas fa-book"
+                                    style="color:var(--primary);width:24px;"></i>
+                                <div>
+                                    <div class="text">Getting Started Guide</div>
+                                    <div class="time">5 min read</div>
+                                </div>
+                            </div>
+                            <div class="activity-item"><i class="fas fa-video"
+                                    style="color:var(--success);width:24px;"></i>
+                                <div>
+                                    <div class="text">Video Tutorials</div>
+                                    <div class="time">12 videos</div>
+                                </div>
+                            </div>
+                            <div class="activity-item"><i class="fas fa-comments"
+                                    style="color:var(--warning);width:24px;"></i>
+                                <div>
+                                    <div class="text">Live Chat <span class="badge bg-success rounded-pill ms-2"
+                                            style="font-size:0.6rem;">Online</span></div>
+                                    <div class="time">Available 24/7</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -892,7 +1295,8 @@
                     <form id="addForm">
                         <div id="modalFields"></div>
                         <div id="addFormFeedback" class="mb-2" style="font-size:0.9rem;min-height:20px;"></div>
-                        <button type="submit" class="btn btn-primary w-100 rounded-pill" style="background:var(--gradient-prime);border:none;padding:10px;" id="addSubmitBtn">
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill"
+                            style="background:var(--gradient-prime);border:none;padding:10px;" id="addSubmitBtn">
                             <i class="fas fa-plus"></i> Add Record
                         </button>
                     </form>
@@ -903,7 +1307,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // --- Theme Toggle ---
             const themeToggle = document.getElementById("themeToggle");
             const body = document.body;
@@ -913,7 +1317,7 @@
             } else {
                 themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             }
-            themeToggle.addEventListener("click", function() {
+            themeToggle.addEventListener("click", function () {
                 if (body.getAttribute("data-theme") === "dark") {
                     body.removeAttribute("data-theme");
                     localStorage.setItem("nexus-theme", "light");
@@ -934,13 +1338,13 @@
                     const user = JSON.parse(savedUser);
                     userName = user.name || "Guest";
                     userInitial = userName.charAt(0).toUpperCase();
-                } catch (e) {}
+                } catch (e) { }
             }
             document.querySelectorAll("#userNameDisplay, #userNameDisplay2").forEach(el => el.textContent = userName);
             document.getElementById("userAvatar").textContent = userInitial;
 
             // --- Logout ---
-            document.getElementById("logoutBtn").addEventListener("click", function() {
+            document.getElementById("logoutBtn").addEventListener("click", function () {
                 if (confirm("Are you sure you want to logout?")) {
                     localStorage.removeItem("token");
                     localStorage.removeItem("user");
@@ -992,7 +1396,7 @@
                     if (panelId === 'analytics') {
                         exportBtn.innerHTML = `<i class="fas fa-download"></i> Export Data`;
                         exportBtn.style.display = 'inline-flex';
-                        exportBtn.onclick = function() { alert('📊 Exporting analytics data as CSV...'); };
+                        exportBtn.onclick = function () { alert('📊 Exporting analytics data as CSV...'); };
                     } else {
                         exportBtn.style.display = 'none';
                     }
@@ -1001,29 +1405,29 @@
                     actionBtn.innerHTML = `<i class="fas fa-plus"></i> ${info.action}`;
                     actionLabel.textContent = info.action;
                     if (panelId === 'dashboard') {
-                        actionBtn.onclick = function() { alert('📊 Dashboard overview exported!'); };
+                        actionBtn.onclick = function () { alert('📊 Dashboard overview exported!'); };
                         actionBtn.removeAttribute('data-bs-toggle');
                         actionBtn.removeAttribute('data-bs-target');
                     } else if (panelId === 'analytics') {
-                        actionBtn.onclick = function() { alert('📊 Exporting analytics data...'); };
+                        actionBtn.onclick = function () { alert('📊 Exporting analytics data...'); };
                         actionBtn.removeAttribute('data-bs-toggle');
                         actionBtn.removeAttribute('data-bs-target');
                     } else if (panelId === 'settings') {
-                        actionBtn.onclick = function() { alert('💾 Settings saved!'); };
+                        actionBtn.onclick = function () { alert('💾 Settings saved!'); };
                         actionBtn.removeAttribute('data-bs-toggle');
                         actionBtn.removeAttribute('data-bs-target');
                     } else {
                         actionBtn.setAttribute('data-bs-toggle', 'modal');
                         actionBtn.setAttribute('data-bs-target', '#addModal');
                         const mode = panelId === 'users' ? 'user' : (panelId === 'orders' ? 'order' : 'report');
-                        actionBtn.onclick = function() { openAddModal(mode); };
+                        actionBtn.onclick = function () { openAddModal(mode); };
                     }
                 }
                 closeSidebar();
             }
 
             navItems.forEach(item => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function () {
                     const panel = this.dataset.panel;
                     if (panel) switchPanel(panel);
                 });
@@ -1037,7 +1441,7 @@
             const modalTitle = document.getElementById('addModalTitle');
             const addModal = new bootstrap.Modal(document.getElementById('addModal'));
 
-            window.openAddModal = function(mode) {
+            window.openAddModal = function (mode) {
                 let fields = '';
                 let title = 'Add New';
                 let submitText = 'Add Record';
@@ -1091,7 +1495,7 @@
             };
 
             // Form submission
-            addForm.addEventListener('submit', function(e) {
+            addForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 const mode = addSubmitBtn.dataset.mode || 'user';
                 let name = '';
@@ -1179,12 +1583,12 @@
                 overlay.classList.remove("active");
             }
 
-            mobileToggle.addEventListener("click", function() {
+            mobileToggle.addEventListener("click", function () {
                 sidebar.classList.toggle("open");
                 overlay.classList.toggle("active");
             });
             overlay.addEventListener("click", closeSidebar);
-            window.addEventListener("resize", function() {
+            window.addEventListener("resize", function () {
                 if (window.innerWidth >= 993) closeSidebar();
             });
 
@@ -1197,7 +1601,7 @@
             }, 300);
 
             // --- Export ---
-            exportBtn?.addEventListener('click', function() {
+            exportBtn?.addEventListener('click', function () {
                 if (currentPanel === 'analytics') {
                     alert('📊 Exporting analytics data as CSV...');
                 } else {
@@ -1210,4 +1614,5 @@
         });
     </script>
 </body>
+
 </html>
