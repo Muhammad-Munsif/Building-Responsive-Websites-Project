@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>Nexus • Enterprise Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+        rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
     </script>
     <style>
@@ -15,6 +17,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
             --primary: #4361ee;
             --primary-light: #6c8cff;
@@ -41,6 +44,7 @@
             --header-height: 72px;
             --sidebar-width: 260px;
         }
+
         [data-theme="dark"] {
             --bg-body: #080c18;
             --bg-surface: #111927;
@@ -56,6 +60,7 @@
             --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
             --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
+
         body {
             font-family: "Inter", -apple-system, system-ui, sans-serif;
             background: var(--bg-body);
@@ -81,6 +86,7 @@
             padding: 0 32px;
             transition: background 0.3s, border-color 0.3s;
         }
+
         .main-header .brand {
             font-size: 1.5rem;
             font-weight: 800;
@@ -94,16 +100,19 @@
             align-items: center;
             gap: 8px;
         }
+
         .main-header .brand span {
             background: none;
             -webkit-text-fill-color: var(--text-secondary);
         }
+
         .header-controls {
             display: flex;
             gap: 12px;
             align-items: center;
             margin-left: auto;
         }
+
         .theme-toggle {
             width: 40px;
             height: 40px;
@@ -118,12 +127,14 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .theme-toggle:hover {
             background: var(--gradient-prime);
             color: #fff;
             border-color: transparent;
             transform: scale(1.04);
         }
+
         .btn-logout {
             background: var(--gradient-prime);
             color: #fff;
@@ -139,11 +150,13 @@
             gap: 6px;
             box-shadow: 0 2px 8px rgba(67, 97, 238, 0.25);
         }
+
         .btn-logout:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(67, 97, 238, 0.3);
             color: #fff;
         }
+
         .mobile-toggle {
             display: none;
             background: none;
@@ -168,6 +181,7 @@
             z-index: 1040;
             transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .sidebar .user-card {
             padding: 16px 12px;
             background: rgba(255, 255, 255, 0.04);
@@ -177,6 +191,7 @@
             align-items: center;
             gap: 12px;
         }
+
         .sidebar .user-avatar {
             width: 44px;
             height: 44px;
@@ -190,15 +205,18 @@
             font-size: 1rem;
             flex-shrink: 0;
         }
+
         .sidebar .user-info .name {
             color: #fff;
             font-weight: 600;
             font-size: 0.9rem;
         }
+
         .sidebar .user-info .role {
             color: var(--text-sidebar);
             font-size: 0.75rem;
         }
+
         .sidebar .nav-label {
             color: var(--text-sidebar);
             font-size: 0.65rem;
@@ -207,6 +225,7 @@
             letter-spacing: 0.06em;
             padding: 12px 12px 6px;
         }
+
         .sidebar .nav-item {
             display: flex;
             align-items: center;
@@ -224,20 +243,24 @@
             width: 100%;
             text-align: left;
         }
+
         .sidebar .nav-item i {
             width: 20px;
             text-align: center;
             font-size: 1rem;
         }
+
         .sidebar .nav-item:hover {
             background: rgba(255, 255, 255, 0.06);
             color: #fff;
         }
+
         .sidebar .nav-item.active {
             background: var(--gradient-prime);
             color: #fff;
             box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
         }
+
         .sidebar .nav-item .badge-count {
             margin-left: auto;
             background: rgba(255, 255, 255, 0.1);
@@ -246,6 +269,7 @@
             padding: 2px 8px;
             border-radius: 40px;
         }
+
         .sidebar .nav-item.active .badge-count {
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
@@ -258,15 +282,18 @@
             min-height: 100vh;
             transition: margin-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .dashboard-wrapper {
             padding: 32px 32px 60px;
         }
+
         .page-title {
             font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 4px;
         }
+
         .page-subtitle {
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -277,14 +304,17 @@
             display: none;
             animation: fadeUp 0.4s ease forwards;
         }
+
         .page-panel.active {
             display: block;
         }
+
         @keyframes fadeUp {
             0% {
                 opacity: 0;
                 transform: translateY(12px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -301,11 +331,13 @@
             box-shadow: var(--shadow-sm);
             height: 100%;
         }
+
         .stat-card:hover {
             transform: translateY(-4px);
             border-color: var(--primary);
             box-shadow: var(--shadow-lg);
         }
+
         .stat-card .stat-icon {
             width: 44px;
             height: 44px;
@@ -317,17 +349,20 @@
             color: #fff;
             margin-bottom: 12px;
         }
+
         .stat-card .stat-number {
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.2;
         }
+
         .stat-card .stat-label {
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 2px;
         }
+
         .stat-card .stat-change {
             font-size: 0.75rem;
             font-weight: 600;
@@ -336,10 +371,12 @@
             display: inline-block;
             margin-top: 8px;
         }
+
         .stat-change.up {
             background: rgba(6, 214, 160, 0.12);
             color: var(--success);
         }
+
         .stat-change.down {
             background: rgba(239, 71, 111, 0.12);
             color: var(--danger);
@@ -355,10 +392,12 @@
             transition: all 0.3s ease;
             height: 100%;
         }
+
         .chart-card:hover {
             border-color: var(--primary);
             box-shadow: var(--shadow-lg);
         }
+
         .chart-card canvas {
             max-height: 200px;
             width: 100% !important;
@@ -372,9 +411,11 @@
             padding: 12px 0;
             border-bottom: 1px solid var(--border-light);
         }
+
         .activity-item:last-child {
             border-bottom: 0;
         }
+
         .activity-dot {
             width: 10px;
             height: 10px;
@@ -382,21 +423,27 @@
             flex-shrink: 0;
             margin-top: 6px;
         }
+
         .activity-dot.primary {
             background: var(--primary);
         }
+
         .activity-dot.success {
             background: var(--success);
         }
+
         .activity-dot.danger {
             background: var(--danger);
         }
+
         .activity-dot.warning {
             background: var(--warning);
         }
+
         .activity-content .text {
             font-size: 0.9rem;
         }
+
         .activity-content .time {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -409,6 +456,7 @@
             overflow: hidden;
             border: 1px solid var(--border-light);
         }
+
         .table-dashboard thead th {
             background: var(--bg-body);
             color: var(--text-secondary);
@@ -421,13 +469,16 @@
             cursor: pointer;
             user-select: none;
         }
+
         .table-dashboard thead th:hover {
             color: var(--primary);
         }
+
         .table-dashboard thead th i {
             margin-left: 4px;
             font-size: 0.7rem;
         }
+
         .table-dashboard tbody td {
             padding: 12px 16px;
             vertical-align: middle;
@@ -435,15 +486,19 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
+
         .table-dashboard tbody tr:last-child td {
             border-bottom: 0;
         }
+
         .table-dashboard tbody tr:hover {
             background: var(--bg-body);
         }
+
         .table-dashboard tbody tr.selected {
             background: rgba(67, 97, 238, 0.05);
         }
+
         .user-avatar-sm {
             width: 32px;
             height: 32px;
@@ -456,6 +511,7 @@
             color: #fff;
             flex-shrink: 0;
         }
+
         .badge-status {
             font-size: 0.7rem;
             font-weight: 600;
@@ -463,34 +519,42 @@
             border-radius: 40px;
             text-transform: capitalize;
         }
+
         .badge-status.active {
             background: rgba(6, 214, 160, 0.12);
             color: var(--success);
         }
+
         .badge-status.pending {
             background: rgba(255, 190, 11, 0.12);
             color: var(--warning);
         }
+
         .badge-status.inactive {
             background: rgba(239, 71, 111, 0.12);
             color: var(--danger);
         }
+
         .badge-status.completed {
             background: rgba(6, 214, 160, 0.12);
             color: var(--success);
         }
+
         .badge-status.cancelled {
             background: rgba(239, 71, 111, 0.12);
             color: var(--danger);
         }
+
         .badge-status.generating {
             background: rgba(255, 190, 11, 0.12);
             color: var(--warning);
         }
+
         .badge-status.ready {
             background: rgba(6, 214, 160, 0.12);
             color: var(--success);
         }
+
         .badge-status.failed {
             background: rgba(239, 71, 111, 0.12);
             color: var(--danger);
@@ -502,9 +566,11 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border-light);
         }
+
         .modal-header {
             border-bottom-color: var(--border-light);
         }
+
         .form-control-custom {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
@@ -515,6 +581,7 @@
             transition: border 0.2s, box-shadow 0.2s;
             font-size: 0.95rem;
         }
+
         .form-control-custom:focus {
             outline: none;
             border-color: var(--primary);
@@ -532,6 +599,7 @@
             gap: 10px;
             max-width: 380px;
         }
+
         .toast-notification {
             background: var(--bg-card);
             border-left: 4px solid var(--primary);
@@ -544,27 +612,35 @@
             animation: slideInRight 0.3s ease;
             border: 1px solid var(--border-light);
         }
+
         .toast-notification.success {
             border-left-color: var(--success);
         }
+
         .toast-notification.error {
             border-left-color: var(--danger);
         }
+
         .toast-notification.warning {
             border-left-color: var(--warning);
         }
+
         .toast-notification i {
             font-size: 1.2rem;
         }
+
         .toast-notification.success i {
             color: var(--success);
         }
+
         .toast-notification.error i {
             color: var(--danger);
         }
+
         .toast-notification.warning i {
             color: var(--warning);
         }
+
         .toast-notification .toast-close {
             margin-left: auto;
             background: none;
@@ -573,11 +649,13 @@
             cursor: pointer;
             font-size: 1rem;
         }
+
         @keyframes slideInRight {
             0% {
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             100% {
                 transform: translateX(0);
                 opacity: 1;
@@ -591,6 +669,7 @@
             gap: 10px;
             align-items: center;
         }
+
         .search-filter-bar .form-control-sm {
             border-radius: 40px;
             border-color: var(--border-light);
@@ -598,6 +677,7 @@
             font-size: 0.85rem;
             min-width: 200px;
         }
+
         .search-filter-bar .form-select-sm {
             border-radius: 40px;
             border-color: var(--border-light);
@@ -616,6 +696,7 @@
             gap: 12px;
             margin-top: 8px;
         }
+
         .bulk-actions.show {
             display: flex;
         }
@@ -626,6 +707,7 @@
             gap: 4px;
             justify-content: flex-end;
         }
+
         .action-btn-group .btn-sm {
             padding: 2px 10px;
             font-size: 0.75rem;
@@ -634,26 +716,32 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .action-btn-group .btn-edit {
             background: rgba(67, 97, 238, 0.1);
             color: var(--primary);
         }
+
         .action-btn-group .btn-edit:hover {
             background: var(--primary);
             color: #fff;
         }
+
         .action-btn-group .btn-delete {
             background: rgba(239, 71, 111, 0.1);
             color: var(--danger);
         }
+
         .action-btn-group .btn-delete:hover {
             background: var(--danger);
             color: #fff;
         }
+
         .action-btn-group .btn-view {
             background: rgba(6, 214, 160, 0.1);
             color: var(--success);
         }
+
         .action-btn-group .btn-view:hover {
             background: var(--success);
             color: #fff;
@@ -672,16 +760,19 @@
             text-align: center;
             padding: 40px 20px;
         }
+
         .empty-state i {
             font-size: 3rem;
             color: var(--text-muted);
             opacity: 0.3;
             margin-bottom: 16px;
         }
+
         .empty-state h5 {
             color: var(--text-secondary);
             margin-bottom: 8px;
         }
+
         .empty-state p {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -693,69 +784,88 @@
                 transform: translateX(-100%);
                 width: 280px;
             }
+
             .sidebar.open {
                 transform: translateX(0);
             }
+
             .main-content {
                 margin-left: 0;
             }
+
             .mobile-toggle {
                 display: block;
             }
+
             .main-header {
                 padding: 0 20px;
             }
+
             .dashboard-wrapper {
                 padding: 24px 20px 40px;
             }
         }
+
         @media (max-width: 768px) {
             :root {
                 --header-height: 64px;
             }
+
             .main-header {
                 padding: 0 16px;
             }
+
             .brand {
                 font-size: 1.2rem;
             }
+
             .btn-logout {
                 padding: 4px 14px;
                 font-size: 0.75rem;
             }
+
             .theme-toggle {
                 width: 34px;
                 height: 34px;
                 font-size: 0.85rem;
             }
+
             .stat-card {
                 padding: 20px;
             }
+
             .stat-card .stat-number {
                 font-size: 1.4rem;
             }
+
             .dashboard-wrapper {
                 padding: 16px 12px 32px;
             }
+
             .search-filter-bar .form-control-sm {
                 min-width: 140px;
             }
         }
+
         @media (max-width: 480px) {
             .main-header .brand {
                 font-size: 1rem;
             }
+
             .header-controls {
                 gap: 6px;
             }
+
             .stat-card .stat-number {
                 font-size: 1.2rem;
             }
+
             .stat-card .stat-icon {
                 width: 36px;
                 height: 36px;
                 font-size: 1rem;
             }
+
             .chart-card canvas {
                 max-height: 150px;
             }
@@ -764,9 +874,11 @@
         ::-webkit-scrollbar {
             width: 4px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-body);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 10px;
@@ -782,28 +894,35 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: 1039;
         }
+
         .sidebar-overlay.active {
             display: block;
         }
+
         @media (min-width: 993px) {
             .sidebar-overlay {
                 display: none !important;
             }
         }
+
         .fade-in {
             opacity: 0;
             transform: translateY(16px);
             animation: fadeUp 0.5s ease forwards;
         }
+
         .fade-in:nth-child(1) {
             animation-delay: 0.05s;
         }
+
         .fade-in:nth-child(2) {
             animation-delay: 0.10s;
         }
+
         .fade-in:nth-child(3) {
             animation-delay: 0.15s;
         }
+
         .fade-in:nth-child(4) {
             animation-delay: 0.20s;
         }
@@ -811,11 +930,13 @@
         .record-enter {
             animation: slideDown 0.3s ease;
         }
+
         @keyframes slideDown {
             0% {
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -828,6 +949,7 @@
             border-radius: 4px;
             overflow: hidden;
         }
+
         .progress-track .progress-fill {
             height: 100%;
             border-radius: 4px;
@@ -851,11 +973,13 @@
             font-weight: 600;
             animation: slideUp 0.3s ease;
         }
+
         @keyframes slideUp {
             0% {
                 opacity: 0;
                 transform: translateX(-50%) translateY(20px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateX(-50%) translateY(0);
@@ -863,6 +987,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Session Warning -->
     <div id="sessionWarning">⏰ Your session will expire soon. Click anywhere to extend.</div>
@@ -894,11 +1019,14 @@
         </div>
         <div class="nav-label">Main</div>
         <button class="nav-item active" data-panel="dashboard"><i class="fas fa-th-large"></i> Dashboard</button>
-        <button class="nav-item" data-panel="users"><i class="fas fa-users"></i> Users <span class="badge-count" id="userCount">0</span></button>
-        <button class="nav-item" data-panel="orders"><i class="fas fa-shopping-cart"></i> Orders <span class="badge-count" id="orderCount">0</span></button>
+        <button class="nav-item" data-panel="users"><i class="fas fa-users"></i> Users <span class="badge-count"
+                id="userCount">0</span></button>
+        <button class="nav-item" data-panel="orders"><i class="fas fa-shopping-cart"></i> Orders <span
+                class="badge-count" id="orderCount">0</span></button>
         <button class="nav-item" data-panel="analytics"><i class="fas fa-chart-line"></i> Analytics</button>
         <div class="nav-label" style="margin-top:16px;">Management</div>
-        <button class="nav-item" data-panel="reports"><i class="fas fa-file-alt"></i> Reports <span class="badge-count" id="reportCount">0</span></button>
+        <button class="nav-item" data-panel="reports"><i class="fas fa-file-alt"></i> Reports <span class="badge-count"
+                id="reportCount">0</span></button>
         <button class="nav-item" data-panel="settings"><i class="fas fa-cog"></i> Settings</button>
         <button class="nav-item" data-panel="support"><i class="fas fa-life-ring"></i> Support</button>
     </aside>
@@ -910,13 +1038,18 @@
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
                 <div>
                     <h1 class="page-title" id="pageTitle">Dashboard</h1>
-                    <p class="page-subtitle" id="pageSubtitle">Welcome back, <strong id="userNameDisplay2">Guest</strong> — here's your overview.</p>
+                    <p class="page-subtitle" id="pageSubtitle">Welcome back, <strong
+                            id="userNameDisplay2">Guest</strong> — here's your overview.</p>
                 </div>
                 <div class="d-flex gap-2">
-                    <button class="btn btn-outline-primary rounded-pill px-4" style="border-color:var(--primary);color:var(--primary);font-weight:500;font-size:0.85rem;" id="exportBtn">
+                    <button class="btn btn-outline-primary rounded-pill px-4"
+                        style="border-color:var(--primary);color:var(--primary);font-weight:500;font-size:0.85rem;"
+                        id="exportBtn">
                         <i class="fas fa-download"></i> Export
                     </button>
-                    <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;font-weight:500;font-size:0.85rem;" id="actionBtn">
+                    <button class="btn btn-primary rounded-pill px-4"
+                        style="background:var(--gradient-prime);border:none;font-weight:500;font-size:0.85rem;"
+                        id="actionBtn">
                         <i class="fas fa-plus"></i> <span id="actionLabel">Add New</span>
                     </button>
                 </div>
@@ -926,16 +1059,40 @@
             <div class="page-panel active" id="panel-dashboard">
                 <div class="row g-4 mb-4">
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:var(--gradient-prime);"><i class="fas fa-users"></i></div><div class="stat-number" id="dashUsers">0</div><div class="stat-label">Total Users</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 12.5%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:var(--gradient-prime);"><i
+                                    class="fas fa-users"></i></div>
+                            <div class="stat-number" id="dashUsers">0</div>
+                            <div class="stat-label">Total Users</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 12.5%</span>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:linear-gradient(135deg,#06d6a0,#4cc9f0);"><i class="fas fa-shopping-cart"></i></div><div class="stat-number" id="dashOrders">0</div><div class="stat-label">Total Orders</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 8.2%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:linear-gradient(135deg,#06d6a0,#4cc9f0);"><i
+                                    class="fas fa-shopping-cart"></i></div>
+                            <div class="stat-number" id="dashOrders">0</div>
+                            <div class="stat-label">Total Orders</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 8.2%</span>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:linear-gradient(135deg,#f72585,#ffbe0b);"><i class="fas fa-dollar-sign"></i></div><div class="stat-number" id="dashRevenue">$0</div><div class="stat-label">Revenue</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 18.7%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:linear-gradient(135deg,#f72585,#ffbe0b);"><i
+                                    class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-number" id="dashRevenue">$0</div>
+                            <div class="stat-label">Revenue</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 18.7%</span>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 fade-in">
-                        <div class="stat-card"><div class="stat-icon" style="background:linear-gradient(135deg,#6c8cff,#4361ee);"><i class="fas fa-bolt"></i></div><div class="stat-number">93%</div><div class="stat-label">Engagement</div><span class="stat-change down"><i class="fas fa-arrow-down"></i> 2.1%</span></div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background:linear-gradient(135deg,#6c8cff,#4361ee);"><i
+                                    class="fas fa-bolt"></i></div>
+                            <div class="stat-number">93%</div>
+                            <div class="stat-label">Engagement</div><span class="stat-change down"><i
+                                    class="fas fa-arrow-down"></i> 2.1%</span>
+                        </div>
                     </div>
                 </div>
                 <div class="row g-4">
@@ -943,7 +1100,8 @@
                         <div class="chart-card">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h5 class="fw-bold mb-0" style="font-size:1.05rem;">User Growth</h5>
-                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1" style="font-weight:500;">Last 6 months</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1"
+                                    style="font-weight:500;">Last 6 months</span>
                             </div>
                             <canvas id="userGrowthChart"></canvas>
                         </div>
@@ -960,7 +1118,12 @@
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3" style="font-size:1.05rem;">Recent Activity</h5>
                             <div class="activity-list" id="activityFeed">
-                                <div class="activity-item"><span class="activity-dot primary"></span><div class="activity-content"><div class="text">Welcome to Nexus Dashboard</div><div class="time">Just now</div></div></div>
+                                <div class="activity-item"><span class="activity-dot primary"></span>
+                                    <div class="activity-content">
+                                        <div class="text">Welcome to Nexus Dashboard</div>
+                                        <div class="time">Just now</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -970,20 +1133,44 @@
             <!-- USERS -->
             <div class="page-panel" id="panel-users">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statTotalUsers">0</div><div class="stat-label">Total Users</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statActiveUsers">0</div><div class="stat-label">Active</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statNewUsers">0</div><div class="stat-label">New Today</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statPendingUsers">0</div><div class="stat-label">Pending</div></div></div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statTotalUsers">0</div>
+                            <div class="stat-label">Total Users</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statActiveUsers">0</div>
+                            <div class="stat-label">Active</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statNewUsers">0</div>
+                            <div class="stat-label">New Today</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statPendingUsers">0</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-card p-0 overflow-hidden">
                     <div class="p-3 pb-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <h5 class="fw-bold mb-0" style="font-size:1.05rem;">All Users</h5>
-                        <button class="btn btn-sm btn-primary rounded-pill" style="background:var(--gradient-prime);border:none;" onclick="openAddModal('user')"><i class="fas fa-plus"></i> Add User</button>
+                        <button class="btn btn-sm btn-primary rounded-pill"
+                            style="background:var(--gradient-prime);border:none;" onclick="openAddModal('user')"><i
+                                class="fas fa-plus"></i> Add User</button>
                     </div>
                     <div class="p-3 pt-0">
                         <div class="search-filter-bar">
-                            <input type="text" class="form-control form-control-sm" id="userSearch" placeholder="🔍 Search users..." oninput="filterTable('user')">
-                            <select class="form-select form-select-sm" id="userFilter" onchange="filterTable('user')" style="width:auto;">
+                            <input type="text" class="form-control form-control-sm" id="userSearch"
+                                placeholder="🔍 Search users..." oninput="filterTable('user')">
+                            <select class="form-select form-select-sm" id="userFilter" onchange="filterTable('user')"
+                                style="width:auto;">
                                 <option value="all">All Status</option>
                                 <option value="active">Active</option>
                                 <option value="pending">Pending</option>
@@ -994,16 +1181,20 @@
                             </div>
                         </div>
                         <div class="bulk-actions" id="bulkActionsUser">
-                            <span class="text-muted" style="font-size:0.85rem;"><span id="selectedCountUser">0</span> selected</span>
-                            <button class="btn btn-sm btn-danger rounded-pill" onclick="bulkDelete('user')"><i class="fas fa-trash"></i> Delete</button>
-                            <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="clearSelection('user')">Clear</button>
+                            <span class="text-muted" style="font-size:0.85rem;"><span id="selectedCountUser">0</span>
+                                selected</span>
+                            <button class="btn btn-sm btn-danger rounded-pill" onclick="bulkDelete('user')"><i
+                                    class="fas fa-trash"></i> Delete</button>
+                            <button class="btn btn-sm btn-outline-secondary rounded-pill"
+                                onclick="clearSelection('user')">Clear</button>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-dashboard mb-0">
                             <thead>
                                 <tr>
-                                    <th style="width:30px;"><input type="checkbox" class="row-checkbox" onchange="toggleAllCheckboxes('user')"></th>
+                                    <th style="width:30px;"><input type="checkbox" class="row-checkbox"
+                                            onchange="toggleAllCheckboxes('user')"></th>
                                     <th onclick="sortTable('user', 'name')">User <i class="fas fa-sort"></i></th>
                                     <th onclick="sortTable('user', 'email')">Email <i class="fas fa-sort"></i></th>
                                     <th onclick="sortTable('user', 'role')">Role <i class="fas fa-sort"></i></th>
@@ -1021,20 +1212,44 @@
             <!-- ORDERS -->
             <div class="page-panel" id="panel-orders">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statTotalOrders">0</div><div class="stat-label">Total Orders</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statPendingOrders">0</div><div class="stat-label">Pending</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statCompletedOrders">0</div><div class="stat-label">Completed</div></div></div>
-                    <div class="col-md-3 fade-in"><div class="stat-card"><div class="stat-number" id="statCancelledOrders">0</div><div class="stat-label">Cancelled</div></div></div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statTotalOrders">0</div>
+                            <div class="stat-label">Total Orders</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statPendingOrders">0</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statCompletedOrders">0</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statCancelledOrders">0</div>
+                            <div class="stat-label">Cancelled</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-card p-0 overflow-hidden">
                     <div class="p-3 pb-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <h5 class="fw-bold mb-0" style="font-size:1.05rem;">All Orders</h5>
-                        <button class="btn btn-sm btn-primary rounded-pill" style="background:var(--gradient-prime);border:none;" onclick="openAddModal('order')"><i class="fas fa-plus"></i> Add Order</button>
+                        <button class="btn btn-sm btn-primary rounded-pill"
+                            style="background:var(--gradient-prime);border:none;" onclick="openAddModal('order')"><i
+                                class="fas fa-plus"></i> Add Order</button>
                     </div>
                     <div class="p-3 pt-0">
                         <div class="search-filter-bar">
-                            <input type="text" class="form-control form-control-sm" id="orderSearch" placeholder="🔍 Search orders..." oninput="filterTable('order')">
-                            <select class="form-select form-select-sm" id="orderFilter" onchange="filterTable('order')" style="width:auto;">
+                            <input type="text" class="form-control form-control-sm" id="orderSearch"
+                                placeholder="🔍 Search orders..." oninput="filterTable('order')">
+                            <select class="form-select form-select-sm" id="orderFilter" onchange="filterTable('order')"
+                                style="width:auto;">
                                 <option value="all">All Status</option>
                                 <option value="pending">Pending</option>
                                 <option value="completed">Completed</option>
@@ -1045,18 +1260,23 @@
                             </div>
                         </div>
                         <div class="bulk-actions" id="bulkActionsOrder">
-                            <span class="text-muted" style="font-size:0.85rem;"><span id="selectedCountOrder">0</span> selected</span>
-                            <button class="btn btn-sm btn-danger rounded-pill" onclick="bulkDelete('order')"><i class="fas fa-trash"></i> Delete</button>
-                            <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="clearSelection('order')">Clear</button>
+                            <span class="text-muted" style="font-size:0.85rem;"><span id="selectedCountOrder">0</span>
+                                selected</span>
+                            <button class="btn btn-sm btn-danger rounded-pill" onclick="bulkDelete('order')"><i
+                                    class="fas fa-trash"></i> Delete</button>
+                            <button class="btn btn-sm btn-outline-secondary rounded-pill"
+                                onclick="clearSelection('order')">Clear</button>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-dashboard mb-0">
                             <thead>
                                 <tr>
-                                    <th style="width:30px;"><input type="checkbox" class="row-checkbox" onchange="toggleAllCheckboxes('order')"></th>
+                                    <th style="width:30px;"><input type="checkbox" class="row-checkbox"
+                                            onchange="toggleAllCheckboxes('order')"></th>
                                     <th onclick="sortTable('order', 'id')">Order # <i class="fas fa-sort"></i></th>
-                                    <th onclick="sortTable('order', 'customer')">Customer <i class="fas fa-sort"></i></th>
+                                    <th onclick="sortTable('order', 'customer')">Customer <i class="fas fa-sort"></i>
+                                    </th>
                                     <th onclick="sortTable('order', 'amount')">Amount <i class="fas fa-sort"></i></th>
                                     <th onclick="sortTable('order', 'status')">Status <i class="fas fa-sort"></i></th>
                                     <th onclick="sortTable('order', 'date')">Date <i class="fas fa-sort"></i></th>
@@ -1072,23 +1292,53 @@
             <!-- ANALYTICS -->
             <div class="page-panel" id="panel-analytics">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">45.2k</div><div class="stat-label">Page Views</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 15.3%</span></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">3.2%</div><div class="stat-label">Conversion Rate</div><span class="stat-change up"><i class="fas fa-arrow-up"></i> 2.1%</span></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number">4.8</div><div class="stat-label">Avg. Session (min)</div><span class="stat-change down"><i class="fas fa-arrow-down"></i> 0.8%</span></div></div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">45.2k</div>
+                            <div class="stat-label">Page Views</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 15.3%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">3.2%</div>
+                            <div class="stat-label">Conversion Rate</div><span class="stat-change up"><i
+                                    class="fas fa-arrow-up"></i> 2.1%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number">4.8</div>
+                            <div class="stat-label">Avg. Session (min)</div><span class="stat-change down"><i
+                                    class="fas fa-arrow-down"></i> 0.8%</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Traffic Sources</h5>
                             <div style="padding:10px 0;">
-                                <div class="d-flex justify-content-between mb-2"><span>Organic Search</span><span class="fw-bold">45%</span></div>
-                                <div class="progress-track mb-3"><div class="progress-fill" style="width:45%;"></div></div>
-                                <div class="d-flex justify-content-between mb-2"><span>Direct</span><span class="fw-bold">28%</span></div>
-                                <div class="progress-track mb-3"><div class="progress-fill" style="width:28%;"></div></div>
-                                <div class="d-flex justify-content-between mb-2"><span>Social Media</span><span class="fw-bold">18%</span></div>
-                                <div class="progress-track mb-3"><div class="progress-fill" style="width:18%;"></div></div>
-                                <div class="d-flex justify-content-between mb-2"><span>Referral</span><span class="fw-bold">9%</span></div>
-                                <div class="progress-track"><div class="progress-fill" style="width:9%;"></div></div>
+                                <div class="d-flex justify-content-between mb-2"><span>Organic Search</span><span
+                                        class="fw-bold">45%</span></div>
+                                <div class="progress-track mb-3">
+                                    <div class="progress-fill" style="width:45%;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2"><span>Direct</span><span
+                                        class="fw-bold">28%</span></div>
+                                <div class="progress-track mb-3">
+                                    <div class="progress-fill" style="width:28%;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2"><span>Social Media</span><span
+                                        class="fw-bold">18%</span></div>
+                                <div class="progress-track mb-3">
+                                    <div class="progress-fill" style="width:18%;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2"><span>Referral</span><span
+                                        class="fw-bold">9%</span></div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width:9%;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1096,10 +1346,30 @@
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Quick Stats</h5>
                             <div class="row g-3 mt-2">
-                                <div class="col-6"><div class="stat-card" style="padding:16px;"><div class="stat-number" style="font-size:1.4rem;">1,847</div><div class="stat-label">New Visitors</div></div></div>
-                                <div class="col-6"><div class="stat-card" style="padding:16px;"><div class="stat-number" style="font-size:1.4rem;">3.2</div><div class="stat-label">Pages/Session</div></div></div>
-                                <div class="col-6"><div class="stat-card" style="padding:16px;"><div class="stat-number" style="font-size:1.4rem;">67%</div><div class="stat-label">Bounce Rate</div></div></div>
-                                <div class="col-6"><div class="stat-card" style="padding:16px;"><div class="stat-number" style="font-size:1.4rem;">4.8m</div><div class="stat-label">Total Time</div></div></div>
+                                <div class="col-6">
+                                    <div class="stat-card" style="padding:16px;">
+                                        <div class="stat-number" style="font-size:1.4rem;">1,847</div>
+                                        <div class="stat-label">New Visitors</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-card" style="padding:16px;">
+                                        <div class="stat-number" style="font-size:1.4rem;">3.2</div>
+                                        <div class="stat-label">Pages/Session</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-card" style="padding:16px;">
+                                        <div class="stat-number" style="font-size:1.4rem;">67%</div>
+                                        <div class="stat-label">Bounce Rate</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-card" style="padding:16px;">
+                                        <div class="stat-number" style="font-size:1.4rem;">4.8m</div>
+                                        <div class="stat-label">Total Time</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1109,19 +1379,38 @@
             <!-- REPORTS -->
             <div class="page-panel" id="panel-reports">
                 <div class="row g-4 mb-4">
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number" id="statTotalReports">0</div><div class="stat-label">Total Reports</div></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number" id="statReadyReports">0</div><div class="stat-label">Ready</div></div></div>
-                    <div class="col-md-4 fade-in"><div class="stat-card"><div class="stat-number" id="statGeneratingReports">0</div><div class="stat-label">Generating</div></div></div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statTotalReports">0</div>
+                            <div class="stat-label">Total Reports</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statReadyReports">0</div>
+                            <div class="stat-label">Ready</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-in">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statGeneratingReports">0</div>
+                            <div class="stat-label">Generating</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-card p-0 overflow-hidden">
                     <div class="p-3 pb-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <h5 class="fw-bold mb-0" style="font-size:1.05rem;">Reports Library</h5>
-                        <button class="btn btn-sm btn-primary rounded-pill" style="background:var(--gradient-prime);border:none;" onclick="openAddModal('report')"><i class="fas fa-plus"></i> New Report</button>
+                        <button class="btn btn-sm btn-primary rounded-pill"
+                            style="background:var(--gradient-prime);border:none;" onclick="openAddModal('report')"><i
+                                class="fas fa-plus"></i> New Report</button>
                     </div>
                     <div class="p-3 pt-0">
                         <div class="search-filter-bar">
-                            <input type="text" class="form-control form-control-sm" id="reportSearch" placeholder="🔍 Search reports..." oninput="filterTable('report')">
-                            <select class="form-select form-select-sm" id="reportFilter" onchange="filterTable('report')" style="width:auto;">
+                            <input type="text" class="form-control form-control-sm" id="reportSearch"
+                                placeholder="🔍 Search reports..." oninput="filterTable('report')">
+                            <select class="form-select form-select-sm" id="reportFilter"
+                                onchange="filterTable('report')" style="width:auto;">
                                 <option value="all">All Status</option>
                                 <option value="ready">Ready</option>
                                 <option value="generating">Generating</option>
@@ -1133,9 +1422,11 @@
                         <table class="table table-dashboard mb-0">
                             <thead>
                                 <tr>
-                                    <th onclick="sortTable('report', 'name')">Report Name <i class="fas fa-sort"></i></th>
+                                    <th onclick="sortTable('report', 'name')">Report Name <i class="fas fa-sort"></i>
+                                    </th>
                                     <th onclick="sortTable('report', 'type')">Type <i class="fas fa-sort"></i></th>
-                                    <th onclick="sortTable('report', 'generated')">Generated <i class="fas fa-sort"></i></th>
+                                    <th onclick="sortTable('report', 'generated')">Generated <i class="fas fa-sort"></i>
+                                    </th>
                                     <th onclick="sortTable('report', 'status')">Status <i class="fas fa-sort"></i></th>
                                     <th class="text-end">Actions</th>
                                 </tr>
@@ -1152,19 +1443,31 @@
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Profile Settings</h5>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Display Name</label><input type="text" class="form-control form-control-custom" value="John Doe"></div>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Email</label><input type="email" class="form-control form-control-custom" value="john@nexus.digital"></div>
-                            <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;" onclick="showToast('💾 Profile settings saved!', 'success')">Save Changes</button>
+                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Display
+                                    Name</label><input type="text" class="form-control form-control-custom"
+                                    value="John Doe"></div>
+                            <div class="mb-3"><label class="form-label fw-semibold"
+                                    style="font-size:0.85rem;">Email</label><input type="email"
+                                    class="form-control form-control-custom" value="john@nexus.digital"></div>
+                            <button class="btn btn-primary rounded-pill px-4"
+                                style="background:var(--gradient-prime);border:none;"
+                                onclick="showToast('💾 Profile settings saved!', 'success')">Save Changes</button>
                         </div>
                     </div>
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Preferences</h5>
-                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Email Notifications</label></div>
-                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox"><label class="form-check-label">Push Notifications</label></div>
-                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Dark Mode</label></div>
+                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox"
+                                    checked><label class="form-check-label">Email Notifications</label></div>
+                            <div class="form-check form-switch mb-2"><input class="form-check-input"
+                                    type="checkbox"><label class="form-check-label">Push Notifications</label></div>
+                            <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox"
+                                    checked><label class="form-check-label">Dark Mode</label></div>
                             <hr class="my-3" style="border-color:var(--border-light);">
-                            <button class="btn btn-outline-danger rounded-pill px-4" style="border-color:var(--danger);color:var(--danger);" onclick="if(confirm('Reset all settings?')){showToast('⚙️ Settings reset', 'warning');}">Reset All</button>
+                            <button class="btn btn-outline-danger rounded-pill px-4"
+                                style="border-color:var(--danger);color:var(--danger);"
+                                onclick="if(confirm('Reset all settings?')){showToast('⚙️ Settings reset', 'warning');}">Reset
+                                All</button>
                         </div>
                     </div>
                 </div>
@@ -1175,19 +1478,47 @@
                 <div class="row g-4">
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
-                            <h5 class="fw-bold mb-3"><i class="fas fa-life-ring me-2" style="color:var(--primary);"></i> Support Center</h5>
-                            <p class="text-muted" style="font-size:0.9rem;">Submit a ticket or browse our knowledge base.</p>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Subject</label><input type="text" class="form-control form-control-custom" placeholder="Brief description..."></div>
-                            <div class="mb-3"><label class="form-label fw-semibold" style="font-size:0.85rem;">Message</label><textarea class="form-control form-control-custom" rows="3" placeholder="Describe your issue..."></textarea></div>
-                            <button class="btn btn-primary rounded-pill px-4" style="background:var(--gradient-prime);border:none;" onclick="showToast('✅ Support ticket submitted!', 'success')">Submit Ticket</button>
+                            <h5 class="fw-bold mb-3"><i class="fas fa-life-ring me-2" style="color:var(--primary);"></i>
+                                Support Center</h5>
+                            <p class="text-muted" style="font-size:0.9rem;">Submit a ticket or browse our knowledge
+                                base.</p>
+                            <div class="mb-3"><label class="form-label fw-semibold"
+                                    style="font-size:0.85rem;">Subject</label><input type="text"
+                                    class="form-control form-control-custom" placeholder="Brief description..."></div>
+                            <div class="mb-3"><label class="form-label fw-semibold"
+                                    style="font-size:0.85rem;">Message</label><textarea
+                                    class="form-control form-control-custom" rows="3"
+                                    placeholder="Describe your issue..."></textarea></div>
+                            <button class="btn btn-primary rounded-pill px-4"
+                                style="background:var(--gradient-prime);border:none;"
+                                onclick="showToast('✅ Support ticket submitted!', 'success')">Submit Ticket</button>
                         </div>
                     </div>
                     <div class="col-md-6 fade-in">
                         <div class="chart-card">
                             <h5 class="fw-bold mb-3">Quick Help</h5>
-                            <div class="activity-item"><i class="fas fa-book" style="color:var(--primary);width:24px;"></i><div><div class="text">Getting Started Guide</div><div class="time">5 min read</div></div></div>
-                            <div class="activity-item"><i class="fas fa-video" style="color:var(--success);width:24px;"></i><div><div class="text">Video Tutorials</div><div class="time">12 videos</div></div></div>
-                            <div class="activity-item"><i class="fas fa-comments" style="color:var(--warning);width:24px;"></i><div><div class="text">Live Chat <span class="badge bg-success rounded-pill ms-2" style="font-size:0.6rem;">Online</span></div><div class="time">Available 24/7</div></div></div>
+                            <div class="activity-item"><i class="fas fa-book"
+                                    style="color:var(--primary);width:24px;"></i>
+                                <div>
+                                    <div class="text">Getting Started Guide</div>
+                                    <div class="time">5 min read</div>
+                                </div>
+                            </div>
+                            <div class="activity-item"><i class="fas fa-video"
+                                    style="color:var(--success);width:24px;"></i>
+                                <div>
+                                    <div class="text">Video Tutorials</div>
+                                    <div class="time">12 videos</div>
+                                </div>
+                            </div>
+                            <div class="activity-item"><i class="fas fa-comments"
+                                    style="color:var(--warning);width:24px;"></i>
+                                <div>
+                                    <div class="text">Live Chat <span class="badge bg-success rounded-pill ms-2"
+                                            style="font-size:0.6rem;">Online</span></div>
+                                    <div class="time">Available 24/7</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1207,7 +1538,8 @@
                     <form id="addForm">
                         <div id="modalFields"></div>
                         <div id="addFormFeedback" class="mb-2" style="font-size:0.9rem;min-height:20px;"></div>
-                        <button type="submit" class="btn btn-primary w-100 rounded-pill" style="background:var(--gradient-prime);border:none;padding:10px;" id="addSubmitBtn">
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill"
+                            style="background:var(--gradient-prime);border:none;padding:10px;" id="addSubmitBtn">
                             <i class="fas fa-plus"></i> Add Record
                         </button>
                     </form>
@@ -1250,39 +1582,61 @@
             init() {
                 if (this.getUsers().length === 0) {
                     this.setUsers([
-                        { id: 1, name: 'John Doe', email: 'john@nexus.digital', role: 'Admin', status: 'Active',
-                            joined: 'Jan 15, 2025' },
-                        { id: 2, name: 'Sarah Miles', email: 'sarah@nexus.digital', role: 'Editor', status: 'Active',
-                            joined: 'Feb 3, 2025' },
-                        { id: 3, name: 'Alex Kim', email: 'alex@nexus.digital', role: 'Viewer', status: 'Pending',
-                            joined: 'Mar 10, 2025' },
-                        { id: 4, name: 'Elena Rios', email: 'elena@nexus.digital', role: 'Editor', status: 'Inactive',
-                            joined: 'Apr 22, 2025' }
+                        {
+                            id: 1, name: 'John Doe', email: 'john@nexus.digital', role: 'Admin', status: 'Active',
+                            joined: 'Jan 15, 2025'
+                        },
+                        {
+                            id: 2, name: 'Sarah Miles', email: 'sarah@nexus.digital', role: 'Editor', status: 'Active',
+                            joined: 'Feb 3, 2025'
+                        },
+                        {
+                            id: 3, name: 'Alex Kim', email: 'alex@nexus.digital', role: 'Viewer', status: 'Pending',
+                            joined: 'Mar 10, 2025'
+                        },
+                        {
+                            id: 4, name: 'Elena Rios', email: 'elena@nexus.digital', role: 'Editor', status: 'Inactive',
+                            joined: 'Apr 22, 2025'
+                        }
                     ]);
                     localStorage.setItem('nexus_users_nextId', 5);
                 }
                 if (this.getOrders().length === 0) {
                     this.setOrders([
-                        { id: 1284, customer: 'John Doe', amount: 245.00, status: 'Completed',
-                            date: 'Today, 2:30 PM' },
-                        { id: 1283, customer: 'Sarah Miles', amount: 89.50, status: 'Pending',
-                        date: 'Today, 11:15 AM' },
-                        { id: 1282, customer: 'Alex Kim', amount: 1250.00, status: 'Completed',
-                            date: 'Yesterday, 4:45 PM' },
-                        { id: 1281, customer: 'Elena Rios', amount: 430.00, status: 'Cancelled',
-                            date: 'Yesterday, 9:20 AM' }
+                        {
+                            id: 1284, customer: 'John Doe', amount: 245.00, status: 'Completed',
+                            date: 'Today, 2:30 PM'
+                        },
+                        {
+                            id: 1283, customer: 'Sarah Miles', amount: 89.50, status: 'Pending',
+                            date: 'Today, 11:15 AM'
+                        },
+                        {
+                            id: 1282, customer: 'Alex Kim', amount: 1250.00, status: 'Completed',
+                            date: 'Yesterday, 4:45 PM'
+                        },
+                        {
+                            id: 1281, customer: 'Elena Rios', amount: 430.00, status: 'Cancelled',
+                            date: 'Yesterday, 9:20 AM'
+                        }
                     ]);
                     localStorage.setItem('nexus_orders_nextId', 1285);
                 }
                 if (this.getReports().length === 0) {
                     this.setReports([
-                        { id: 1, name: 'Q1 Sales Summary', type: 'Sales', generated: 'Apr 1, 2025',
-                        status: 'Ready' },
-                        { id: 2, name: 'User Growth Report', type: 'Analytics', generated: 'Mar 28, 2025',
-                            status: 'Ready' },
+                        {
+                            id: 1, name: 'Q1 Sales Summary', type: 'Sales', generated: 'Apr 1, 2025',
+                            status: 'Ready'
+                        },
+                        {
+                            id: 2, name: 'User Growth Report', type: 'Analytics', generated: 'Mar 28, 2025',
+                            status: 'Ready'
+                        },
                         { id: 3, name: 'Revenue Breakdown', type: 'Financial', generated: '—', status: 'Generating' },
-                        { id: 4, name: 'Customer Feedback', type: 'Survey', generated: 'Mar 25, 2025',
-                        status: 'Ready' },
+                        {
+                            id: 4, name: 'Customer Feedback', type: 'Survey', generated: 'Mar 25, 2025',
+                            status: 'Ready'
+                        },
                         { id: 5, name: 'Inventory Status', type: 'Operations', generated: '—', status: 'Failed' }
                     ]);
                     localStorage.setItem('nexus_reports_nextId', 6);
@@ -1317,8 +1671,12 @@
         // ============================================================
         // SORT STATE
         // ============================================================
-        const sortState = { user: { key: 'name', asc: true }, order: { key: 'id', asc: true }, report: { key: 'name',
-                asc: true } };
+        const sortState = {
+            user: { key: 'name', asc: true }, order: { key: 'id', asc: true }, report: {
+                key: 'name',
+                asc: true
+            }
+        };
         const selectedItems = { user: [], order: [] };
 
         // ============================================================
@@ -1371,7 +1729,7 @@
             tbody.innerHTML = filtered.map(user => `
                 <tr class="record-enter ${selectedItems.user.includes(user.id) ? 'selected' : ''}">
                     <td><input type="checkbox" class="row-checkbox" data-type="user" data-id="${user.id}" ${selectedItems.user.includes(user.id) ? 'checked' : ''} onchange="toggleSelect('user', ${user.id}, this.checked)"></td>
-                    <td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:var(--gradient-prime);">${user.name.split(' ').map(n=>n[0]).join('').toUpperCase()}</span>${user.name}</div></td>
+                    <td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:var(--gradient-prime);">${user.name.split(' ').map(n => n[0]).join('').toUpperCase()}</span>${user.name}</div></td>
                     <td>${user.email}</td>
                     <td>${user.role}</td>
                     <td>${getStatusBadge(user.status)}</td>
@@ -1482,24 +1840,32 @@
         // ============================================================
         // FILTER, SORT, SELECT
         // ============================================================
-        function filterTable(type) { switch (type) { case 'user':
-                renderUsers(); break; case 'order':
-                renderOrders(); break; case 'report':
-                renderReports(); break; } }
+        function filterTable(type) {
+            switch (type) {
+                case 'user':
+                    renderUsers(); break; case 'order':
+                    renderOrders(); break; case 'report':
+                    renderReports(); break;
+            }
+        }
 
         function sortTable(type, key) {
             if (sortState[type]) {
                 if (sortState[type].key === key) sortState[type].asc = !sortState[type].asc;
-                else { sortState[type].key = key;
-                    sortState[type].asc = true; }
+                else {
+                    sortState[type].key = key;
+                    sortState[type].asc = true;
+                }
             }
             filterTable(type);
         }
 
         function toggleSelect(type, id, checked) {
             const arr = selectedItems[type];
-            if (checked) { if (!arr.includes(id)) arr.push(id); } else { const idx = arr.indexOf(id); if (idx > -1) arr
-                    .splice(idx, 1); }
+            if (checked) { if (!arr.includes(id)) arr.push(id); } else {
+                const idx = arr.indexOf(id); if (idx > -1) arr
+                    .splice(idx, 1);
+            }
             updateBulkActions(type);
             filterTable(type);
         }
@@ -1523,9 +1889,11 @@
             if (info) info.textContent = count ? `${count} selected` : '';
         }
 
-        function clearSelection(type) { selectedItems[type] = [];
+        function clearSelection(type) {
+            selectedItems[type] = [];
             updateBulkActions(type);
-            filterTable(type); }
+            filterTable(type);
+        }
 
         function bulkDelete(type) {
             const ids = selectedItems[type];
@@ -1616,12 +1984,14 @@
 
         function addOrder(data) {
             const orders = DB.getOrders();
-            orders.push({ id: DB.getNextId('orders'), ...data, amount: parseFloat(data.amount),
-                date: 'Today, ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+            orders.push({
+                id: DB.getNextId('orders'), ...data, amount: parseFloat(data.amount),
+                date: 'Today, ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            });
             DB.setOrders(orders);
             DB.updateUI();
             showToast(`✅ Order for "${data.customer}" added!`, 'success');
-            addActivity(`Order <strong>#${orders[orders.length-1].id}</strong> created`);
+            addActivity(`Order <strong>#${orders[orders.length - 1].id}</strong> created`);
         }
 
         function updateOrder(id, data) {
@@ -1654,12 +2024,14 @@
             setTimeout(() => {
                 const r = DB.getReports();
                 const idx = r.findIndex(x => x.id === newReport.id);
-                if (idx !== -1) { r[idx].status = 'Ready';
+                if (idx !== -1) {
+                    r[idx].status = 'Ready';
                     DB.setReports(r);
                     renderReports();
                     updateStats();
                     showToast(`✅ "${data.name}" ready!`, 'success');
-                    addActivity(`Report <strong>${data.name}</strong> completed`); }
+                    addActivity(`Report <strong>${data.name}</strong> completed`);
+                }
             }, 2000);
         }
 
@@ -1780,7 +2152,7 @@
         }
 
         // Form submit
-        document.getElementById('addForm').addEventListener('submit', function(e) {
+        document.getElementById('addForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const mode = this.querySelector('#addSubmitBtn').dataset.mode || 'user';
             const editId = document.getElementById('editId')?.value;
@@ -1791,16 +2163,20 @@
                 const email = document.getElementById('userEmail')?.value.trim();
                 const role = document.getElementById('userRole')?.value;
                 const status = document.getElementById('userStatus')?.value;
-                if (!name || !email) { feedback.innerHTML = '<span style="color:var(--danger);">All fields required!</span>';
-                    return; }
+                if (!name || !email) {
+                    feedback.innerHTML = '<span style="color:var(--danger);">All fields required!</span>';
+                    return;
+                }
                 if (editId) updateUser(parseInt(editId), { name, email, role, status });
                 else addUser({ name, email, role, status });
             } else if (mode === 'order') {
                 const customer = document.getElementById('orderCustomer')?.value.trim();
                 const amount = document.getElementById('orderAmount')?.value;
                 const status = document.getElementById('orderStatus')?.value;
-                if (!customer || !amount) { feedback.innerHTML = '<span style="color:var(--danger);">All fields required!</span>';
-                    return; }
+                if (!customer || !amount) {
+                    feedback.innerHTML = '<span style="color:var(--danger);">All fields required!</span>';
+                    return;
+                }
                 if (editId) updateOrder(parseInt(editId), { customer, amount, status });
                 else addOrder({ customer, amount, status });
             } else if (mode === 'report') {
@@ -1810,10 +2186,12 @@
                 if (editId) {
                     const reports = DB.getReports();
                     const idx = reports.findIndex(r => r.id === parseInt(editId));
-                    if (idx !== -1) { reports[idx] = { ...reports[idx], name, type };
+                    if (idx !== -1) {
+                        reports[idx] = { ...reports[idx], name, type };
                         DB.setReports(reports);
                         DB.updateUI();
-                        showToast(`✅ Report updated!`, 'success'); }
+                        showToast(`✅ Report updated!`, 'success');
+                    }
                 } else addReport({ name, type });
             }
 
@@ -1937,8 +2315,10 @@
             dashboard: { title: 'Dashboard', subtitle: 'Overview of your business metrics.', action: 'Add New' },
             users: { title: 'Users', subtitle: 'Manage all users and their permissions.', action: 'Add User' },
             orders: { title: 'Orders', subtitle: 'Track and manage all orders.', action: 'Add Order' },
-            analytics: { title: 'Analytics', subtitle: 'Detailed insights and performance metrics.',
-            action: 'Export Data' },
+            analytics: {
+                title: 'Analytics', subtitle: 'Detailed insights and performance metrics.',
+                action: 'Export Data'
+            },
             reports: { title: 'Reports', subtitle: 'Generate and export detailed reports.', action: 'New Report' },
             settings: { title: 'Settings', subtitle: 'Configure your account and preferences.', action: 'Save' },
             support: { title: 'Support', subtitle: 'Get help and submit support tickets.', action: 'New Ticket' }
@@ -1995,7 +2375,7 @@
         }
 
         navItems.forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 const panel = this.dataset.panel;
                 if (panel) switchPanel(panel);
             });
@@ -2034,14 +2414,16 @@
         let userName = 'Guest',
             userInitial = 'G';
         if (savedUser) {
-            try { const user = JSON.parse(savedUser);
+            try {
+                const user = JSON.parse(savedUser);
                 userName = user.name || 'Guest';
-                userInitial = userName.charAt(0).toUpperCase(); } catch (e) {}
+                userInitial = userName.charAt(0).toUpperCase();
+            } catch (e) { }
         }
         document.querySelectorAll('#userNameDisplay, #userNameDisplay2').forEach(el => el.textContent = userName);
         document.getElementById('userAvatar').textContent = userInitial;
 
-        document.getElementById('logoutBtn').addEventListener('click', function() {
+        document.getElementById('logoutBtn').addEventListener('click', function () {
             if (confirm('Logout?')) {
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
@@ -2056,10 +2438,14 @@
         const overlay = document.getElementById('sidebarOverlay');
         const mobileToggle = document.getElementById('mobileToggle');
 
-        function closeSidebar() { sidebar.classList.remove('open');
-            overlay.classList.remove('active'); }
-        mobileToggle.addEventListener('click', () => { sidebar.classList.toggle('open');
-            overlay.classList.toggle('active'); });
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        }
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        });
         overlay.addEventListener('click', closeSidebar);
         window.addEventListener('resize', () => { if (window.innerWidth >= 993) closeSidebar(); });
 
@@ -2087,7 +2473,7 @@
         });
         resetSessionTimer();
 
-        document.getElementById('sessionWarning').addEventListener('click', function() {
+        document.getElementById('sessionWarning').addEventListener('click', function () {
             this.style.display = 'none';
             clearTimeout(warningTimer);
             resetSessionTimer();
@@ -2097,7 +2483,7 @@
         // ============================================================
         // EXPORT
         // ============================================================
-        document.getElementById('exportBtn')?.addEventListener('click', function() {
+        document.getElementById('exportBtn')?.addEventListener('click', function () {
             showToast('📊 Data exported successfully!', 'success');
         });
 
@@ -2108,4 +2494,5 @@
         switchPanel('dashboard');
     </script>
 </body>
+
 </html>
