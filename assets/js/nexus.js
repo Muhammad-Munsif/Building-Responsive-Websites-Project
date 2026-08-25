@@ -3,7 +3,7 @@
 // Shared functionality for index.html and dashboard.html
 // ============================================================
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
     // ============================================================
     // THEME TOGGLE (Shared)
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
             themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         }
 
-        themeToggle.addEventListener("click", function() {
+        themeToggle.addEventListener("click", function () {
             if (body.getAttribute("data-theme") === "dark") {
                 body.removeAttribute("data-theme");
                 localStorage.setItem("nexus-theme", "light");
@@ -52,10 +52,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 const user = JSON.parse(savedUser);
                 loginBtn.innerHTML = `<i class="fas fa-user-check"></i> ${user.name}`;
                 loginBtn.classList.add("logged-in");
-            } catch (e) {}
+            } catch (e) { }
         }
 
-        loginBtn.addEventListener("click", function() {
+        loginBtn.addEventListener("click", function () {
             if (localStorage.getItem("token")) {
                 if (confirm("Logout?")) {
                     localStorage.removeItem("token");
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const showLoginLink = document.getElementById("showLoginLink");
 
     if (showSignupLink) {
-        showSignupLink.addEventListener("click", function(e) {
+        showSignupLink.addEventListener("click", function (e) {
             e.preventDefault();
             loginModal?.hide();
             signupModal?.show();
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (showLoginLink) {
-        showLoginLink.addEventListener("click", function(e) {
+        showLoginLink.addEventListener("click", function (e) {
             e.preventDefault();
             signupModal?.hide();
             loginModal?.show();
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const loginMessage = document.getElementById("loginMessage");
 
     if (loginForm) {
-        loginForm.addEventListener("submit", async function(e) {
+        loginForm.addEventListener("submit", async function (e) {
             e.preventDefault();
             const email = document.getElementById("loginEmail").value.trim();
             const password = document.getElementById("loginPassword").value.trim();
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const signupMessage = document.getElementById("signupMessage");
 
     if (signupForm) {
-        signupForm.addEventListener("submit", async function(e) {
+        signupForm.addEventListener("submit", async function (e) {
             e.preventDefault();
             const name = document.getElementById("signupName").value.trim();
             const email = document.getElementById("signupEmail").value.trim();
@@ -207,11 +207,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================================
     // FAQ ACCORDION (Landing Page)
     // ============================================================
-    document.querySelectorAll(".faq-item").forEach(function(item) {
+    document.querySelectorAll(".faq-item").forEach(function (item) {
         const question = item.querySelector(".faq-question");
         if (question) {
-            question.addEventListener("click", function() {
-                document.querySelectorAll(".faq-item").forEach(function(other) {
+            question.addEventListener("click", function () {
+                document.querySelectorAll(".faq-item").forEach(function (other) {
                     if (other !== item && other.classList.contains("active")) {
                         other.classList.remove("active");
                     }
@@ -227,11 +227,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const backTop = document.getElementById("backToTop");
 
     if (backTop) {
-        window.addEventListener("scroll", function() {
+        window.addEventListener("scroll", function () {
             backTop.classList.toggle("visible", window.scrollY > 500);
         });
 
-        backTop.addEventListener("click", function() {
+        backTop.addEventListener("click", function () {
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
     }
@@ -243,18 +243,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const mainNav = document.getElementById("mainNav");
 
     if (mobileToggle && mainNav) {
-        mobileToggle.addEventListener("click", function(e) {
+        mobileToggle.addEventListener("click", function (e) {
             e.stopPropagation();
             mainNav.classList.toggle("active");
         });
 
-        document.querySelectorAll(".main-nav a").forEach(function(a) {
-            a.addEventListener("click", function() {
+        document.querySelectorAll(".main-nav a").forEach(function (a) {
+            a.addEventListener("click", function () {
                 mainNav.classList.remove("active");
             });
         });
 
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             if (window.innerWidth <= 768) {
                 if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
                     mainNav.classList.remove("active");
@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const formFeedback = document.getElementById("formFeedback");
 
     if (contactForm) {
-        contactForm.addEventListener("submit", function(e) {
+        contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
             formFeedback.innerHTML =
                 '<span style="color:var(--success);">✓ Message sent! We\'ll get back to you soon.</span>';
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // SMOOTH SCROLL (Landing Page)
     // ============================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 e.preventDefault();
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const logoutBtn = document.getElementById("logoutBtn");
 
     if (logoutBtn) {
-        logoutBtn.addEventListener("click", function() {
+        logoutBtn.addEventListener("click", function () {
             if (confirm("Are you sure you want to logout?")) {
                 localStorage.removeItem("token");
                 localStorage.removeItem("user");
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (userAvatar) userAvatar.textContent = initial;
             if (userNameDisplay) userNameDisplay.textContent = name;
             if (userNameDisplay2) userNameDisplay2.textContent = name;
-        } catch (e) {}
+        } catch (e) { }
     }
 
     // ============================================================
@@ -376,39 +376,61 @@ document.addEventListener("DOMContentLoaded", function() {
         init() {
             if (this.getUsers().length === 0) {
                 this.setUsers([
-                    { id: 1, name: 'John Doe', email: 'john@nexus.digital', role: 'Admin', status: 'Active',
-                        joined: 'Jan 15, 2025' },
-                    { id: 2, name: 'Sarah Miles', email: 'sarah@nexus.digital', role: 'Editor', status: 'Active',
-                        joined: 'Feb 3, 2025' },
-                    { id: 3, name: 'Alex Kim', email: 'alex@nexus.digital', role: 'Viewer', status: 'Pending',
-                        joined: 'Mar 10, 2025' },
-                    { id: 4, name: 'Elena Rios', email: 'elena@nexus.digital', role: 'Editor', status: 'Inactive',
-                        joined: 'Apr 22, 2025' }
+                    {
+                        id: 1, name: 'John Doe', email: 'john@nexus.digital', role: 'Admin', status: 'Active',
+                        joined: 'Jan 15, 2025'
+                    },
+                    {
+                        id: 2, name: 'Sarah Miles', email: 'sarah@nexus.digital', role: 'Editor', status: 'Active',
+                        joined: 'Feb 3, 2025'
+                    },
+                    {
+                        id: 3, name: 'Alex Kim', email: 'alex@nexus.digital', role: 'Viewer', status: 'Pending',
+                        joined: 'Mar 10, 2025'
+                    },
+                    {
+                        id: 4, name: 'Elena Rios', email: 'elena@nexus.digital', role: 'Editor', status: 'Inactive',
+                        joined: 'Apr 22, 2025'
+                    }
                 ]);
                 localStorage.setItem('nexus_users_nextId', 5);
             }
             if (this.getOrders().length === 0) {
                 this.setOrders([
-                    { id: 1284, customer: 'John Doe', amount: 245.00, status: 'Completed',
-                        date: 'Today, 2:30 PM' },
-                    { id: 1283, customer: 'Sarah Miles', amount: 89.50, status: 'Pending',
-                        date: 'Today, 11:15 AM' },
-                    { id: 1282, customer: 'Alex Kim', amount: 1250.00, status: 'Completed',
-                        date: 'Yesterday, 4:45 PM' },
-                    { id: 1281, customer: 'Elena Rios', amount: 430.00, status: 'Cancelled',
-                        date: 'Yesterday, 9:20 AM' }
+                    {
+                        id: 1284, customer: 'John Doe', amount: 245.00, status: 'Completed',
+                        date: 'Today, 2:30 PM'
+                    },
+                    {
+                        id: 1283, customer: 'Sarah Miles', amount: 89.50, status: 'Pending',
+                        date: 'Today, 11:15 AM'
+                    },
+                    {
+                        id: 1282, customer: 'Alex Kim', amount: 1250.00, status: 'Completed',
+                        date: 'Yesterday, 4:45 PM'
+                    },
+                    {
+                        id: 1281, customer: 'Elena Rios', amount: 430.00, status: 'Cancelled',
+                        date: 'Yesterday, 9:20 AM'
+                    }
                 ]);
                 localStorage.setItem('nexus_orders_nextId', 1285);
             }
             if (this.getReports().length === 0) {
                 this.setReports([
-                    { id: 1, name: 'Q1 Sales Summary', type: 'Sales', generated: 'Apr 1, 2025',
-                        status: 'Ready' },
-                    { id: 2, name: 'User Growth Report', type: 'Analytics', generated: 'Mar 28, 2025',
-                        status: 'Ready' },
+                    {
+                        id: 1, name: 'Q1 Sales Summary', type: 'Sales', generated: 'Apr 1, 2025',
+                        status: 'Ready'
+                    },
+                    {
+                        id: 2, name: 'User Growth Report', type: 'Analytics', generated: 'Mar 28, 2025',
+                        status: 'Ready'
+                    },
                     { id: 3, name: 'Revenue Breakdown', type: 'Financial', generated: '—', status: 'Generating' },
-                    { id: 4, name: 'Customer Feedback', type: 'Survey', generated: 'Mar 25, 2025',
-                        status: 'Ready' },
+                    {
+                        id: 4, name: 'Customer Feedback', type: 'Survey', generated: 'Mar 25, 2025',
+                        status: 'Ready'
+                    },
                     { id: 5, name: 'Inventory Status', type: 'Operations', generated: '—', status: 'Failed' }
                 ]);
                 localStorage.setItem('nexus_reports_nextId', 6);
@@ -428,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================================
     // DASHBOARD - Toast Notifications
     // ============================================================
-    window.showToast = function(message, type = 'success') {
+    window.showToast = function (message, type = 'success') {
         const container = document.getElementById('toastContainer');
         if (!container) return;
         const toast = document.createElement('div');
@@ -466,7 +488,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return `<span class="badge-status ${classes[status.toLowerCase()] || 'pending'}">${status}</span>`;
     }
 
-    window.renderUsers = function() {
+    window.renderUsers = function () {
         const users = DB.getUsers();
         const search = document.getElementById('userSearch')?.value?.toLowerCase() || '';
         const filter = document.getElementById('userFilter')?.value || 'all';
@@ -498,7 +520,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         tbody.innerHTML = filtered.map(user => `
             <tr class="record-enter">
-                <td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:var(--gradient-prime);">${user.name.split(' ').map(n=>n[0]).join('').toUpperCase()}</span>${user.name}</div></td>
+                <td><div class="d-flex align-items-center gap-2"><span class="user-avatar-sm" style="background:var(--gradient-prime);">${user.name.split(' ').map(n => n[0]).join('').toUpperCase()}</span>${user.name}</div></td>
                 <td>${user.email}</td>
                 <td>${user.role}</td>
                 <td>${getStatusBadge(user.status)}</td>
@@ -511,7 +533,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `).join('');
     };
 
-    window.renderOrders = function() {
+    window.renderOrders = function () {
         const orders = DB.getOrders();
         const search = document.getElementById('orderSearch')?.value?.toLowerCase() || '';
         const filter = document.getElementById('orderFilter')?.value || 'all';
@@ -556,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `).join('');
     };
 
-    window.renderReports = function() {
+    window.renderReports = function () {
         const reports = DB.getReports();
         const search = document.getElementById('reportSearch')?.value?.toLowerCase() || '';
         const filter = document.getElementById('reportFilter')?.value || 'all';
@@ -604,7 +626,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================================
     // DASHBOARD - Filter & Sort
     // ============================================================
-    window.filterTable = function(type) {
+    window.filterTable = function (type) {
         switch (type) {
             case 'user':
                 renderUsers();
@@ -618,7 +640,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    window.sortTable = function(type, key) {
+    window.sortTable = function (type, key) {
         if (sortState[type]) {
             if (sortState[type].key === key) {
                 sortState[type].asc = !sortState[type].asc;
@@ -633,7 +655,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================================
     // DASHBOARD - Stats & Badges
     // ============================================================
-    window.updateStats = function() {
+    window.updateStats = function () {
         const users = DB.getUsers();
         const orders = DB.getOrders();
         const reports = DB.getReports();
@@ -670,7 +692,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (el('dashRevenue')) el('dashRevenue').textContent = `$${totalRevenue.toFixed(0)}`;
     };
 
-    window.updateBadges = function() {
+    window.updateBadges = function () {
         const el = (id) => document.getElementById(id);
         if (el('userCount')) el('userCount').textContent = DB.getUsers().length;
         if (el('orderCount')) el('orderCount').textContent = DB.getOrders().length;
@@ -680,7 +702,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================================
     // DASHBOARD - CRUD Operations
     // ============================================================
-    window.addUser = function(data) {
+    window.addUser = function (data) {
         const users = DB.getUsers();
         users.push({ id: DB.getNextId('users'), ...data, joined: 'Today' });
         DB.setUsers(users);
@@ -689,7 +711,7 @@ document.addEventListener("DOMContentLoaded", function() {
         addActivity(`New user <strong>${data.name}</strong> registered`);
     };
 
-    window.updateUser = function(id, data) {
+    window.updateUser = function (id, data) {
         const users = DB.getUsers();
         const idx = users.findIndex(u => u.id === id);
         if (idx === -1) return showToast('User not found!', 'error');
@@ -699,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showToast(`✅ User "${data.name}" updated!`, 'success');
     };
 
-    window.deleteUser = function(id) {
+    window.deleteUser = function (id) {
         if (!confirm('Delete this user?')) return;
         const users = DB.getUsers(),
             user = users.find(u => u.id === id);
@@ -709,17 +731,19 @@ document.addEventListener("DOMContentLoaded", function() {
         addActivity(`User <strong>${user?.name}</strong> deleted`);
     };
 
-    window.addOrder = function(data) {
+    window.addOrder = function (data) {
         const orders = DB.getOrders();
-        orders.push({ id: DB.getNextId('orders'), ...data, amount: parseFloat(data.amount),
-            date: 'Today, ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+        orders.push({
+            id: DB.getNextId('orders'), ...data, amount: parseFloat(data.amount),
+            date: 'Today, ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
         DB.setOrders(orders);
         DB.updateUI();
         showToast(`✅ Order for "${data.customer}" added!`, 'success');
         addActivity(`Order <strong>#${orders[orders.length - 1].id}</strong> created`);
     };
 
-    window.updateOrder = function(id, data) {
+    window.updateOrder = function (id, data) {
         const orders = DB.getOrders();
         const idx = orders.findIndex(o => o.id === id);
         if (idx === -1) return showToast('Order not found!', 'error');
@@ -729,7 +753,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showToast(`✅ Order #${id} updated!`, 'success');
     };
 
-    window.deleteOrder = function(id) {
+    window.deleteOrder = function (id) {
         if (!confirm('Delete this order?')) return;
         const orders = DB.getOrders(),
             order = orders.find(o => o.id === id);
@@ -738,7 +762,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showToast(`🗑️ Order #${id} deleted!`, 'warning');
     };
 
-    window.addReport = function(data) {
+    window.addReport = function (data) {
         const reports = DB.getReports();
         const newReport = { id: DB.getNextId('reports'), ...data, generated: 'Today', status: 'Generating' };
         reports.push(newReport);
@@ -760,7 +784,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 2000);
     };
 
-    window.deleteReport = function(id) {
+    window.deleteReport = function (id) {
         if (!confirm('Delete this report?')) return;
         const reports = DB.getReports(),
             report = reports.find(r => r.id === id);
@@ -769,7 +793,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showToast(`🗑️ Report "${report?.name}" deleted!`, 'warning');
     };
 
-    window.deleteRecord = function(mode, id) {
+    window.deleteRecord = function (mode, id) {
         if (mode === 'user') deleteUser(id);
         else if (mode === 'order') deleteOrder(id);
         else if (mode === 'report') deleteReport(id);
@@ -794,7 +818,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ============================================================
     let editId = null;
 
-    window.openAddModal = function(mode, data = null) {
+    window.openAddModal = function (mode, data = null) {
         editId = data?.id || null;
         const isEdit = data !== null;
         const modalTitle = document.getElementById('addModalTitle');
@@ -868,7 +892,7 @@ document.addEventListener("DOMContentLoaded", function() {
         new bootstrap.Modal(document.getElementById('addModal')).show();
     };
 
-    window.editRecord = function(mode, id) {
+    window.editRecord = function (mode, id) {
         let data = null;
         if (mode === 'user') data = DB.getUsers().find(u => u.id === id);
         else if (mode === 'order') data = DB.getOrders().find(o => o.id === id);
@@ -880,7 +904,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Form submit handler
     const addForm = document.getElementById('addForm');
     if (addForm) {
-        addForm.addEventListener('submit', function(e) {
+        addForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const mode = this.querySelector('#addSubmitBtn').dataset.mode || 'user';
             const editId = document.getElementById('editId')?.value;
@@ -891,23 +915,29 @@ document.addEventListener("DOMContentLoaded", function() {
                 const email = document.getElementById('userEmail')?.value.trim();
                 const role = document.getElementById('userRole')?.value;
                 const status = document.getElementById('userStatus')?.value;
-                if (!name || !email) { feedback.innerHTML =
-                    '<span style="color:var(--danger);">All fields required!</span>'; return; }
+                if (!name || !email) {
+                    feedback.innerHTML =
+                    '<span style="color:var(--danger);">All fields required!</span>'; return;
+                }
                 if (editId) updateUser(parseInt(editId), { name, email, role, status });
                 else addUser({ name, email, role, status });
             } else if (mode === 'order') {
                 const customer = document.getElementById('orderCustomer')?.value.trim();
                 const amount = document.getElementById('orderAmount')?.value;
                 const status = document.getElementById('orderStatus')?.value;
-                if (!customer || !amount) { feedback.innerHTML =
-                    '<span style="color:var(--danger);">All fields required!</span>'; return; }
+                if (!customer || !amount) {
+                    feedback.innerHTML =
+                    '<span style="color:var(--danger);">All fields required!</span>'; return;
+                }
                 if (editId) updateOrder(parseInt(editId), { customer, amount, status });
                 else addOrder({ customer, amount, status });
             } else if (mode === 'report') {
                 const name = document.getElementById('reportName')?.value.trim();
                 const type = document.getElementById('reportType')?.value;
-                if (!name) { feedback.innerHTML = '<span style="color:var(--danger);">Report name required!</span>';
-                    return; }
+                if (!name) {
+                    feedback.innerHTML = '<span style="color:var(--danger);">Report name required!</span>';
+                    return;
+                }
                 if (editId) {
                     const reports = DB.getReports();
                     const idx = reports.findIndex(r => r.id === parseInt(editId));
@@ -1002,7 +1032,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    window.updateCharts = function() {
+    window.updateCharts = function () {
         if (typeof Chart === 'undefined') return;
         if (userChartInstance) {
             const users = DB.getUsers();
@@ -1042,8 +1072,10 @@ document.addEventListener("DOMContentLoaded", function() {
         dashboard: { title: 'Dashboard', subtitle: 'Overview of your business metrics.', action: 'Add New' },
         users: { title: 'Users', subtitle: 'Manage all users and their permissions.', action: 'Add User' },
         orders: { title: 'Orders', subtitle: 'Track and manage all orders.', action: 'Add Order' },
-        analytics: { title: 'Analytics', subtitle: 'Detailed insights and performance metrics.',
-            action: 'Export Data' },
+        analytics: {
+            title: 'Analytics', subtitle: 'Detailed insights and performance metrics.',
+            action: 'Export Data'
+        },
         reports: { title: 'Reports', subtitle: 'Generate and export detailed reports.', action: 'New Report' },
         settings: { title: 'Settings', subtitle: 'Configure your account and preferences.', action: 'Save' },
         support: { title: 'Support', subtitle: 'Get help and submit support tickets.', action: 'New Ticket' }
@@ -1100,7 +1132,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     navItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function () {
             const panel = this.dataset.panel;
             if (panel) switchPanel(panel);
         });
@@ -1119,12 +1151,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (mobileToggleBtn && sidebar && overlay) {
-        mobileToggleBtn.addEventListener('click', function() {
+        mobileToggleBtn.addEventListener('click', function () {
             sidebar.classList.toggle('open');
             overlay.classList.toggle('active');
         });
         overlay.addEventListener('click', closeSidebar);
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth >= 993) closeSidebar();
         });
     }
@@ -1133,7 +1165,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // DASHBOARD - Export
     // ============================================================
     if (exportBtn) {
-        exportBtn.addEventListener('click', function() {
+        exportBtn.addEventListener('click', function () {
             showToast('📊 Data exported successfully!', 'success');
         });
     }
